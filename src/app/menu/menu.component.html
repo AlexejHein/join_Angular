@@ -1,22 +1,23 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
-
-    <div class="menu-item">
+  <div class="menu-inner">
+    <div [routerLink]="['/summary']" class="menu-item">
     <mat-icon>space_dashboard</mat-icon>
       Summary
     </div>
-    <div class="menu-item">
+    <div [routerLink]="['/board']" class="menu-item">
     <mat-icon>dashboard</mat-icon>
       Boards
     </div>
-    <div class="menu-item">
+    <div [routerLink]="['/add-task']" class="menu-item">
     <mat-icon>add_task</mat-icon>
       Add Task
     </div>
-    <div class="menu-item">
+    <div [routerLink]="['/contacts']" class="menu-item">
     <mat-icon>person_add</mat-icon>
       Contacts
     </div>
+  </div>
   </mat-drawer>
 
   <div class="example-sidenav-content">

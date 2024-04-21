@@ -1,0 +1,9 @@
+mat-card{
+  width: 400px;
+  margin: 100px auto 0;
+  padding: 20px;
+  text-align: center;
+  box-shadow: rgba(150, 150, 150, 0.51) 0 0 10px;
+  border: #738ae8 1px solid;
+  z-index: 20;
+}
