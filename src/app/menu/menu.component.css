@@ -1,0 +1,27 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.example-sidenav{
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  background: #2A3647;
+  color: white;
+}
+.example-sidenav-content{
+  height: 50px;
+  font-size: 20px;
+  background-color: #fff;
+  box-shadow: #2A3647;
+}
+example-sidenav-content{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}

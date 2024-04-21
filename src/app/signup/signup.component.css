@@ -1,10 +1,10 @@
 mat-card{
-    width: 400px;
-    margin: 100px auto 0;
-    padding: 20px;
-    text-align: center;
-    box-shadow: rgba(150, 150, 150, 0.51) 0 0 10px;
-    border: rgb(41, 171, 226) 1px solid;
+  width: 400px;
+  margin: 100px auto 0;
+  padding: 20px;
+  text-align: center;
+  box-shadow: rgba(150, 150, 150, 0.51) 0 0 10px;
+  border: #738ae8 1px solid;
 }
 mat-card-header{
   display: flex;
@@ -14,12 +14,12 @@ mat-card-header{
   font-weight: bold;
 }
 mat-form-field{
-    width: 100%;
+  width: 100%;
   margin: 20px 0;
 }
 .vButton{
-    background-color: rgb(41, 171, 226);
-    color: white!important;
+  background-color: #738ae8;
+  color: white!important;
 }
 .rButton{
   border: rgb(41, 171, 226) 1px solid;
