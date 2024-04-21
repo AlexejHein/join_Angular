@@ -1,13 +1,28 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
-    <p>Auto-resizing sidenav</p>
     <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
 
+    <div class="menu-item">
+    <mat-icon>space_dashboard</mat-icon>
+      Summary
+    </div>
+    <div class="menu-item">
+    <mat-icon>dashboard</mat-icon>
+      Boards
+    </div>
+    <div class="menu-item">
+    <mat-icon>add_task</mat-icon>
+      Add Task
+    </div>
+    <div class="menu-item">
+    <mat-icon>person_add</mat-icon>
+      Contacts
+    </div>
   </mat-drawer>
 
   <div class="example-sidenav-content">
     <button type="button" mat-button (click)="drawer.toggle()">
-      Menu
+      <mat-icon>menu</mat-icon>
     </button>
     Kanban Project Management Tool
   </div>

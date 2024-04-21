@@ -10,9 +10,23 @@
 .example-sidenav{
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 200px;
   background: #2A3647;
   color: white;
+}
+.menu-item{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+}
+.menu-item:hover{
+  background-color: #738ae8;
 }
 .example-sidenav-content{
   height: 50px;
