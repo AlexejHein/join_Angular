@@ -31,10 +31,13 @@
   background-color: #091931;
 }
 .example-sidenav-content{
-  height: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 70px;
   font-size: 20px;
   background-color: #fff;
-  box-shadow: #2A3647;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 example-sidenav-content{
   height: 100%;

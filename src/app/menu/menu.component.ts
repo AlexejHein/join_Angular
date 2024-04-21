@@ -6,6 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
-  showFiller: boolean | undefined;
 
 }
