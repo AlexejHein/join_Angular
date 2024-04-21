@@ -17,6 +17,8 @@
   color: white;
 }
 .menu-item{
+  font-size: 20px;
+  padding: 20px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -26,7 +28,7 @@
   cursor: pointer;
 }
 .menu-item:hover{
-  background-color: #738ae8;
+  background-color: #091931;
 }
 .example-sidenav-content{
   height: 50px;
