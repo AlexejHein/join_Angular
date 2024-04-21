@@ -6,6 +6,13 @@ mat-card{
     box-shadow: rgba(150, 150, 150, 0.51) 0 0 10px;
     border: #738ae8 1px solid;
 }
+mat-card-header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+}
 mat-form-field{
     width: 100%;
   margin: 20px 0;
@@ -16,4 +23,11 @@ mat-form-field{
 }
 .rButton{
   border: #738ae8 1px solid;
+  color: #738ae8!important;
 }
+.buttonsBlog{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+
