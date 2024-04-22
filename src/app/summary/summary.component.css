@@ -1,9 +1,27 @@
-mat-card{
-  width: 400px;
-  margin: 100px auto 0;
-  padding: 20px;
-  text-align: center;
-  box-shadow: rgba(150, 150, 150, 0.51) 0 0 10px;
-  border: #738ae8 1px solid;
+.content{
+  width: 100%;
+  height: 100%;
   z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+mat-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 200px;
+  height: 200px;
+  background-color: #2A3647;
+  color: #ffffff;
+  font-size: 25px;
+  margin: 100px auto 0;
+  text-align: center;
+  z-index: 2;
+}
+.taskIn{
+  font-size: 50px;
+  font-weight: bold;
 }
