@@ -7,11 +7,12 @@
   align-items: center;
 }
 .summaryContent{
+  width: 700px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 .summaryTasks{
   display: flex;
@@ -29,7 +30,7 @@ mat-card{
   width: 200px;
   height: 200px;
   font-size: 25px;
-  margin: 100px auto 0;
+  margin: 25px auto 0;
   text-align: center;
   z-index: 2;
 }
@@ -37,6 +38,7 @@ mat-card:hover{
   background-color: #2A3647;
   color: #ffffff;
   scale: 1.1;
+  cursor: pointer;
 }
 .taskIn{
   font-size: 50px;
@@ -46,5 +48,12 @@ mat-card:hover{
   font-size: 20px;
 }
 .taskunger{
-  width: 100%!important;
+  width: 650px;
+}
+.todos{
+  width: 325px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
