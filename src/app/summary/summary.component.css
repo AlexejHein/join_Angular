@@ -41,8 +41,9 @@ mat-card:hover{
   cursor: pointer;
 }
 .taskIn{
-  font-size: 50px;
+  font-size: 30px;
   font-weight: bold;
+  line-height: 50px;
 }
 .taskDes{
   font-size: 20px;
@@ -56,4 +57,10 @@ mat-card:hover{
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+.bg-r-dark{
+  padding: 20px;
+  border-radius: 50%;
+  background-color: #2A3647;
+  color: #ffffff;
 }
