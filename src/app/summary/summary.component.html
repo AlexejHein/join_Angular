@@ -5,7 +5,7 @@
 <div class="content">
 
 <div class="summaryContent">
-  <div class="summaryTasks">
+  <div class="summaryTasks" [routerLink]="['/board']">
     <mat-card>
       <p class="taskIn">4</p>
       <p class="taskDes">Tasks in Board</p>
@@ -19,13 +19,13 @@
       <p class="taskDes">Awaiting Feedback</p>
     </mat-card>
   </div>
-  <div class="summaryTasks">
+  <div class="summaryTasks" [routerLink]="['/board']">
     <mat-card class="taskunger">
       <p class="taskIn">1</p>
       <p class="taskDes">Awaiting Feedback</p>
     </mat-card>
   </div>
-  <div class="summaryTasks">
+  <div class="summaryTasks" [routerLink]="['/board']">
     <mat-card class="todos">
       <p class="taskDes bg-r-dark"><mat-icon>edit</mat-icon></p>
       <p class="taskIn">1 <br> Todos</p>
