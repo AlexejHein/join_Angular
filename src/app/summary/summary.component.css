@@ -1,7 +1,25 @@
+.summaryHeader{
+  position: relative;
+  width: 100%;
+  font-size: 50px;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  z-index: 30!important;
+  color: #000;
+}
+hr{
+  width: 2px;
+  height: 100px;
+  border: 1px solid #000;
+  margin: 0 50px;
+}
 .content{
   width: 100%;
   height: 100%;
-  z-index: 20;
+  z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
