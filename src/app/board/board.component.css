@@ -1,0 +1,39 @@
+.content{
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.boardHeader{
+  margin-top: 100px;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  z-index: 20;
+}
+.boardHeaderSearch{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+button{
+  background-color: #2A3647;
+  color: #ffffff!important;
+  height: 57px!important;
+}
+.boardContent{
+  display: flex;
+  width: 80%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: 20;
+}
