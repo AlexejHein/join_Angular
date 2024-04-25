@@ -42,6 +42,7 @@ hr{
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  gap: 30px;
 }
 .red{
   color: red;
@@ -52,5 +53,23 @@ hr{
 .yellow{
   color: yellow;
 }
-
+.add{
+  background-color: #2A3647;
+  color: white!important;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+}
+.add:hover{
+  background-color: rgb(41, 171, 226);
+}
+.clear{
+  border: #2A3647 1px solid;
+  margin: 8px 0;
+  cursor: pointer;
+}
+.clear:hover{
+  border: rgb(41, 171, 226) 1px solid;
+  color: rgb(41, 171, 226)!important;
+}
 
