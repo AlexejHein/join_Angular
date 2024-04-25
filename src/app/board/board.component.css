@@ -38,6 +38,7 @@ button{
   z-index: 20;
 }
 .todos{
+  margin: 10px;
   width: 80%;
   height: 100vh;
   display: flex;
@@ -47,7 +48,7 @@ button{
   gap: 20px;
 }
 .todosContentHeader{
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -85,6 +86,25 @@ button{
 .taskContent{
   font-size: 16px;
   color: rgba(42, 54, 71, 0.57);
+}
+.taskDone{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.process{
+  width: 25%;
+  height: 15px;
+  background-color: #738ae8;
+  border-radius: 5px 0 0 5px;
+}
+.done{
+  width: 160px;
+  height: 15px;
+  border-radius: 5px;
+  background-color: #b7b7b7;
 }
 .taskFooter{
   display: flex;
