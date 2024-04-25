@@ -17,6 +17,12 @@ import { AddTaskComponent } from './add-task/add-task.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { MenuComponent } from './menu/menu.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatSelectModule} from "@angular/material/select";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import { MatNativeDateModule } from '@angular/material/core';
+import {FormsModule} from "@angular/forms";
+
+
 
 @NgModule({
   declarations: [
@@ -38,6 +44,10 @@ import {MatSidenavModule} from "@angular/material/sidenav";
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

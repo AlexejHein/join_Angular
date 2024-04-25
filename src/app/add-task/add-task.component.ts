@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-task.component.css']
 })
 export class AddTaskComponent {
+  value: any;
 
 }
