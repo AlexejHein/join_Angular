@@ -86,3 +86,19 @@ button{
   font-size: 16px;
   color: rgba(42, 54, 71, 0.57);
 }
+.taskFooter{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.persons{
+  background-color: #727226;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 50%;
+}
+.prioritize{
+  color: red;
+}
