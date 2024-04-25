@@ -37,3 +37,10 @@ button{
   align-items: flex-start;
   z-index: 20;
 }
+.todosContent{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+}
