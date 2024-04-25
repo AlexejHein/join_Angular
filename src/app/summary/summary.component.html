@@ -1,6 +1,6 @@
 <app-menu></app-menu>
 <div class="summaryHeader">
-  Summary <hr> Everything in a nutshell!
+  <b>Summary</b> <hr> Everything in a nutshell!
 </div>
 <div class="content">
 
@@ -21,8 +21,13 @@
   </div>
   <div class="summaryTasks" [routerLink]="['/board']">
     <mat-card class="taskunger">
+      <mat-icon>keyboard_double_arrow_up</mat-icon>
       <p class="taskIn">1</p>
-      <p class="taskDes">Awaiting Feedback</p>
+      <hr>
+      <p class="taskDes"><b>May 05,2024</b>
+        <br>
+        Task Overdue
+      </p>
     </mat-card>
   </div>
   <div class="summaryTasks" [routerLink]="['/board']">

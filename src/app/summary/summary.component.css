@@ -70,6 +70,8 @@ mat-card:hover{
 }
 .taskunger{
   width: 650px;
+  display: flex;
+  flex-direction: row;
 }
 .todos{
   width: 325px;
@@ -84,3 +86,4 @@ mat-card:hover{
   background-color: #2A3647;
   color: #ffffff;
 }
+
