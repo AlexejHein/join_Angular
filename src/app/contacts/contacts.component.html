@@ -3,7 +3,8 @@
     <div class="contacts">
       <div *ngFor="let contact of contacts" class="contactName">
         <p>{{ contact.name }}</p>
-        <p>{{ contact.email }}</p>
+        <p class="contactEmail">{{ contact.email }}</p>
+        <hr>
       </div>
     </div>
 </div>
