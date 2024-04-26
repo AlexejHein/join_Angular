@@ -2,7 +2,10 @@
 <div class="content">
     <div class="contacts">
       <div *ngFor="let contact of contacts" class="contactName">
+        <div class="contactNameHead">
+        <div class="contactNameIn">AH</div>
         <p>{{ contact.name }}</p>
+        </div>
         <p class="contactEmail">{{ contact.email }}</p>
         <hr>
       </div>
