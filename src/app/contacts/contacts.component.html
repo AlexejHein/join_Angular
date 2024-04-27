@@ -2,12 +2,22 @@
 <div class="content">
     <div class="contacts">
       <div *ngFor="let contact of contacts" class="contactName">
-        <div class="contactNameHead">
-        <div class="contactNameIn">AH</div>
-        <p>{{ contact.name }}</p>
+        <div class="contactItem" [@slideOutRight]>
+          <div class="contactNameHead">
+          <div class="contactNameIn">AH</div>
+          <p>{{ contact.name }}</p>
+          </div>
+          <p class="contactEmail">{{ contact.email }}</p>
         </div>
-        <p class="contactEmail">{{ contact.email }}</p>
         <hr>
       </div>
     </div>
+
+  <div class="contactItemSlider" [@slideOutRight] (click)="removeContact(i)" *ngFor="let contact of contacts; let i = index">
+    <div class="contactNameHead">
+      <div class="contactNameIn">AH</div>
+      <p>{{ contact.name }}</p>
+    </div>
+    <p class="contactEmail">{{ contact.email }}</p>
+  </div>
 </div>
