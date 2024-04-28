@@ -67,6 +67,18 @@
   transform: translateX(100%);
   animation: slide-in 0.5s forwards;
 }
+.slideItem{
+  width: 100%;
+  padding: 10px;
+  margin-left: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+  text-align: center;
+}
+
 
 @keyframes slide-in {
   100% { transform: translateX(0); }
@@ -92,5 +104,13 @@
 }
 .slideHeader p{
   font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.bBlack{
+  color: #000000;
+  font-weight: bolder;
 }
 

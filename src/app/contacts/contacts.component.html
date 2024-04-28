@@ -12,13 +12,16 @@
       <hr>
     </div>
   </div>
+
   <div *ngFor="let contact of contacts; let i = index">
     <div class="contactItemSlider" [@slideInOut]="contact.isClicked ? 'in' : 'out'">
+
       <div class="slideHeader">
       <h2>Contacts</h2>
       <hr>
       <p>Better with a team</p>
       </div>
+      <div class="slideItem">
       <div class="contactNameHead">
         <div class="contactNameIn">AH</div>
         <h2>{{ contact.name }} <br>
@@ -27,8 +30,9 @@
         </h2>
       </div>
       <h3>Contact Information</h3>
-      <p class="contactEmail"> Email <br>{{ contact.email }}</p>
-      <p> Phone <br> {{ contact.phone }}</p>
+      <p class="contactEmail"> <span class="bBlack">Email</span> <br>{{ contact.email }}</p>
+        <p> <span class="bBlack">Phone</span> <br> {{ contact.phone }}</p>
+    </div>
     </div>
   </div>
 </div>
