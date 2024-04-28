@@ -1,19 +1,19 @@
 <app-menu></app-menu>
 <div class="content">
-    <div class="contacts">
-      <div *ngFor="let contact of contacts" class="contactName">
-        <div class="contactItem" [@slideOutRight]>
-          <div class="contactNameHead">
+  <div class="contacts">
+    <div *ngFor="let contact of contacts; let i = index" class="contactName">
+      <div class="contactItem" [@slideOutRight]="contact.isClicked ? 'in' : 'out'" (click)="removeContact(i)">
+        <div class="contactNameHead">
           <div class="contactNameIn">AH</div>
           <p>{{ contact.name }}</p>
-          </div>
-          <p class="contactEmail">{{ contact.email }}</p>
         </div>
-        <hr>
+        <p class="contactEmail">{{ contact.email }}</p>
       </div>
+      <hr>
     </div>
+  </div>
 
-  <div class="contactItemSlider" [@slideOutRight] (click)="removeContact(i)" *ngFor="let contact of contacts; let i = index">
+  <div class="contactItemSlider" [@slideOutRight]="contact.isClicked ? 'in' : 'out'" (click)="clickContact(i)" *ngFor="let contact of contacts; let i = index">
     <div class="contactNameHead">
       <div class="contactNameIn">AH</div>
       <p>{{ contact.name }}</p>
