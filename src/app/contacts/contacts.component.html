@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div class="content">
   <div class="contacts">
     <div *ngFor="let contact of contacts; let i = index" class="contactName">
@@ -13,11 +14,21 @@
   </div>
   <div *ngFor="let contact of contacts; let i = index">
     <div class="contactItemSlider" [@slideInOut]="contact.isClicked ? 'in' : 'out'">
+      <div class="slideHeader">
+      <h2>Contacts</h2>
+      <hr>
+      <p>Better with a team</p>
+      </div>
       <div class="contactNameHead">
         <div class="contactNameIn">AH</div>
-        <p>{{ contact.name }}</p>
+        <h2>{{ contact.name }} <br>
+          <mat-icon>edit</mat-icon> Edit
+          <mat-icon>delete</mat-icon> Delete
+        </h2>
       </div>
-      <p class="contactEmail">{{ contact.email }}</p>
+      <h3>Contact Information</h3>
+      <p class="contactEmail"> Email <br>{{ contact.email }}</p>
+      <p> Phone <br> {{ contact.phone }}</p>
     </div>
   </div>
 </div>
