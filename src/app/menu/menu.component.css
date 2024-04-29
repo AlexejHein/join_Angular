@@ -41,15 +41,29 @@
 }
 .example-sidenav-content{
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   height: 70px;
   font-size: 20px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-example-sidenav-content{
-  height: 100%;
+.menuRight{
+  margin-right: 20px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.loginName{
+  padding: 10px;
+  background-color: white;
+  border-radius: 50%;
+  color: #091931;
+  font-size: 20px;
+  border: 2px solid #091931;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }

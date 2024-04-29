@@ -21,6 +21,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import { MatNativeDateModule } from '@angular/material/core';
 import {FormsModule} from "@angular/forms";
+import {MatMenuModule} from "@angular/material/menu";
 
 
 
@@ -48,6 +49,7 @@ import {FormsModule} from "@angular/forms";
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
