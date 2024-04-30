@@ -34,9 +34,7 @@ export class ContactsComponent {
   constructor(public dialog: MatDialog) {
   }
 
-  clickContact(index: number) {
-    // Setze alle isClicked auf false und dann den ausgewählten auf true
-    this.contacts.forEach((c, i) => {
+  clickContact(index: number) {   this.contacts.forEach((c, i) => {
       if (i !== index) c.isClicked = false;
     });
     this.contacts[index].isClicked = !this.contacts[index].isClicked;
@@ -54,7 +52,6 @@ export class ContactsComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      // Hier können Sie das Ergebnis verarbeiten, z.B. aktualisierte Daten speichern
     });
   }
 
