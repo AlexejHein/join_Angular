@@ -22,6 +22,8 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import { MatNativeDateModule } from '@angular/material/core';
 import {FormsModule} from "@angular/forms";
 import {MatMenuModule} from "@angular/material/menu";
+import { DialogEditContactComponent } from './contacts/dialog-edit-contact/dialog-edit-contact.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -35,6 +37,7 @@ import {MatMenuModule} from "@angular/material/menu";
     AddTaskComponent,
     ContactsComponent,
     MenuComponent,
+    DialogEditContactComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +53,7 @@ import {MatMenuModule} from "@angular/material/menu";
     MatNativeDateModule,
     FormsModule,
     MatMenuModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

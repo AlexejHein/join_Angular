@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {MatDialog } from '@angular/material/dialog';
+import {DialogEditContactComponent} from "./dialog-edit-contact/dialog-edit-contact.component";
+
 
 @Component({
   selector: 'app-contacts',
@@ -28,6 +31,9 @@ export class ContactsComponent {
     {'name': "Hans Wurst", 'email': "HUe@ai.de", 'phone': "789123456", 'isClicked': false},
   ];
 
+  constructor(public dialog: MatDialog) {
+  }
+
   clickContact(index: number) {
     // Setze alle isClicked auf false und dann den ausgewählten auf true
     this.contacts.forEach((c, i) => {
@@ -39,4 +45,16 @@ export class ContactsComponent {
   removeContact(index: number) {
     this.contacts.splice(index, 1);
   }
+  openDialog(contact: any): void {
+    const dialogRef = this.dialog.open(DialogEditContactComponent, {
+      width: '250px',
+      data: contact
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // Hier können Sie das Ergebnis verarbeiten, z.B. aktualisierte Daten speichern
+    });
+  }
+
 }
