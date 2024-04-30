@@ -1,5 +1,5 @@
 import {Component, Inject} from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 
 @Component({
@@ -9,9 +9,15 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class DialogEditContactComponent {
   contactData: any;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+              public dialogRef: MatDialogRef<DialogEditContactComponent>  // MatDialogRef injizieren
+  ) {
     this.contactData = data;
     console.log(data);  // Daten des Kontakts anzeigen, um sicherzustellen, dass sie korrekt übergeben wurden
+  }
+
+  closeDialog() {
+    this.dialogRef.close();  // Dialog schließen
   }
 
 }
