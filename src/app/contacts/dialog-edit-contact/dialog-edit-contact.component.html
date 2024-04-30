@@ -4,6 +4,7 @@
     <p>Edit Contact</p>
   </div>
   <div class="right">
+    <div class="inputs">
     <p>
       <mat-form-field appearance="outline">
         <mat-label>{{ contactData.name }}</mat-label>
@@ -25,7 +26,13 @@
         <mat-icon matSuffix>phone</mat-icon>
       </mat-form-field>
     </p>
+    </div>
+    <div class="buttons">
+      <button mat-raised-button color="primary">Save</button>
+      <button mat-raised-button color="warn">Delete</button>
+    </div>
   </div>
+
 </div>
 <button class="close" mat-mini-fab>
   <mat-icon>close</mat-icon>
