@@ -113,4 +113,26 @@
   color: #000000;
   font-weight: bolder;
 }
+.addContact{
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  z-index: 20;
+}
+.addContact button{
+  padding: 10px 20px;
+  background-color: #2A3647;
+  color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.addContact button:hover{
+  background-color: #29ABE2;
+}
 
