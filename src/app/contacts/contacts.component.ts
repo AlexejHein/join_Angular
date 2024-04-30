@@ -47,7 +47,8 @@ export class ContactsComponent {
   }
   openDialog(contact: any): void {
     const dialogRef = this.dialog.open(DialogEditContactComponent, {
-      width: '250px',
+      width: '850px',
+      height: '400px',
       data: contact
     });
 
