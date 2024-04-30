@@ -4,8 +4,29 @@
     <p>Edit Contact</p>
   </div>
   <div class="right">
-    <p>{{ contactData.name}}</p>
-    <p>{{ contactData.email}}</p>
-    <p>{{ contactData.phone}}</p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ contactData.name }}</mat-label>
+        <input matInput placeholder="{{ contactData.name }}">
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ contactData.email }}</mat-label>
+        <input matInput placeholder="{{ contactData.email }}">
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ contactData.phone }}</mat-label>
+        <input matInput placeholder="{{ contactData.phone }}">
+        <mat-icon matSuffix>phone</mat-icon>
+      </mat-form-field>
+    </p>
   </div>
 </div>
+<button class="close" mat-mini-fab>
+  <mat-icon>close</mat-icon>
+</button>
