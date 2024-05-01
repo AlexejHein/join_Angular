@@ -7,6 +7,10 @@
   justify-content: flex-start;
   align-items: center;
 }
+h2{
+  font-size: 56px;
+  font-weight: bolder;
+}
 .boardHeader{
   margin-top: 100px;
   width: 80%;

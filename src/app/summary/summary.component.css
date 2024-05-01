@@ -1,7 +1,7 @@
 .summaryHeader{
   position: relative;
   width: 100%;
-  font-size: 50px;
+  font-size: 30px;
   margin-top: 100px;
   display: flex;
   flex-direction: row;
@@ -9,6 +9,10 @@
   align-items: center;
   z-index: 30!important;
   color: #000;
+}
+.h2Haeder{
+  font-size: 56px;
+  font-weight: bold;
 }
 hr{
   width: 2px;

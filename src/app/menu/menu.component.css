@@ -7,6 +7,9 @@
   left: 0;
   right: 0;
 }
+img{
+  margin: 50px 50px;
+}
 .example-sidenav{
   display: flex;
   flex-direction: column;
