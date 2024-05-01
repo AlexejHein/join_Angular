@@ -9,6 +9,12 @@
   align-items: center;
   z-index: 10;
 }
+h2{
+  font-size: 56px;
+  font-weight: bolder;
+  margin-bottom: 100px;
+  color: #2A3647;
+}
 .addTaskContent{
   width: 800px;
   height: 500px;

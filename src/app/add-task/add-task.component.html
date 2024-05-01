@@ -14,15 +14,15 @@
   <mat-form-field appearance="outline">
     <mat-label>Category</mat-label>
     <mat-select>
-      <mat-option value="one">First option</mat-option>
-      <mat-option value="two">Second option</mat-option>
+      <mat-option value="one">New Category</mat-option>
+      <mat-option value="two">Sales</mat-option>
+      <mat-option value="two">Backoffice</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Assinged to</mat-label>
     <mat-select>
-      <mat-option value="one">First option</mat-option>
-      <mat-option value="two">Second option</mat-option>
+      <mat-option *ngFor="let contact of contacts" [value]="contact.id">{{contact.name}}</mat-option>
     </mat-select>
   </mat-form-field>
    </div>
