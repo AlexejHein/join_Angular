@@ -18,13 +18,18 @@
   align-items: center;
 }
 .addTaskContentLeft{
+  width: 350px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 30px;
 }
+mat-form-field{
+  width: 100%;
+}
 .addTaskContentRight{
+  width: 350px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,7 +39,7 @@
 hr{
   width: 3px;
   height: 100%;
-  background-color: #000;
+  background-color: #2A3647;
 }
 .buttonsAdd{
   width: 100%;

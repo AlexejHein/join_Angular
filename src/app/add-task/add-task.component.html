@@ -4,22 +4,22 @@
   <div class="addTaskContent">
    <div class="addTaskContentLeft">
   <mat-form-field appearance="outline">
-    <mat-label>Input</mat-label>
+    <mat-label>Title</mat-label>
     <input matInput>
   </mat-form-field>
   <mat-form-field appearance="outline">
-    <mat-label>Textarea</mat-label>
+    <mat-label>Description</mat-label>
     <textarea matInput></textarea>
   </mat-form-field>
   <mat-form-field appearance="outline">
-    <mat-label>Select</mat-label>
+    <mat-label>Category</mat-label>
     <mat-select>
       <mat-option value="one">First option</mat-option>
       <mat-option value="two">Second option</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="outline">
-    <mat-label>Select</mat-label>
+    <mat-label>Assinged to</mat-label>
     <mat-select>
       <mat-option value="one">First option</mat-option>
       <mat-option value="two">Second option</mat-option>
@@ -29,27 +29,28 @@
     <hr>
     <div class="addTaskContentRight">
     <mat-form-field appearance="outline">
-      <mat-label>Choose a date</mat-label>
+      <mat-label>Due date</mat-label>
       <input matInput [matDatepicker]="picker">
       <mat-hint>MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
+      <p>Priority</p>
       <div class="buttonsAdd">
         <button mat-button>Urgent <mat-icon class="red">keyboard_double_arrow_up</mat-icon></button>
         <button mat-button>Medium <mat-icon class="green">keyboard_double_arrow_left</mat-icon></button>
         <button mat-button>Low <mat-icon class="yellow">keyboard_double_arrow_down</mat-icon></button>
       </div>
     <mat-form-field appearance="outline" class="example-form-field">
-      <mat-label>Clearable input</mat-label>
+      <mat-label>Subtasks</mat-label>
       <input matInput type="text" [(ngModel)]="value">
       <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
       <div class="buttonsAdd">
-        <button class="clear" mat-button>Clear<mat-icon>close</mat-icon></button>
-        <button class="add" mat-button>Create Task<mat-icon>done</mat-icon></button>
+        <button class="clear" mat-button><mat-icon>close</mat-icon>Clear</button>
+        <button class="add" mat-button><mat-icon>done</mat-icon>Create Task</button>
     </div>
   </div>
 </div>
