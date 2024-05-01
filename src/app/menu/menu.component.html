@@ -31,8 +31,8 @@
     <div class="menuRight">
       <mat-icon>info</mat-icon>
       <div class="loginName" [matMenuTriggerFor]="menu">AH</div>
-      <mat-menu #menu="matMenu">
-        <button [routerLink]="['']" mat-menu-item>Logout</button>
+      <mat-menu #menu="matMenu" >
+        <button class="logout" [routerLink]="['']" mat-menu-item>Logout</button>
       </mat-menu>
     </div>
   </div>

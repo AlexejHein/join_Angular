@@ -67,3 +67,10 @@
   align-items: center;
   cursor: pointer;
 }
+::ng-deep .mat-mdc-menu-content{
+  background-color: #2A3647!important;
+  color: #ffffff!important;
+}
+::ng-deep .logout{
+  color: #ffffff!important;
+}
