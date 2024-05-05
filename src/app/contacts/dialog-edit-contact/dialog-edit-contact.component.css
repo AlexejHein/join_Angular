@@ -41,3 +41,25 @@
   right: 5px;
   cursor: pointer;
 }
+.clear{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #2A3647;
+  color: #2A3647;
+}
+.clear:hover{
+  border: rgb(41, 171, 226) 1px solid;
+  color: rgb(41, 171, 226)!important;
+}
+.create{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2A3647;
+  color: #ffffff;
+}
+.create:hover{
+  background-color: rgb(41, 171, 226);
+  color: white!important;
+}
