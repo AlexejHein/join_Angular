@@ -109,6 +109,15 @@
   justify-content: flex-start;
   align-items: flex-start;
 }
+.contentHeader{
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
 .bBlack{
   color: #000000;
   font-weight: bolder;
