@@ -5,9 +5,11 @@
       <div class="contactItem" (click)="clickContact(i)">
         <div class="contactNameHead">
           <div class="contactNameIn">AH</div>
-          <p>{{ contact.name }}</p>
         </div>
-        <p class="contactEmail">{{ contact.email }}</p>
+        <div class="contentNameContent">
+          <p>{{ contact.name }}</p>
+          <p class="contactEmail">{{ contact.email }}</p>
+        </div>
       </div>
       <hr>
     </div>

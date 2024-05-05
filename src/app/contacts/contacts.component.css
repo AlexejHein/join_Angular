@@ -21,6 +21,27 @@
   cursor: pointer;
   position: relative;
 }
+.contactItem{
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+.contentNameContent{
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: center;
+  cursor: pointer;
+}
 .contactName{
   width: 100%;
   padding: 10px;
