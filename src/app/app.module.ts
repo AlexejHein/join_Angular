@@ -24,6 +24,7 @@ import {FormsModule} from "@angular/forms";
 import {MatMenuModule} from "@angular/material/menu";
 import { DialogEditContactComponent } from './contacts/dialog-edit-contact/dialog-edit-contact.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DialogAddContactComponent } from './contacts/dialog-add-contact/dialog-add-contact.component';
 
 
 
@@ -38,6 +39,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     ContactsComponent,
     MenuComponent,
     DialogEditContactComponent,
+    DialogAddContactComponent,
   ],
   imports: [
     BrowserModule,

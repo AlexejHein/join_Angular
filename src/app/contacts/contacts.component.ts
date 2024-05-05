@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {MatDialog } from '@angular/material/dialog';
 import {DialogEditContactComponent} from "./dialog-edit-contact/dialog-edit-contact.component";
+import {DialogAddContactComponent} from "./dialog-add-contact/dialog-add-contact.component";
 
 
 @Component({
@@ -48,6 +49,17 @@ export class ContactsComponent {
       width: '850px',
       height: '400px',
       data: contact
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+  openAddDialog(): void {
+    const dialogRef = this.dialog.open(DialogAddContactComponent, {
+      width: '850px',
+      height: '400px',
+      data: {name: '', email: '', phone: ''}
     });
 
     dialogRef.afterClosed().subscribe(result => {

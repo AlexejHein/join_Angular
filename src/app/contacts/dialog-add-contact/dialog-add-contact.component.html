@@ -1,0 +1,41 @@
+<div class="content">
+  <div class="left">
+    <img src="assets/img/logo.png">
+    <p>Add Contact</p>
+    <p>Tasks are better with a team!</p>
+  </div>
+  <div class="right">
+    <div class="inputs">
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Name">
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email">
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Phone</mat-label>
+          <input matInput placeholder="Phone">
+          <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+      </p>
+    </div>
+    <div class="buttons">
+      <button mat-raised-button color="primary">Clear <mat-icon>close</mat-icon></button>
+      <button mat-raised-button color="warn">Create contact <mat-icon>check</mat-icon></button>
+    </div>
+  </div>
+
+</div>
+<button class="close" mat-button (click)="closeDialog()">
+  <mat-icon>close</mat-icon>
+</button>
+
