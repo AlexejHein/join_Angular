@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
+import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-board',
@@ -22,6 +24,15 @@ export class BoardComponent {
       { header: 'Completed', title: 'Task 5', content: 'Lorem ipsum dolor sit amet...', date: '5/4', person: 'EH' }
     ]
   };
+
+  constructor(private dialog: MatDialog) {}
+
+  openTaskDialog(task: any): void {
+    this.dialog.open(TaskDialogComponent, {
+      width: '400px',
+      data: task
+    });
+  }
 
   drop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer !== event.container) {

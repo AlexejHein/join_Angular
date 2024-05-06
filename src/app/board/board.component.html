@@ -22,7 +22,7 @@
         <mat-icon>add_box</mat-icon>
       </div>
       <ng-container *ngFor="let task of tasks.todo">
-        <mat-card class="task" cdkDrag>
+        <mat-card class="task" cdkDrag (click)="openTaskDialog(task)">
           <div class="taskHeader">{{ task.header }}</div>
           <div class="taskTitle">{{ task.title }}</div>
           <div class="taskContent">{{ task.content }}</div>
@@ -51,7 +51,7 @@
         <mat-icon>add_box</mat-icon>
       </div>
       <ng-container *ngFor="let task of tasks.inProgress">
-        <mat-card class="task" cdkDrag>
+        <mat-card class="task" cdkDrag (click)="openTaskDialog(task)">
           <div class="taskHeader">{{ task.header }}</div>
           <div class="taskTitle">{{ task.title }}</div>
           <div class="taskContent">{{ task.content }}</div>
@@ -80,7 +80,7 @@
         <mat-icon>add_box</mat-icon>
       </div>
       <ng-container *ngFor="let task of tasks.awaitingFeedback">
-        <mat-card class="task" cdkDrag>
+        <mat-card class="task" cdkDrag (click)="openTaskDialog(task)">
           <div class="taskHeader">{{ task.header }}</div>
           <div class="taskTitle">{{ task.title }}</div>
           <div class="taskContent">{{ task.content }}</div>
@@ -109,7 +109,7 @@
         <mat-icon>add_box</mat-icon>
       </div>
       <ng-container *ngFor="let task of tasks.done">
-        <mat-card class="task" cdkDrag>
+        <mat-card class="task" cdkDrag (click)="openTaskDialog(task)">
           <div class="taskHeader">{{ task.header }}</div>
           <div class="taskTitle">{{ task.title }}</div>
           <div class="taskContent">{{ task.content }}</div>
