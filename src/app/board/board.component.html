@@ -1,189 +1,118 @@
 <app-menu></app-menu>
 <div class="content">
-
-<div class="boardHeader">
-  <h2>Boards</h2>
-  <div class="boardHeaderSearch">
-    <mat-form-field appearance="outline">
-      <mat-label>Search</mat-label>
-      <input matInput placeholder="Search">
-      <mat-icon matSuffix>search</mat-icon>
-    </mat-form-field>
-    <button mat-button>Add Task
-      <mat-icon>add</mat-icon>
-    </button>
-  </div>
-</div>
-
-<div class="boardContent">
-  <div class="todos">
-
-  <div class="todosContentHeader">
-    <h3>Todo</h3>
-    <mat-icon>add_box</mat-icon>
+  <div class="boardHeader">
+    <h2>Boards</h2>
+    <div class="boardHeaderSearch">
+      <mat-form-field appearance="outline">
+        <mat-label>Search</mat-label>
+        <input matInput placeholder="Search">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+      <button mat-button>Add Task>
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
   </div>
 
-    <mat-card class="task">
-      <div class="taskHeader">Heallo</div>
-      <div class="taskTitle">Hello</div>
-      <div class="taskContent">
-        Lorem ipsum dolor sit amet,
-        consetetur sadipscing elitr,
-        sed diam nonumy eirmod tempor invidunt ut l
-        abore et dolore magna aliquyam
+  <div class="boardContent">
+    <!-- Todo Section -->
+    <div class="todos" cdkDropList [cdkDropListData]="tasks.todo" (cdkDropListDropped)="drop($event)">
+      <div class="todosContentHeader">
+        <h3>Todo</h3>
+        <mat-icon>add_box</mat-icon>
       </div>
-      <div class="taskDone">
-        <div class="done">
-            <div class="process">
-
-            </div>
+      <mat-card class="task" *ngFor="let task of tasks.todo" cdkDrag>
+        <div class="taskHeader">{{ task.header }}</div>
+        <div class="taskTitle">{{ task.title }}</div>
+        <div class="taskContent">{{ task.content }}</div>
+        <div class="taskDone">
+          <div class="done">
+            <div class="process"></div>
+          </div>
+          <div class="date">{{ task.date }}</div>
         </div>
-        <div class="date">
-          1/4
-        </div>
-      </div>
-      <div class="taskFooter">
-        <div class="persons">
-          AH
-        </div>
-        <div class="prioritize">
-          <mat-icon>keyboard_double_arrow_up</mat-icon>
-        </div>
-      </div>
-    </mat-card>
-  </div>
-  <div class="todos">
-  <div class="todosContentHeader">
-    <h3>In Progress</h3>
-    <mat-icon>add_box</mat-icon>
-  </div>
-    <mat-card class="task">
-      <div class="taskHeader">Sail</div>
-      <div class="taskTitle">Test</div>
-      <div class="taskContent">
-        Lorem ipsum dolor sit amet,
-        consetetur sadipscing elitr,
-        sed diam nonumy eirmod tempor invidunt ut l
-        abore et dolore magna aliquyam
-      </div>
-      <div class="taskDone">
-        <div class="done">
-          <div class="process">
-
+        <div class="taskFooter">
+          <div class="persons">{{ task.person }}</div>
+          <div class="prioritize">
+            <mat-icon>keyboard_double_arrow_up</mat-icon>
           </div>
         </div>
-        <div class="date">
-          1/4
-        </div>
-      </div>
-      <div class="taskFooter">
-        <div class="persons">
-          AH
-        </div>
-        <div class="prioritize">
-          <mat-icon>keyboard_double_arrow_up</mat-icon>
-        </div>
-      </div>
-    </mat-card>
-    <mat-card class="task">
-      <div class="taskHeader">Heallo</div>
-      <div class="taskTitle">Hello</div>
-      <div class="taskContent">
-        Lorem ipsum dolor sit amet,
-        consetetur sadipscing elitr,
-        sed diam nonumy eirmod tempor invidunt ut l
-        abore et dolore magna aliquyam
-      </div>
-      <div class="taskDone">
-        <div class="done">
-          <div class="process">
+      </mat-card>
+    </div>
 
+    <!-- In Progress Section -->
+    <div class="todos" cdkDropList [cdkDropListData]="tasks.inProgress" (cdkDropListDropped)="drop($event)">
+      <div class="todosContentHeader">
+        <h3>In Progress</h3>
+        <mat-icon>add_box</mat-icon>
+      </div>
+      <mat-card class="task" *ngFor="let task of tasks.inProgress" cdkDrag>
+        <div class="taskHeader">{{ task.header }}</div>
+        <div class="taskTitle">{{ task.title }}</div>
+        <div class="taskContent">{{ task.content }}</div>
+        <div class="taskDone">
+          <div class="done">
+            <div class="process"></div>
+          </div>
+          <div class="date">{{ task.date }}</div>
+        </div>
+        <div class="taskFooter">
+          <div class="persons">{{ task.person }}</div>
+          <div class="prioritize">
+            <mat-icon>keyboard_double_arrow_up</mat-icon>
           </div>
         </div>
-        <div class="date">
-          1/4
-        </div>
-      </div>
-      <div class="taskFooter">
-        <div class="persons">
-          AH
-        </div>
-        <div class="prioritize">
-          <mat-icon>keyboard_double_arrow_up</mat-icon>
-        </div>
-      </div>
-    </mat-card>
-  </div>
-  <div class="todos">
+      </mat-card>
+    </div>
 
-  <div class="todosContentHeader">
-    <h3>Awaiting Feedback</h3>
-    <mat-icon>add_box</mat-icon>
-  </div>
-    <mat-card class="task">
-      <div class="taskHeader">Heallo</div>
-      <div class="taskTitle">Hello</div>
-      <div class="taskContent">
-        Lorem ipsum dolor sit amet,
-        consetetur sadipscing elitr,
-        sed diam nonumy eirmod tempor invidunt ut l
-        abore et dolore magna aliquyam
+    <!-- Awaiting Feedback Section -->
+    <div class="todos" cdkDropList [cdkDropListData]="tasks.awaitingFeedback" (cdkDropListDropped)="drop($event)">
+      <div class="todosContentHeader">
+        <h3>Awaiting Feedback</h3>
+        <mat-icon>add_box</mat-icon>
       </div>
-      <div class="taskDone">
-        <div class="done">
-          <div class="process">
-
+      <mat-card class="task" *ngFor="let task of tasks.awaitingFeedback" cdkDrag>
+        <div class="taskHeader">{{ task.header }}</div>
+        <div class="taskTitle">{{ task.title }}</div>
+        <div class="taskContent">{{ task.content }}</div>
+        <div class="taskDone">
+          <div class="done">
+            <div class="process"></div>
+          </div>
+          <div class="date">{{ task.date }}</div>
+        </div>
+        <div class="taskFooter">
+          <div class="persons">{{ task.person }}</div>
+          <div class="prioritize">
+            <mat-icon>keyboard_double_arrow_up</mat-icon>
           </div>
         </div>
-        <div class="date">
-          1/4
-        </div>
-      </div>
-      <div class="taskFooter">
-        <div class="persons">
-          AH
-        </div>
-        <div class="prioritize">
-          <mat-icon>keyboard_double_arrow_up</mat-icon>
-        </div>
-      </div>
-    </mat-card>
-  </div>
-  <div class="todos">
+      </mat-card>
+    </div>
 
-  <div class="todosContentHeader">
-    <h3>Done</h3>
-    <mat-icon>add_box</mat-icon>
-  </div>
-    <mat-card class="task">
-      <div class="taskHeader">Heallo</div>
-      <div class="taskTitle">Hello</div>
-      <div class="taskContent">
-        Lorem ipsum dolor sit amet,
-        consetetur sadipscing elitr,
-        sed diam nonumy eirmod tempor invidunt ut l
-        abore et dolore magna aliquyam
+    <!-- Done Section -->
+    <div class="todos" cdkDropList [cdkDropListData]="tasks.done" (cdkDropListDropped)="drop($event)">
+      <div class="todosContentHeader">
+        <h3>Done</h3>
+        <mat-icon>add_box</mat-icon>
       </div>
-      <div class="taskDone">
-        <div class="done">
-          <div class="process">
-
+      <mat-card class="task" *ngFor="let task of tasks.done" cdkDrag>
+        <div class="taskHeader">{{ task.header }}</div>
+        <div class="taskTitle">{{ task.title }}</div>
+        <div class="taskContent">{{ task.content }}</div>
+        <div class="taskDone">
+          <div class="done">
+            <div class="process"></div>
+          </div>
+          <div class="date">{{ task.date }}</div>
+        </div>
+        <div class="taskFooter">
+          <div class="persons">{{ task.person }}</div>
+          <div class="prioritize">
+            <mat-icon>keyboard_double_arrow_up</mat-icon>
           </div>
         </div>
-        <div class="date">
-          1/4
-        </div>
-      </div>
-      <div class="taskFooter">
-        <div class="persons">
-          AH
-        </div>
-        <div class="prioritize">
-          <mat-icon>keyboard_double_arrow_up</mat-icon>
-        </div>
-      </div>
-    </mat-card>
+      </mat-card>
+    </div>
   </div>
-
-</div>
 </div>
