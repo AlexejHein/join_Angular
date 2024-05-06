@@ -14,30 +14,34 @@
     </div>
   </div>
 
-  <div class="boardContent">
+  <div cdkDropListGroup class="boardContent">
     <!-- Todo Section -->
     <div class="todos" cdkDropList [cdkDropListData]="tasks.todo" (cdkDropListDropped)="drop($event)">
       <div class="todosContentHeader">
         <h3>Todo</h3>
         <mat-icon>add_box</mat-icon>
       </div>
-      <mat-card class="task" *ngFor="let task of tasks.todo" cdkDrag>
-        <div class="taskHeader">{{ task.header }}</div>
-        <div class="taskTitle">{{ task.title }}</div>
-        <div class="taskContent">{{ task.content }}</div>
-        <div class="taskDone">
-          <div class="done">
-            <div class="process"></div>
+      <ng-container *ngFor="let task of tasks.todo">
+        <mat-card class="task" cdkDrag>
+          <div class="taskHeader">{{ task.header }}</div>
+          <div class="taskTitle">{{ task.title }}</div>
+          <div class="taskContent">{{ task.content }}</div>
+          <div class="taskDone">
+            <div class="done">
+              <div class="process"></div>
+            </div>
+            <div class="date">{{ task.date }}</div>
           </div>
-          <div class="date">{{ task.date }}</div>
-        </div>
-        <div class="taskFooter">
-          <div class="persons">{{ task.person }}</div>
-          <div class="prioritize">
-            <mat-icon>keyboard_double_arrow_up</mat-icon>
+          <div class="taskFooter">
+            <div class="persons">{{ task.person }}</div>
+            <div class="prioritize">
+              <mat-icon>keyboard_double_arrow_up</mat-icon>
+            </div>
           </div>
-        </div>
-      </mat-card>
+        </mat-card>
+        <!-- Placeholder für Todo Section -->
+        <mat-card class="taskPlaceholder" *cdkDragPlaceholder></mat-card>
+      </ng-container>
     </div>
 
     <!-- In Progress Section -->
@@ -46,23 +50,27 @@
         <h3>In Progress</h3>
         <mat-icon>add_box</mat-icon>
       </div>
-      <mat-card class="task" *ngFor="let task of tasks.inProgress" cdkDrag>
-        <div class="taskHeader">{{ task.header }}</div>
-        <div class="taskTitle">{{ task.title }}</div>
-        <div class="taskContent">{{ task.content }}</div>
-        <div class="taskDone">
-          <div class="done">
-            <div class="process"></div>
+      <ng-container *ngFor="let task of tasks.inProgress">
+        <mat-card class="task" cdkDrag>
+          <div class="taskHeader">{{ task.header }}</div>
+          <div class="taskTitle">{{ task.title }}</div>
+          <div class="taskContent">{{ task.content }}</div>
+          <div class="taskDone">
+            <div class="done">
+              <div class="process"></div>
+            </div>
+            <div class="date">{{ task.date }}</div>
           </div>
-          <div class="date">{{ task.date }}</div>
-        </div>
-        <div class="taskFooter">
-          <div class="persons">{{ task.person }}</div>
-          <div class="prioritize">
-            <mat-icon>keyboard_double_arrow_up</mat-icon>
+          <div class="taskFooter">
+            <div class="persons">{{ task.person }}</div>
+            <div class="prioritize">
+              <mat-icon>keyboard_double_arrow_up</mat-icon>
+            </div>
           </div>
-        </div>
-      </mat-card>
+        </mat-card>
+        <!-- Placeholder für In Progress Section -->
+        <mat-card class="taskPlaceholder" *cdkDragPlaceholder></mat-card>
+      </ng-container>
     </div>
 
     <!-- Awaiting Feedback Section -->
@@ -71,23 +79,27 @@
         <h3>Awaiting Feedback</h3>
         <mat-icon>add_box</mat-icon>
       </div>
-      <mat-card class="task" *ngFor="let task of tasks.awaitingFeedback" cdkDrag>
-        <div class="taskHeader">{{ task.header }}</div>
-        <div class="taskTitle">{{ task.title }}</div>
-        <div class="taskContent">{{ task.content }}</div>
-        <div class="taskDone">
-          <div class="done">
-            <div class="process"></div>
+      <ng-container *ngFor="let task of tasks.awaitingFeedback">
+        <mat-card class="task" cdkDrag>
+          <div class="taskHeader">{{ task.header }}</div>
+          <div class="taskTitle">{{ task.title }}</div>
+          <div class="taskContent">{{ task.content }}</div>
+          <div class="taskDone">
+            <div class="done">
+              <div class="process"></div>
+            </div>
+            <div class="date">{{ task.date }}</div>
           </div>
-          <div class="date">{{ task.date }}</div>
-        </div>
-        <div class="taskFooter">
-          <div class="persons">{{ task.person }}</div>
-          <div class="prioritize">
-            <mat-icon>keyboard_double_arrow_up</mat-icon>
+          <div class="taskFooter">
+            <div class="persons">{{ task.person }}</div>
+            <div class="prioritize">
+              <mat-icon>keyboard_double_arrow_up</mat-icon>
+            </div>
           </div>
-        </div>
-      </mat-card>
+        </mat-card>
+        <!-- Placeholder für Awaiting Feedback Section -->
+        <mat-card class="taskPlaceholder" *cdkDragPlaceholder></mat-card>
+      </ng-container>
     </div>
 
     <!-- Done Section -->
@@ -96,23 +108,27 @@
         <h3>Done</h3>
         <mat-icon>add_box</mat-icon>
       </div>
-      <mat-card class="task" *ngFor="let task of tasks.done" cdkDrag>
-        <div class="taskHeader">{{ task.header }}</div>
-        <div class="taskTitle">{{ task.title }}</div>
-        <div class="taskContent">{{ task.content }}</div>
-        <div class="taskDone">
-          <div class="done">
-            <div class="process"></div>
+      <ng-container *ngFor="let task of tasks.done">
+        <mat-card class="task" cdkDrag>
+          <div class="taskHeader">{{ task.header }}</div>
+          <div class="taskTitle">{{ task.title }}</div>
+          <div class="taskContent">{{ task.content }}</div>
+          <div class="taskDone">
+            <div class="done">
+              <div class="process"></div>
+            </div>
+            <div class="date">{{ task.date }}</div>
           </div>
-          <div class="date">{{ task.date }}</div>
-        </div>
-        <div class="taskFooter">
-          <div class="persons">{{ task.person }}</div>
-          <div class="prioritize">
-            <mat-icon>keyboard_double_arrow_up</mat-icon>
+          <div class="taskFooter">
+            <div class="persons">{{ task.person }}</div>
+            <div class="prioritize">
+              <mat-icon>keyboard_double_arrow_up</mat-icon>
+            </div>
           </div>
-        </div>
-      </mat-card>
+        </mat-card>
+        <!-- Placeholder für Done Section -->
+        <mat-card class="taskPlaceholder" *cdkDragPlaceholder></mat-card>
+      </ng-container>
     </div>
   </div>
 </div>
