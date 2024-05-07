@@ -22,6 +22,12 @@ mat-dialog-content p {
 mat-dialog-actions {
   justify-content: flex-end;
 }
+.priority{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+}
 .urgent{
   width: 100px;
   display: flex;
@@ -55,4 +61,21 @@ mat-dialog-actions {
   border-radius: 5px;
   padding: 10px;
   margin: 10px;
+}
+mat-dialog-actions{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+.presonBox{
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #738ae8;
+  color: white;
 }
