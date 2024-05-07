@@ -1,9 +1,15 @@
-<h2 mat-dialog-title>{{ data.title }}</h2>
+<h2 class="dialogHeader" mat-dialog-title>{{ data.title }}</h2>
 <mat-dialog-content>
-  <p><strong>Header:</strong> {{ data.header }}</p>
-  <p><strong>Content:</strong> {{ data.content }}</p>
-  <p><strong>Date:</strong> {{ data.date }}</p>
-  <p><strong>Person:</strong> {{ data.person }}</p>
+  <br>
+  <p class="title">{{ data.header }}</p>
+  <br>
+  <p class="content"> {{ data.content }}</p>
+  <br>
+  <p><strong>Date:</strong> {{ data.data }}</p>
+  <br>
+  <p>Priority:</p>
+  <p><strong>Assign To:</strong> {{ data.person }}</p>
+
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button (click)="onClose()">Close</button>

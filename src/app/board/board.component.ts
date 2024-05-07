@@ -11,17 +11,17 @@ import { MatDialog } from '@angular/material/dialog';
 export class BoardComponent {
   tasks = {
     todo: [
-      { header: 'Hello', title: 'Task 1', content: 'Lorem ipsum dolor sit amet...', date: '1/4', person: 'AH' },
-      { header: 'Hi', title: 'Task 2', content: 'Lorem ipsum dolor sit amet...', date: '2/4', person: 'BH' }
+      { header: 'Hello', title: 'Task 1', content: 'Lorem ipsum dolor sit amet...', date: '1/4', person: 'AH', data: '29/07/2024', preority: 'low'},
+      { header: 'Hi', title: 'Task 2', content: 'Lorem ipsum dolor sit amet...', date: '2/4', person: 'BH', data: '29/07/2024', preority: 'low' }
     ],
     inProgress: [
-      { header: 'Test', title: 'Task 3', content: 'Lorem ipsum dolor sit amet...', date: '3/4', person: 'CH' }
+      { header: 'Test', title: 'Task 3', content: 'Lorem ipsum dolor sit amet...', date: '3/4', person: 'CH', data: '29/07/2024', preority: 'middle' }
     ],
     awaitingFeedback: [
-      { header: 'Review', title: 'Task 4', content: 'Lorem ipsum dolor sit amet...', date: '4/4', person: 'DH' }
+      { header: 'Review', title: 'Task 4', content: 'Lorem ipsum dolor sit amet...', date: '4/4', person: 'DH', data: '13/04/2024', preority: 'urgent' }
     ],
     done: [
-      { header: 'Completed', title: 'Task 5', content: 'Lorem ipsum dolor sit amet...', date: '5/4', person: 'EH' }
+      { header: 'Completed', title: 'Task 5', content: 'Lorem ipsum dolor sit amet...', date: '5/4', person: 'EH', data: '29/07/2024', preority: 'low' }
     ]
   };
 
@@ -29,7 +29,8 @@ export class BoardComponent {
 
   openTaskDialog(task: any): void {
     this.dialog.open(TaskDialogComponent, {
-      width: '400px',
+      width: '600px',
+      height: '850px',
       data: task
     });
   }
