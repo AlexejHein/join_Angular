@@ -1,3 +1,12 @@
+.content{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* justify-content: space-evenly; */
+  align-items: flex-start;
+  /* height: 100%; */
+
+}
 .dialogHeader{
   margin: 15px;
   border-radius: 5px;
@@ -78,4 +87,23 @@ mat-dialog-actions{
   border-radius: 50%;
   background-color: #738ae8;
   color: white;
+}
+.actionButtons{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+  color: #ffffff;
+  background-color: #2A3647;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.edit{
+  background-color: #ffffff;
+  color: #2A3647;
+  margin: 0;
 }

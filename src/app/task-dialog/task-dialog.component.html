@@ -1,3 +1,4 @@
+<div class="content">
 <h2 class="dialogHeader" mat-dialog-title>{{ data.title }}</h2>
 <mat-dialog-content>
   <br>
@@ -21,3 +22,8 @@
 <mat-dialog-actions>
   <mat-icon (click)="onClose()">close</mat-icon>
 </mat-dialog-actions>
+  <div class="actionButtons">
+    <mat-icon>delete</mat-icon>
+    <mat-icon class="edit">edit</mat-icon>
+  </div>
+</div>
