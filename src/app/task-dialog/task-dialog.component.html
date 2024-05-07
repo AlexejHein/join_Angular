@@ -8,6 +8,9 @@
   <p><strong>Date:</strong> {{ data.data }}</p>
   <br>
   <p>Priority:</p>
+  <div *ngIf="data.priority === 'urgent'" class="urgent">Urgent <mat-icon>keyboard_double_arrow_up</mat-icon></div>
+  <div *ngIf="data.priority === 'middle'" class="middle">Middle<mat-icon>keyboard_double_arrow_left</mat-icon></div>
+  <div *ngIf="data.priority === 'low'" class="low">Low <mat-icon>keyboard_double_arrow_down</mat-icon></div>
   <p><strong>Assign To:</strong> {{ data.person }}</p>
 
 </mat-dialog-content>
