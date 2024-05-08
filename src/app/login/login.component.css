@@ -22,8 +22,15 @@ mat-card-header{
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
+  font-size: 50px;
   font-weight: bold;
+}
+hr{
+  width: 100px;
+  background-color: rgb(41, 171, 226);
+  height: 3px;
+  border: none;
+  margin: 30px auto;
 }
 mat-form-field{
     width: 100%;

@@ -1,3 +1,15 @@
+.content{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo{
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
 mat-card{
   width: 400px;
   margin: 100px auto 0;
@@ -10,15 +22,27 @@ mat-card-header{
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
+  font-size: 50px;
   font-weight: bold;
+}
+hr{
+  width: 100px;
+  background-color: rgb(41, 171, 226);
+  height: 3px;
+  border: none;
+  margin: 30px auto;
 }
 mat-form-field{
   width: 100%;
   margin: 20px 0;
 }
+
 .vButton{
-  background-color: #738ae8;
+  background-color: #2A3647;
+  color: white!important;
+}
+.vButton:hover{
+  background-color: rgb(41, 171, 226);
   color: white!important;
 }
 .rButton{
