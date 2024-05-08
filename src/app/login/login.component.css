@@ -1,3 +1,10 @@
+.content{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 mat-card{
     width: 400px;
     margin: 100px auto 0;
@@ -5,6 +12,11 @@ mat-card{
     text-align: center;
     box-shadow: rgba(150, 150, 150, 0.51) 0 0 10px;
     border: rgb(41, 171, 226) 1px solid;
+}
+.logo{
+  position: absolute;
+  top: 30px;
+  left: 30px;
 }
 mat-card-header{
   display: flex;
@@ -18,10 +30,18 @@ mat-form-field{
   margin: 20px 0;
 }
 .vButton{
+  background-color: #2A3647;
+  color: white!important;
+}
+.vButton:hover{
     background-color: rgb(41, 171, 226);
     color: white!important;
 }
 .rButton{
+  border: #2A3647 1px solid;
+  color: #2A3647!important;
+}
+.rButton:hover{
   border: rgb(41, 171, 226) 1px solid;
   color: rgb(41, 171, 226)!important;
 }
@@ -32,9 +52,13 @@ mat-form-field{
 }
 .signUp{
   position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   top: 30px;
   right: 30px;
 }
 mat-icon{
-  color: rgb(41, 171, 226);
+  color: #2A3647;
 }

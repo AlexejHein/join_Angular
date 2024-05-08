@@ -1,23 +1,25 @@
-<img class="logo" src="assets/img/join-logo-dunkel-klein.png" alt="logo">
-<mat-card>
-  <mat-card-header>Login</mat-card-header>
-  <mat-form-field appearance="outline">
-    <mat-label>Email</mat-label>
-    <input matInput placeholder="Email">
-    <mat-icon matSuffix>mail</mat-icon>
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Password</mat-label>
-    <input matInput placeholder="Password">
-    <mat-icon matSuffix>key</mat-icon>
-  </mat-form-field>
-  <div class="buttonsBlog">
-    <button [routerLink]="['/summary']" class="vButton" mat-button>Login</button>
-    <button class="rButton" mat-raised-button>Gast Login</button>
-  </div>
-</mat-card>
+<div class="content">
+  <img class="logo" src="assets/img/join-logo-dunkel-klein.png" alt="logo">
+  <mat-card>
+    <mat-card-header>Login</mat-card-header>
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Email">
+      <mat-icon matSuffix>mail</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Password">
+      <mat-icon matSuffix>key</mat-icon>
+    </mat-form-field>
+    <div class="buttonsBlog">
+      <button [routerLink]="['/summary']" class="vButton" mat-button>Login</button>
+      <button class="rButton" mat-raised-button>Gast Login</button>
+    </div>
+  </mat-card>
 
-<div class="signUp">
-<p>Not a Join user?</p>
-<button class="vButton signUp" [routerLink]="['/signup']" mat-button>SignUp</button>
+  <div class="signUp">
+    <p>Not a Join user?</p>
+    <button class="vButton signUp" [routerLink]="['/signup']" mat-button>SignUp</button>
+  </div>
 </div>
