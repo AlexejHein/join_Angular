@@ -36,6 +36,12 @@ mat-form-field{
     width: 100%;
   margin: 20px 0;
 }
+.remember{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 5px 0;
+}
 .vButton{
   background-color: #2A3647;
   color: white!important;
@@ -69,3 +75,4 @@ mat-form-field{
 mat-icon{
   color: #2A3647;
 }
+

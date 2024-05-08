@@ -20,13 +20,14 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatSelectModule} from "@angular/material/select";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import { MatNativeDateModule } from '@angular/material/core';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatMenuModule} from "@angular/material/menu";
 import { DialogEditContactComponent } from './contacts/dialog-edit-contact/dialog-edit-contact.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogAddContactComponent } from './contacts/dialog-add-contact/dialog-add-contact.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TaskDialogComponent } from './task-dialog/task-dialog.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 
 
@@ -61,6 +62,8 @@ import { TaskDialogComponent } from './task-dialog/task-dialog.component';
     MatMenuModule,
     MatDialogModule,
     DragDropModule,
+    MatCheckboxModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
