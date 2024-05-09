@@ -21,7 +21,6 @@ interface Subtask {
   styleUrls: ['./add-task.component.css']
 })
 export class AddTaskComponent implements OnInit {
-  value: any;
   newSubtaskName = '';
 
   contacts = [
@@ -35,12 +34,12 @@ export class AddTaskComponent implements OnInit {
   description = '';
   category = '';
   contactsLst = '';
-  dueDate = '';
+  dueDate: any = '';
 
-  defaultButtonStyle = { background: '', color: '', iconColor: '' };
+  defaultButtonStyle = { background: '#f0f0f0', color: '#000', iconColor: '#000' };
   priorityStyles = {
     urgent: { background: 'red', color: '#ffffff', iconColor: '#ffffff' },
-    medium: { background: 'yellow', color: '#ffffff', iconColor: '#ffffff' },
+    medium: { background: 'yellow', color: '#000000', iconColor: '#000000' },
     low: { background: 'green', color: '#ffffff', iconColor: '#ffffff' }
   };
 
@@ -116,11 +115,13 @@ export class AddTaskComponent implements OnInit {
 
   validateInputs(): boolean {
     let isValid = true;
+    const dueDateString = this.dueDate ? String(this.dueDate).trim() : '';
+
     this.errorMessages.title = this.title.trim() ? '' : 'Title is required';
     this.errorMessages.description = this.description.trim() ? '' : 'Description is required';
     this.errorMessages.category = this.category.trim() ? '' : 'Category is required';
     this.errorMessages.assignedTo = this.contactsLst.trim() ? '' : 'Assigned to is required';
-    this.errorMessages.dueDate = this.dueDate.trim() ? '' : 'Due date is required';
+    this.errorMessages.dueDate = dueDateString ? '' : 'Due date is required';
     this.errorMessages.priority = this.selectedPriority ? '' : 'Priority is required';
 
     for (const key in this.errorMessages) {
@@ -139,7 +140,7 @@ export class AddTaskComponent implements OnInit {
         description: this.description,
         category: this.category,
         assignedTo: this.contactsLst,
-        dueDate: this.dueDate,
+        dueDate: String(this.dueDate),
         priority: this.selectedPriority,
         subtasks: [...this.subtasks]
       };
