@@ -1,40 +1,45 @@
 <app-menu></app-menu>
 <div class="content">
-    <h2>Add Task</h2>
+  <h2>Add Task</h2>
   <div class="addTaskContent">
-   <div class="addTaskContentLeft">
-  <mat-form-field appearance="outline">
-    <mat-label>Title</mat-label>
-    <input matInput [(ngModel)]="title">
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Description</mat-label>
-    <textarea matInput [(ngModel)]="description"></textarea>
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Category</mat-label>
-    <mat-select [(value)]="category">
-      <mat-option value="one">New Category</mat-option>
-      <mat-option value="two">Sales</mat-option>
-      <mat-option value="two">Backoffice</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Assigned to</mat-label>
-    <mat-select [(value)]="contactsLst">
-      <mat-option *ngFor="let contact of contacts" [value]="contact.id">{{contact.name}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-   </div>
+    <div class="addTaskContentLeft">
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input matInput [(ngModel)]="title">
+        <mat-error *ngIf="errorMessages.title">{{ errorMessages.title }}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput [(ngModel)]="description"></textarea>
+        <mat-error *ngIf="errorMessages.description">{{ errorMessages.description }}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Category</mat-label>
+        <mat-select [(ngModel)]="category">
+          <mat-option value="Sales">Sales</mat-option>
+          <mat-option value="Backoffice">Backoffice</mat-option>
+          <mat-option value="New Category">New Category</mat-option>
+        </mat-select>
+        <mat-error *ngIf="errorMessages.category">{{ errorMessages.category }}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Assigned to</mat-label>
+        <mat-select [(ngModel)]="contactsLst">
+          <mat-option *ngFor="let contact of contacts" [value]="contact.name">{{ contact.name }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="errorMessages.assignedTo">{{ errorMessages.assignedTo }}</mat-error>
+      </mat-form-field>
+    </div>
     <hr>
     <div class="addTaskContentRight">
-    <mat-form-field appearance="outline">
-      <mat-label>Due date</mat-label>
-      <input matInput [matDatepicker]="picker">
-      <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Due date</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="dueDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="errorMessages.dueDate">{{ errorMessages.dueDate }}</mat-error>
+      </mat-form-field>
       <p>Priority</p>
       <div class="buttonsAdd">
         <button mat-button
@@ -62,17 +67,31 @@
             class="yellow">keyboard_double_arrow_down</mat-icon>
         </button>
       </div>
+      <mat-error *ngIf="errorMessages.priority">{{ errorMessages.priority }}</mat-error>
 
       <mat-form-field appearance="outline" class="example-form-field">
-      <mat-label>Subtasks</mat-label>
-      <input matInput type="text" [(ngModel)]="value">
-      <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-form-field>
+        <mat-label>Subtasks</mat-label>
+        <input matInput type="text" [(ngModel)]="newSubtaskName">
+        <button *ngIf="newSubtaskName" matSuffix mat-icon-button aria-label="Clear" (click)="newSubtaskName=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <button matSuffix mat-icon-button aria-label="Add Subtask" (click)="addSubtask()">
+          <mat-icon>check</mat-icon>
+        </button>
+      </mat-form-field>
+      <ul>
+        <li *ngFor="let subtask of subtasks; index as i">
+          <span>{{ subtask.name }}</span>
+          <button mat-icon-button (click)="removeSubtask(i)" aria-label="Remove Subtask">
+            <mat-icon>close</mat-icon>
+          </button>
+        </li>
+      </ul>
+
       <div class="buttonsAdd">
         <button class="clear" mat-button (click)="clearFields()"><mat-icon>close</mat-icon>Clear</button>
-        <button class="add" mat-button><mat-icon>done</mat-icon>Create Task</button>
+        <button class="add" mat-button (click)="createTask()"><mat-icon>done</mat-icon>Create Task</button>
+      </div>
     </div>
   </div>
 </div>

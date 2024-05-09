@@ -109,3 +109,38 @@ mat-dialog-actions{
   padding: 3px;
   border-radius: 0 5px 5px 0;
 }
+.addTaskContent {
+  display: flex;
+  justify-content: space-between;
+}
+
+.addTaskContentLeft, .addTaskContentRight {
+  flex: 1;
+  margin: 10px;
+}
+
+.buttonsAdd {
+  display: flex;
+  gap: 10px;
+}
+
+.example-form-field {
+  width: 100%;
+}
+
+.subtaskUL{
+  list-style: none;
+  padding: 0;
+}
+
+.subtaskLi{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+mat-error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
