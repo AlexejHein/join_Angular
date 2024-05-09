@@ -10,8 +10,7 @@ mat-card{
     margin: 100px auto 0;
     padding: 20px;
     text-align: center;
-    box-shadow: rgba(150, 150, 150, 0.51) 0 0 10px;
-    border: rgb(41, 171, 226) 1px solid;
+
 }
 .logo{
   position: absolute;

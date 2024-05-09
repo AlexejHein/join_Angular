@@ -5,23 +5,23 @@
    <div class="addTaskContentLeft">
   <mat-form-field appearance="outline">
     <mat-label>Title</mat-label>
-    <input matInput>
+    <input matInput [(ngModel)]="title">
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Description</mat-label>
-    <textarea matInput></textarea>
+    <textarea matInput [(ngModel)]="description"></textarea>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Category</mat-label>
-    <mat-select>
+    <mat-select [(value)]="category">
       <mat-option value="one">New Category</mat-option>
       <mat-option value="two">Sales</mat-option>
       <mat-option value="two">Backoffice</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="outline">
-    <mat-label>Assinged to</mat-label>
-    <mat-select>
+    <mat-label>Assigned to</mat-label>
+    <mat-select [(value)]="contactsLst">
       <mat-option *ngFor="let contact of contacts" [value]="contact.id">{{contact.name}}</mat-option>
     </mat-select>
   </mat-form-field>
@@ -49,7 +49,7 @@
       </button>
     </mat-form-field>
       <div class="buttonsAdd">
-        <button class="clear" mat-button><mat-icon>close</mat-icon>Clear</button>
+        <button class="clear" mat-button (click)="clearFields()"><mat-icon>close</mat-icon>Clear</button>
         <button class="add" mat-button><mat-icon>done</mat-icon>Create Task</button>
     </div>
   </div>

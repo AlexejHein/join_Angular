@@ -14,5 +14,18 @@ export class AddTaskComponent {
     {'id': 3, 'name': "Peter Pan", 'email': "Peter@fr.de", 'phone': "456789123", 'isClicked': false},
     {'id': 4, 'name': "Hans Wurst", 'email': "HUe@ai.de", 'phone': "789123456", 'isClicked': false},
   ];
+  title = '';
+  description = '';
+  category = '';
+  contactsLst = '';
+
+  clearFields() {
+    this.title = '';
+    this.description = '';
+    this.category = '';
+    this.contactsLst = '';
+  }
+
+
 
 }
