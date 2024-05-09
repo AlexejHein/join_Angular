@@ -37,11 +37,33 @@
     </mat-form-field>
       <p>Priority</p>
       <div class="buttonsAdd">
-        <button mat-button>Urgent <mat-icon class="red">keyboard_double_arrow_up</mat-icon></button>
-        <button mat-button>Medium <mat-icon class="green">keyboard_double_arrow_left</mat-icon></button>
-        <button mat-button>Low <mat-icon class="yellow">keyboard_double_arrow_down</mat-icon></button>
+        <button mat-button
+                [style.background-color]="buttonStyles.urgent.background"
+                [style.color]="buttonStyles.urgent.color"
+                (click)="changeButtonColor('urgent')">Urgent
+          <mat-icon
+            [style.color]="buttonStyles.urgent.iconColor"
+            class="red">keyboard_double_arrow_up</mat-icon>
+        </button>
+        <button mat-button
+                [style.background-color]="buttonStyles.medium.background"
+                [style.color]="buttonStyles.medium.color"
+                (click)="changeButtonColor('medium')">Medium
+          <mat-icon
+            [style.color]="buttonStyles.medium.iconColor"
+            class="green">keyboard_double_arrow_left</mat-icon>
+        </button>
+        <button mat-button
+                [style.background-color]="buttonStyles.low.background"
+                [style.color]="buttonStyles.low.color"
+                (click)="changeButtonColor('low')">Low
+          <mat-icon
+            [style.color]="buttonStyles.low.iconColor"
+            class="yellow">keyboard_double_arrow_down</mat-icon>
+        </button>
       </div>
-    <mat-form-field appearance="outline" class="example-form-field">
+
+      <mat-form-field appearance="outline" class="example-form-field">
       <mat-label>Subtasks</mat-label>
       <input matInput type="text" [(ngModel)]="value">
       <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">

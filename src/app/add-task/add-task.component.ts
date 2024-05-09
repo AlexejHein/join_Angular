@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-add-task',
   templateUrl: './add-task.component.html',
   styleUrls: ['./add-task.component.css']
 })
-export class AddTaskComponent {
+export class AddTaskComponent implements OnInit{
   value: any;
 
   contacts = [
@@ -18,6 +18,41 @@ export class AddTaskComponent {
   description = '';
   category = '';
   contactsLst = '';
+
+  defaultButtonStyle = { background: '', color: '', iconColor: '' };
+  priorityStyles = {
+    urgent: { background: 'red', color: '#ffffff', iconColor: '#ffffff' },
+    medium: { background: 'yellow', color: '#ffffff', iconColor: '#ffffff' },
+    low: { background: 'green', color: '#ffffff', iconColor: '#ffffff' }
+  };
+
+  buttonStyles = {
+    urgent: { ...this.defaultButtonStyle },
+    medium: { ...this.defaultButtonStyle },
+    low: { ...this.defaultButtonStyle }
+  };
+
+  selectedPriority = '';
+
+  constructor() { }
+
+  changeButtonColor(priority: 'urgent' | 'medium' | 'low') {
+    this.resetButtonColors();
+    this.buttonStyles[priority] = { ...this.priorityStyles[priority] };
+    this.selectedPriority = priority;
+  }
+
+  resetButtonColors() {
+    this.buttonStyles = {
+      urgent: { ...this.defaultButtonStyle },
+      medium: { ...this.defaultButtonStyle },
+      low: { ...this.defaultButtonStyle }
+    };
+  }
+  ngOnInit() {
+    this.resetButtonColors();
+
+  }
 
   clearFields() {
     this.title = '';
