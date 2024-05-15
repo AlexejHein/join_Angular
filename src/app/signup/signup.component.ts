@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -11,7 +12,7 @@ export class SignupComponent {
   password: string = '';
   email: string = '';
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   register() {
     const user = {
@@ -23,6 +24,7 @@ export class SignupComponent {
     this.authService.register(user).subscribe(
       response => {
         console.log('User registered successfully!', response);
+        this.router.navigate(['']).then(r => {});  // Weiterleitung zur Login-Seite
       },
       error => {
         console.error('There was an error during the registration process!', error);
