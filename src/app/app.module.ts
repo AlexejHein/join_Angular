@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,6 +26,8 @@ import { DialogAddContactComponent } from './contacts/dialog-add-contact/dialog-
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TaskDialogComponent } from './task-dialog/task-dialog.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -64,6 +64,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     DragDropModule,
     MatCheckboxModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

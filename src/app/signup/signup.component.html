@@ -1,27 +1,29 @@
 <div class="content">
-<img class="logo" src="assets/img/join-logo-dunkel-klein.png" alt="logo">
+  <img class="logo" src="assets/img/join-logo-dunkel-klein.png" alt="logo">
 
-<mat-card>
-  <mat-icon routerLink="/">arrow_back</mat-icon>
-  <mat-card-header>Sign Up</mat-card-header>
-  <hr>
-  <mat-form-field appearance="outline">
-    <mat-label>Name</mat-label>
-    <input matInput placeholder="Name">
-    <mat-icon matSuffix>mail</mat-icon>
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Email</mat-label>
-    <input matInput placeholder="Email">
-    <mat-icon matSuffix>mail</mat-icon>
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Password</mat-label>
-    <input matInput placeholder="Password">
-    <mat-icon matSuffix>key</mat-icon>
-  </mat-form-field>
-  <div class="buttonsBlog">
-    <button class="vButton" mat-button>Sign Up</button>
-  </div>
-</mat-card>
+  <mat-card>
+    <mat-icon routerLink="/">arrow_back</mat-icon>
+    <mat-card-header>Sign Up</mat-card-header>
+    <hr>
+    <form (ngSubmit)="register()" #registerForm="ngForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name" [(ngModel)]="username" name="username" required>
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
+        <mat-icon matSuffix>mail</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Password" [(ngModel)]="password" name="password" type="password" required>
+        <mat-icon matSuffix>key</mat-icon>
+      </mat-form-field>
+      <div class="buttonsBlog">
+        <button class="vButton" mat-button type="submit" [disabled]="!registerForm.form.valid">Sign Up</button>
+      </div>
+    </form>
+  </mat-card>
 </div>
