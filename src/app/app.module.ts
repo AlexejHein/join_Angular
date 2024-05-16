@@ -26,7 +26,10 @@ import { DialogAddContactComponent } from './contacts/dialog-add-contact/dialog-
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TaskDialogComponent } from './task-dialog/task-dialog.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth.interceptor';
+import {AuthService} from "./auth.service";
+
 
 
 
@@ -66,7 +69,10 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

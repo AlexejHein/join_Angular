@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
-import {MatDialog } from '@angular/material/dialog';
-import {DialogEditContactComponent} from "./dialog-edit-contact/dialog-edit-contact.component";
-import {DialogAddContactComponent} from "./dialog-add-contact/dialog-add-contact.component";
-
+import { MatDialog } from '@angular/material/dialog';
+import { ContactsService } from '../contacts.service';
+import { DialogEditContactComponent } from "./dialog-edit-contact/dialog-edit-contact.component";
+import { DialogAddContactComponent } from "./dialog-add-contact/dialog-add-contact.component";
 
 @Component({
   selector: 'app-contacts',
@@ -24,26 +24,37 @@ import {DialogAddContactComponent} from "./dialog-add-contact/dialog-add-contact
     ])
   ]
 })
-export class ContactsComponent {
-  contacts = [
-    {'name': "Alexej Hein", 'email': "test@aol.de", 'phone': "123456789", 'isClicked': false},
-    {'name': "Max Mustermann", 'email': "max@ma.de", 'phone': "987654321", 'isClicked': false},
-    {'name': "Peter Pan", 'email': "Peter@fr.de", 'phone': "456789123", 'isClicked': false},
-    {'name': "Hans Wurst", 'email': "HUe@ai.de", 'phone': "789123456", 'isClicked': false},
-  ];
+export class ContactsComponent implements OnInit {
+  contacts: any[] = [];
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private contactsService: ContactsService) {}
+
+  ngOnInit() {
+    this.getContacts();
   }
 
-  clickContact(index: number) {   this.contacts.forEach((c, i) => {
+  getContacts() {
+    this.contactsService.getContacts().subscribe(data => {
+      this.contacts = data;
+    }, error => {
+      console.error('Error fetching contacts:', error);
+    });
+  }
+
+  clickContact(index: number) {
+    this.contacts.forEach((c, i) => {
       if (i !== index) c.isClicked = false;
     });
     this.contacts[index].isClicked = !this.contacts[index].isClicked;
   }
 
   removeContact(index: number) {
-    this.contacts.splice(index, 1);
+    const contact = this.contacts[index];
+    this.contactsService.deleteContact(contact.id).subscribe(() => {
+      this.contacts.splice(index, 1);
+    });
   }
+
   openDialog(contact: any): void {
     const dialogRef = this.dialog.open(DialogEditContactComponent, {
       width: '850px',
@@ -52,19 +63,27 @@ export class ContactsComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      if (result) {
+        this.contactsService.updateContact(result).subscribe(() => {
+          this.getContacts();
+        });
+      }
     });
   }
+
   openAddDialog(): void {
     const dialogRef = this.dialog.open(DialogAddContactComponent, {
       width: '850px',
       height: '400px',
-      data: {name: '', email: '', phone: ''}
+      data: { name: '', email: '', phone: '' }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      if (result) {
+        this.contactsService.addContact(result).subscribe(() => {
+          this.getContacts();
+        });
+      }
     });
   }
-
 }
