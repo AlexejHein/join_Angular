@@ -1,40 +1,39 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <img src="/assets/img/logo.png" alt="logo" class="logo">
-  <div class="menu-inner">
-    <div [routerLink]="['/summary']" class="menu-item">
-    <mat-icon>space_dashboard</mat-icon>
-      Summary
+    <div class="menu-inner">
+      <div [routerLink]="['/summary']" class="menu-item">
+        <mat-icon>space_dashboard</mat-icon>
+        Summary
+      </div>
+      <div [routerLink]="['/board']" class="menu-item">
+        <mat-icon>dashboard</mat-icon>
+        Boards
+      </div>
+      <div [routerLink]="['/add-task']" class="menu-item">
+        <mat-icon>add_task</mat-icon>
+        Add Task
+      </div>
+      <div [routerLink]="['/contacts']" class="menu-item">
+        <mat-icon>person_add</mat-icon>
+        Contacts
+      </div>
     </div>
-    <div [routerLink]="['/board']" class="menu-item">
-    <mat-icon>dashboard</mat-icon>
-      Boards
-    </div>
-    <div [routerLink]="['/add-task']" class="menu-item">
-    <mat-icon>add_task</mat-icon>
-      Add Task
-    </div>
-    <div [routerLink]="['/contacts']" class="menu-item">
-    <mat-icon>person_add</mat-icon>
-      Contacts
-    </div>
-  </div>
   </mat-drawer>
 
   <div class="example-sidenav-content">
     <div class="menuLeft">
-    <button type="button" mat-button (click)="drawer.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    Kanban Project Management Tool
+      <button type="button" mat-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      Kanban Project Management Tool
     </div>
     <div class="menuRight">
       <mat-icon>info</mat-icon>
       <div class="loginName" [matMenuTriggerFor]="menu">AH</div>
-      <mat-menu #menu="matMenu" >
-        <button class="logout" [routerLink]="['']" mat-menu-item>Logout</button>
+      <mat-menu #menu="matMenu">
+        <button class="logout" mat-menu-item (click)="logout()">Logout</button>
       </mat-menu>
     </div>
   </div>
-
 </mat-drawer-container>

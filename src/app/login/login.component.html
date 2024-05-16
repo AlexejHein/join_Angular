@@ -4,27 +4,26 @@
     <mat-card-header>Login</mat-card-header>
     <hr>
     <mat-form-field appearance="outline">
-      <mat-label>Email</mat-label>
-      <input matInput placeholder="Email">
-      <mat-icon matSuffix>mail</mat-icon>
+      <mat-label>Username</mat-label> <!-- Verwende `Username` statt `Email` -->
+      <input matInput placeholder="Username" [(ngModel)]="username">
+      <mat-icon matSuffix>person</mat-icon>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Enter your password</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'">
+      <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password">
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
     </mat-form-field>
     <div class="remember">
-      <mat-checkbox [formControl]="hideRequiredControl">Remember my</mat-checkbox>
+      <mat-checkbox [formControl]="hideRequiredControl">Remember me</mat-checkbox>
       <a href="#">Forgot my password</a>
     </div>
     <div class="buttonsBlog">
-      <button [routerLink]="['/summary']" class="vButton" mat-button>Login</button>
+      <button class="vButton" mat-button (click)="login()">Login</button>
       <button class="rButton" mat-raised-button>Gast Login</button>
     </div>
   </mat-card>
-
 
   <div class="signUp">
     <p>Not a Join user?</p>
