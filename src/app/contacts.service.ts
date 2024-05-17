@@ -10,19 +10,19 @@ export class ContactsService {
 
   constructor(private http: HttpClient) { }
 
-  getContacts(): Observable<any> {
-    return this.http.get(this.baseUrl);
+  getContacts(): Observable<any[]> {
+    return this.http.get<any[]>(this.baseUrl);
   }
 
   addContact(contact: any): Observable<any> {
-    return this.http.post(this.baseUrl, contact);
+    return this.http.post<any>(this.baseUrl, contact);
   }
 
   updateContact(contact: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}${contact.id}/`, contact);
+    return this.http.put<any>(`${this.baseUrl}${contact.id}/`, contact);
   }
 
   deleteContact(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}${id}/`);
+    return this.http.delete<any>(`${this.baseUrl}${id}/`);
   }
 }
