@@ -9,33 +9,31 @@
       <p>
         <mat-form-field appearance="outline">
           <mat-label>Name</mat-label>
-          <input matInput placeholder="Name">
+          <input matInput placeholder="Name" [(ngModel)]="name">
           <mat-icon matSuffix>person</mat-icon>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
-          <input matInput placeholder="Email">
+          <input matInput placeholder="Email" [(ngModel)]="email">
           <mat-icon matSuffix>email</mat-icon>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="outline">
           <mat-label>Phone</mat-label>
-          <input matInput placeholder="Phone">
+          <input matInput placeholder="Phone" [(ngModel)]="phone">
           <mat-icon matSuffix>phone</mat-icon>
         </mat-form-field>
       </p>
     </div>
     <div class="buttons">
-      <button class="clear" mat-raised-button>Clear <mat-icon>close</mat-icon></button>
-      <button class="create" mat-raised-button>Create contact <mat-icon>check</mat-icon></button>
+      <button class="clear" mat-raised-button (click)="clearForm()">Clear <mat-icon>close</mat-icon></button>
+      <button class="create" mat-raised-button (click)="createContact()">Create contact <mat-icon>check</mat-icon></button>
     </div>
   </div>
-
 </div>
 <button class="close" mat-button (click)="closeDialog()">
   <mat-icon>close</mat-icon>
 </button>
-
