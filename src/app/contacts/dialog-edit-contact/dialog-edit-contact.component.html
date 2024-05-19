@@ -4,35 +4,36 @@
     <p>Edit Contact</p>
   </div>
   <div class="right">
-    <div class="inputs">
-    <p>
-      <mat-form-field appearance="outline">
-        <mat-label>{{ contactData.name }}</mat-label>
-        <input matInput placeholder="{{ contactData.name }}">
-        <mat-icon matSuffix>person</mat-icon>
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field appearance="outline">
-        <mat-label>{{ contactData.email }}</mat-label>
-        <input matInput placeholder="{{ contactData.email }}">
-        <mat-icon matSuffix>email</mat-icon>
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field appearance="outline">
-        <mat-label>{{ contactData.phone }}</mat-label>
-        <input matInput placeholder="{{ contactData.phone }}">
-        <mat-icon matSuffix>phone</mat-icon>
-      </mat-form-field>
-    </p>
-    </div>
+    <form [formGroup]="contactForm">
+      <div class="inputs">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email">
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Phone</mat-label>
+            <input matInput formControlName="phone">
+            <mat-icon matSuffix>phone</mat-icon>
+          </mat-form-field>
+        </p>
+      </div>
+    </form>
     <div class="buttons">
-      <button class="clear" mat-raised-button>Save</button>
-      <button class="create" mat-raised-button >Delete</button>
+      <button class="clear" mat-raised-button (click)="saveContact()">Save</button>
+      <button class="create" mat-raised-button (click)="closeDialog()">Cancel</button>
     </div>
   </div>
-
 </div>
 <button class="close" mat-button (click)="closeDialog()">
   <mat-icon>close</mat-icon>
