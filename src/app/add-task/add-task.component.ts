@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { TaskService } from '../task.service';
+import { ContactsService } from '../contacts.service';
 
 interface Task {
   title: string;
   description: string;
   category: string;
-  assignedTo: string;
-  dueDate: string;
+  assigned_to: number;  // assuming ID of the contact
+  due_date: string;
   priority: string;
   subtasks: Subtask[];
 }
@@ -22,31 +24,24 @@ interface Subtask {
 })
 export class AddTaskComponent implements OnInit {
   newSubtaskName = '';
-
-  contacts = [
-    { id: 1, name: "Alexej Hein", email: "test@aol.de", phone: "123456789", isClicked: false },
-    { id: 2, name: "Max Mustermann", email: "max@ma.de", phone: "987654321", isClicked: false },
-    { id: 3, name: "Peter Pan", email: "Peter@fr.de", phone: "456789123", isClicked: false },
-    { id: 4, name: "Hans Wurst", email: "HUe@ai.de", phone: "789123456", isClicked: false }
-  ];
-
+  contacts: any[] = [];
   title = '';
   description = '';
   category = '';
-  contactsLst = '';
+  assignedTo: number = 0;  // assuming ID of the contact
   dueDate: any = '';
 
-  defaultButtonStyle = { background: '#f0f0f0', color: '#000', iconColor: '#000' };
+  defaultButtonStyle = {background: '#f0f0f0', color: '#000', iconColor: '#000'};
   priorityStyles = {
-    urgent: { background: 'red', color: '#ffffff', iconColor: '#ffffff' },
-    medium: { background: 'yellow', color: '#000000', iconColor: '#000000' },
-    low: { background: 'green', color: '#ffffff', iconColor: '#ffffff' }
+    urgent: {background: 'red', color: '#ffffff', iconColor: '#ffffff'},
+    medium: {background: 'yellow', color: '#000000', iconColor: '#000000'},
+    low: {background: 'green', color: '#ffffff', iconColor: '#ffffff'}
   };
 
   buttonStyles = {
-    urgent: { ...this.defaultButtonStyle },
-    medium: { ...this.defaultButtonStyle },
-    low: { ...this.defaultButtonStyle }
+    urgent: {...this.defaultButtonStyle},
+    medium: {...this.defaultButtonStyle},
+    low: {...this.defaultButtonStyle}
   };
 
   selectedPriority = '';
@@ -61,24 +56,34 @@ export class AddTaskComponent implements OnInit {
     priority: ''
   };
 
-  constructor() { }
+  constructor(private taskService: TaskService, private contactsService: ContactsService) {
+  }
 
   ngOnInit() {
     this.resetButtonColors();
+    this.loadContacts();
+  }
+
+  loadContacts() {
+    this.contactsService.getContacts().subscribe(data => {
+      this.contacts = data;
+    }, error => {
+      console.error('Error fetching contacts:', error);
+    });
   }
 
   changeButtonColor(priority: 'urgent' | 'medium' | 'low') {
     this.resetButtonColors();
-    this.buttonStyles[priority] = { ...this.priorityStyles[priority] };
+    this.buttonStyles[priority] = {...this.priorityStyles[priority]};
     this.selectedPriority = priority;
     this.errorMessages.priority = '';
   }
 
   resetButtonColors() {
     this.buttonStyles = {
-      urgent: { ...this.defaultButtonStyle },
-      medium: { ...this.defaultButtonStyle },
-      low: { ...this.defaultButtonStyle }
+      urgent: {...this.defaultButtonStyle},
+      medium: {...this.defaultButtonStyle},
+      low: {...this.defaultButtonStyle}
     };
   }
 
@@ -86,7 +91,7 @@ export class AddTaskComponent implements OnInit {
     this.title = '';
     this.description = '';
     this.category = '';
-    this.contactsLst = '';
+    this.assignedTo = 0;
     this.dueDate = '';
     this.newSubtaskName = '';
     this.selectedPriority = '';
@@ -104,7 +109,7 @@ export class AddTaskComponent implements OnInit {
 
   addSubtask() {
     if (this.newSubtaskName.trim()) {
-      this.subtasks.push({ name: this.newSubtaskName, completed: false });
+      this.subtasks.push({name: this.newSubtaskName, completed: false});
       this.newSubtaskName = '';
     }
   }
@@ -120,7 +125,7 @@ export class AddTaskComponent implements OnInit {
     this.errorMessages.title = this.title.trim() ? '' : 'Title is required';
     this.errorMessages.description = this.description.trim() ? '' : 'Description is required';
     this.errorMessages.category = this.category.trim() ? '' : 'Category is required';
-    this.errorMessages.assignedTo = this.contactsLst.trim() ? '' : 'Assigned to is required';
+    this.errorMessages.assignedTo = this.assignedTo ? '' : 'Assigned to is required';
     this.errorMessages.dueDate = dueDateString ? '' : 'Due date is required';
     this.errorMessages.priority = this.selectedPriority ? '' : 'Priority is required';
 
@@ -139,14 +144,20 @@ export class AddTaskComponent implements OnInit {
         title: this.title,
         description: this.description,
         category: this.category,
-        assignedTo: this.contactsLst,
-        dueDate: String(this.dueDate),
+        assigned_to: this.assignedTo,  // Use the selected contact's ID
+        due_date: String(this.dueDate),
         priority: this.selectedPriority,
         subtasks: [...this.subtasks]
       };
 
-      console.log('Created Task:', task);
-      this.clearFields();  // Optional: Felder zurücksetzen nach dem Erstellen
+      console.log('Task data to be sent:', task);  // Protokollierung der gesendeten Daten
+
+      this.taskService.addTask(task).subscribe(() => {
+        console.log('Task created successfully');
+        this.clearFields();
+      }, (error: any) => {
+        console.error('Error creating task:', error);
+      });
     }
   }
 }

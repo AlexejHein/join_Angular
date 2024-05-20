@@ -15,16 +15,16 @@
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Category</mat-label>
-          <mat-select [(ngModel)]="category">
-            <mat-option value="Sales">Sales</mat-option>
-            <mat-option value="Backoffice">Backoffice</mat-option>
-            <mat-option value="New Category">New Category</mat-option>
-          </mat-select>
-          <mat-error *ngIf="errorMessages.category">{{ errorMessages.category }}</mat-error>
+        <mat-select [(ngModel)]="category">
+          <mat-option value="Sales">Sales</mat-option>
+          <mat-option value="Backoffice">Backoffice</mat-option>
+          <mat-option value="New Category">New Category</mat-option>
+        </mat-select>
+        <mat-error *ngIf="errorMessages.category">{{ errorMessages.category }}</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Assigned to</mat-label>
-        <mat-select [(ngModel)]="contactsLst">
+        <mat-select [(ngModel)]="assignedTo">
           <mat-option *ngFor="let contact of contacts" [value]="contact.name">{{ contact.name }}</mat-option>
         </mat-select>
         <mat-error *ngIf="errorMessages.assignedTo">{{ errorMessages.assignedTo }}</mat-error>
