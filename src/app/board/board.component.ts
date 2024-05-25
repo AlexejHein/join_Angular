@@ -1,33 +1,48 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css']
 })
-export class BoardComponent {
-  tasks = {
-    todo: [
-      { header: 'Hello', title: 'Task 1', content: 'Lorem ipsum dolor sit amet...', date: '1/4', person: 'AH', data: '29/07/2024', priority: 'low'},
-      { header: 'Hi', title: 'Task 2', content: 'Lorem ipsum dolor sit amet...', date: '2/4', person: 'BH', data: '29/07/2024', priority: 'low' }
-    ],
-    inProgress: [
-      { header: 'Test', title: 'Task 3', content: 'Lorem ipsum dolor sit amet...', date: '3/4', person: 'CH', data: '29/07/2024', priority: 'middle' }
-    ],
-    awaitingFeedback: [
-      { header: 'Review', title: 'Task 4', content: 'Lorem ipsum dolor sit amet...', date: '4/4', person: 'DH', data: '13/04/2024', priority: 'urgent' }
-    ],
-    done: [
-      { header: 'Completed', title: 'Task 5', content: 'Lorem ipsum dolor sit amet...', date: '5/4', person: 'EH', data: '29/07/2024', priority: 'low' }
-    ]
+export class BoardComponent implements OnInit {
+  tasks: {
+    todo: Task[];
+    inProgress: Task[];
+    awaitingFeedback: Task[];
+    done: Task[];
+  } = {
+    todo: [],
+    inProgress: [],
+    awaitingFeedback: [],
+    done: []
   };
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private taskService: TaskService) {}
 
-  openTaskDialog(task: any): void {
+  ngOnInit(): void {
+    this.loadTasks();
+    console.log('Tasks:', this.tasks);
+  }
+
+  loadTasks(): void {
+    this.taskService.getTasks().subscribe((data: Task[]) => {
+      console.log('Tasks received from backend:', data);
+      this.tasks.todo = data.filter(task => task.status === 'todo');
+      this.tasks.inProgress = data.filter(task => task.status === 'inProgress');
+      this.tasks.awaitingFeedback = data.filter(task => task.status === 'awaitingFeedback');
+      this.tasks.done = data.filter(task => task.status === 'done');
+      console.log('Tasks after categorizing:', this.tasks);
+    }, error => {
+      console.error('Error loading tasks:', error);
+    });
+  }
+
+  openTaskDialog(task: Task): void {
     this.dialog.open(TaskDialogComponent, {
       width: '600px',
       height: '850px',
@@ -35,7 +50,19 @@ export class BoardComponent {
     });
   }
 
-  drop(event: CdkDragDrop<any[]>) {
+  createNewTask(): Task {
+    return {
+      header: '',
+      title: '',
+      content: '',
+      date: '',
+      person: '',
+      priority: 'low',
+      status: 'todo'
+    };
+  }
+
+  drop(event: CdkDragDrop<Task[]>): void {
     if (event.previousContainer !== event.container) {
       transferArrayItem(event.previousContainer.data,
         event.container.data,
@@ -43,4 +70,15 @@ export class BoardComponent {
         event.currentIndex);
     }
   }
+}
+
+// task.model.ts
+export interface Task {
+  header: string;
+  title: string;
+  content: string;
+  date: string;
+  person: string;
+  priority: string;
+  status: string;
 }
