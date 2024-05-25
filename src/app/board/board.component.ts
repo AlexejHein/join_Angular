@@ -1,8 +1,11 @@
+// board.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskService } from '../task.service';
+import { Task } from '../models/Task'; // Import the Task interface from the task.model.ts file
+
 
 @Component({
   selector: 'app-board',
@@ -26,7 +29,6 @@ export class BoardComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadTasks();
-    console.log('Tasks:', this.tasks);
   }
 
   loadTasks(): void {
@@ -50,6 +52,7 @@ export class BoardComponent implements OnInit {
     });
   }
 
+  /**
   createNewTask(): Task {
     return {
       header: '',
@@ -61,24 +64,24 @@ export class BoardComponent implements OnInit {
       status: 'todo'
     };
   }
+    **/
 
   drop(event: CdkDragDrop<Task[]>): void {
     if (event.previousContainer !== event.container) {
-      transferArrayItem(event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex);
+      const task = event.previousContainer.data[event.previousIndex];
+      task.status = event.container.id; // Assuming container id matches the task status
+      this.taskService.updateTaskStatus(task).subscribe(updatedTask => {
+        console.log('Task updated:', updatedTask);
+        transferArrayItem(event.previousContainer.data,
+          event.container.data,
+          event.previousIndex,
+          event.currentIndex);
+      }, error => {
+        console.error('Error updating task:', error);
+      });
     }
   }
 }
 
 // task.model.ts
-export interface Task {
-  header: string;
-  title: string;
-  content: string;
-  date: string;
-  person: string;
-  priority: string;
-  status: string;
-}
+

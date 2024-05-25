@@ -1,6 +1,8 @@
+// task.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Task } from './models/Task'; // Import the Task interface from the task.model.ts file
 
 @Injectable({
   providedIn: 'root'
@@ -10,16 +12,20 @@ export class TaskService {
 
   constructor(private http: HttpClient) { }
 
-  getTasks(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  getTasks(): Observable<Task[]> {
+    return this.http.get<Task[]>(this.apiUrl);
   }
 
-  addTask(task: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, task);
+  addTask(task: Task): Observable<Task> {
+    return this.http.post<Task>(this.apiUrl, task);
   }
 
-  updateTask(task: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}${task.id}/`, task);
+  updateTask(task: Task): Observable<Task> {
+    return this.http.put<Task>(`${this.apiUrl}${task.id}/`, task);
+  }
+
+  updateTaskStatus(task: Task): Observable<Task> {
+    return this.http.put<Task>(`${this.apiUrl}${task.id}/updateStatus/`, task);
   }
 
   deleteTask(id: number): Observable<any> {
