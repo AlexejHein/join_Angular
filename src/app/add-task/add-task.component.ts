@@ -6,8 +6,8 @@ interface Task {
   title: string;
   description: string;
   category: string;
-  assigned_to: number;  // assuming ID of the contact
-  due_date: string;
+  assignedTo: number; // should be a number (Contact ID)
+  dueDate: string; // should be a string in YYYY-MM-DD format
   priority: string;
   subtasks: Subtask[];
 }
@@ -28,8 +28,8 @@ export class AddTaskComponent implements OnInit {
   title = '';
   description = '';
   category = '';
-  assignedTo: number = 0;  // assuming ID of the contact
-  dueDate: any = '';
+  assignedTo: number | null = null; // should be a number (Contact ID)
+  dueDate: Date | null = null;
 
   defaultButtonStyle = {background: '#f0f0f0', color: '#000', iconColor: '#000'};
   priorityStyles = {
@@ -56,8 +56,7 @@ export class AddTaskComponent implements OnInit {
     priority: ''
   };
 
-  constructor(private taskService: TaskService, private contactsService: ContactsService) {
-  }
+  constructor(private taskService: TaskService, private contactsService: ContactsService) {}
 
   ngOnInit() {
     this.resetButtonColors();
@@ -91,8 +90,8 @@ export class AddTaskComponent implements OnInit {
     this.title = '';
     this.description = '';
     this.category = '';
-    this.assignedTo = 0;
-    this.dueDate = '';
+    this.assignedTo = null; // should be a number (Contact ID)
+    this.dueDate = null;
     this.newSubtaskName = '';
     this.selectedPriority = '';
     this.subtasks = [];
@@ -125,7 +124,7 @@ export class AddTaskComponent implements OnInit {
     this.errorMessages.title = this.title.trim() ? '' : 'Title is required';
     this.errorMessages.description = this.description.trim() ? '' : 'Description is required';
     this.errorMessages.category = this.category.trim() ? '' : 'Category is required';
-    this.errorMessages.assignedTo = this.assignedTo ? '' : 'Assigned to is required';
+    this.errorMessages.assignedTo = this.assignedTo !== null ? '' : 'Assigned to is required';
     this.errorMessages.dueDate = dueDateString ? '' : 'Due date is required';
     this.errorMessages.priority = this.selectedPriority ? '' : 'Priority is required';
 
@@ -138,19 +137,29 @@ export class AddTaskComponent implements OnInit {
     return isValid;
   }
 
+  formatDate(date: Date): string {
+    const year = date.getFullYear();
+    const month = ('0' + (date.getMonth() + 1)).slice(-2); // add leading zero
+    const day = ('0' + date.getDate()).slice(-2); // add leading zero
+    return `${year}-${month}-${day}`;
+  }
+
   createTask() {
     if (this.validateInputs()) {
-      const task: Task = {
+      const task: any = {
         title: this.title,
         description: this.description,
         category: this.category,
-        assigned_to: this.assignedTo,  // Use the selected contact's ID
-        due_date: String(this.dueDate),
+        assigned_to: this.assignedTo!, // use "assigned_to" to match Django serializer
+        due_date: this.dueDate instanceof Date ? this.formatDate(this.dueDate) : '',
         priority: this.selectedPriority,
-        subtasks: [...this.subtasks]
+        subtasks: this.subtasks.map(subtask => ({
+          name: subtask.name,
+          completed: subtask.completed
+        }))
       };
 
-      console.log('Task data to be sent:', task);  // Protokollierung der gesendeten Daten
+      console.log('Task data to be sent:', task);
 
       this.taskService.addTask(task).subscribe(() => {
         console.log('Task created successfully');
