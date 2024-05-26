@@ -153,6 +153,7 @@ export class AddTaskComponent implements OnInit {
         assigned_to: this.assignedTo!, // use "assigned_to" to match Django serializer
         due_date: this.dueDate instanceof Date ? this.formatDate(this.dueDate) : '',
         priority: this.selectedPriority,
+        status: 'todo',
         subtasks: this.subtasks.map(subtask => ({
           name: subtask.name,
           completed: subtask.completed
