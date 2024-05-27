@@ -1,8 +1,8 @@
 export interface Task {
   id: any;
-  header: string;
+  category: string;
   title: string;
-  content: string;
+  description: string;
   date: string;
   person: string;
   priority: string;

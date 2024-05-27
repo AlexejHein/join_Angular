@@ -1,10 +1,9 @@
-// board.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskService } from '../task.service';
-import { Task } from '../models/Task'; // Import the Task interface from the task.model.ts file
+import { Task } from '../models/Task';
 
 
 @Component({
@@ -34,6 +33,7 @@ export class BoardComponent implements OnInit {
   loadTasks(): void {
     this.taskService.getTasks().subscribe((data: Task[]) => {
       console.log('Tasks received from backend:', data);
+      console.log('Tasks before categorizing:', this.tasks)
       this.tasks.todo = data.filter(task => task.status === 'todo');
       this.tasks.inProgress = data.filter(task => task.status === 'inProgress');
       this.tasks.awaitingFeedback = data.filter(task => task.status === 'awaitingFeedback');
@@ -82,6 +82,3 @@ export class BoardComponent implements OnInit {
     }
   }
 }
-
-// task.model.ts
-
