@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../task.service';
 import { ContactsService } from '../contacts.service';
+import { Router} from "@angular/router";
 
 interface Task {
   title: string;
@@ -56,7 +57,7 @@ export class AddTaskComponent implements OnInit {
     priority: ''
   };
 
-  constructor(private taskService: TaskService, private contactsService: ContactsService) {}
+  constructor(private taskService: TaskService, private contactsService: ContactsService, private router: Router) {}
 
   ngOnInit() {
     this.resetButtonColors();
@@ -150,7 +151,7 @@ export class AddTaskComponent implements OnInit {
         title: this.title,
         description: this.description,
         category: this.category,
-        assigned_to: this.assignedTo!, // use "assigned_to" to match Django serializer
+        assigned_to: this.assignedTo!,
         due_date: this.dueDate instanceof Date ? this.formatDate(this.dueDate) : '',
         priority: this.selectedPriority,
         status: 'todo',
@@ -165,6 +166,7 @@ export class AddTaskComponent implements OnInit {
       this.taskService.addTask(task).subscribe(() => {
         console.log('Task created successfully');
         this.clearFields();
+        this.router.navigate(['/board']).then(r => {});
       }, (error: any) => {
         console.error('Error creating task:', error);
       });

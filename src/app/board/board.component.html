@@ -33,7 +33,7 @@
             <div class="date">{{ task.date }}</div>
           </div>
           <div class="taskFooter">
-            <div class="persons">{{ task.person }}</div>
+            <div class="persons">{{ getInitials(task.assigned_to) }}</div>
             <div class="prioritize">
               <mat-icon *ngIf="task.priority === 'low'">keyboard_double_arrow_down</mat-icon>
               <mat-icon *ngIf="task.priority === 'medium'">drag_handle</mat-icon>
@@ -64,7 +64,7 @@
             <div class="date">{{ task.date }}</div>
           </div>
           <div class="taskFooter">
-            <div class="persons">{{ task.person }}</div>
+            <div class="persons">{{ getInitials(task.assigned_to) }}</div>
             <div class="prioritize">
               <mat-icon *ngIf="task.priority === 'low'">keyboard_double_arrow_down</mat-icon>
               <mat-icon *ngIf="task.priority === 'medium'">drag_handle</mat-icon>
@@ -95,7 +95,7 @@
             <div class="date">{{ task.date }}</div>
           </div>
           <div class="taskFooter">
-            <div class="persons">{{ task.person }}</div>
+            <div class="persons">{{ getInitials(task.assigned_to) }}</div>
             <div class="prioritize">
               <mat-icon *ngIf="task.priority === 'low'">keyboard_double_arrow_down</mat-icon>
               <mat-icon *ngIf="task.priority === 'medium'">drag_handle</mat-icon>
@@ -126,7 +126,7 @@
             <div class="date">{{ task.date }}</div>
           </div>
           <div class="taskFooter">
-            <div class="persons">{{ task.person }}</div>
+            <div class="persons">{{ getInitials(task.assigned_to) }}</div>
             <div class="prioritize">
               <mat-icon *ngIf="task.priority === 'low'">keyboard_double_arrow_down</mat-icon>
               <mat-icon *ngIf="task.priority === 'medium'">drag_handle</mat-icon>

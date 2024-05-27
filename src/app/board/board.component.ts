@@ -81,4 +81,13 @@ export class BoardComponent implements OnInit {
       });
     }
   }
+
+  getInitials(name: string): string {
+    const words = name.split(' ');
+    if (words.length === 1) {
+      return words[0].charAt(0).toUpperCase();
+    } else {
+      return words.map(word => word.charAt(0).toUpperCase()).join('');
+    }
+  }
 }
