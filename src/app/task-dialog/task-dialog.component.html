@@ -16,7 +16,8 @@
     </div>
   <p><strong>Assign To:</strong> </p>
   <br>
-  <div class="presonBox">{{ data.assigned_to }}</div>
+  <div class="presonBox">{{ getInitialsAndName(data.assigned_to) }}</div>
+  <div>{{ data.assigned_to }}</div>
 
 </mat-dialog-content>
 <mat-dialog-actions>

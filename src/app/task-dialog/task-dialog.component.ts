@@ -15,5 +15,22 @@ export class TaskDialogComponent {
   onClose(): void {
     this.dialogRef.close();
   }
+
+  getInitialsAndName(name: string) {
+    if (!name) return '';
+
+    let parts = name.split(' ');
+    let initials = '';
+
+    if (parts.length > 0) {
+      initials += parts[0] ? parts[0].charAt(0) : '';
+    }
+
+    if (parts.length > 1) {
+      initials += parts[parts.length - 1] ? parts[parts.length - 1].charAt(0) : '';
+    }
+
+    return `${initials}`;
+  }
 }
 
