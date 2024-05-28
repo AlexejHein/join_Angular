@@ -1,8 +1,8 @@
 <div class="contentDialog">
-<h2 class="dialogHeader" mat-dialog-title>{{ data.title }}</h2>
+<h2 class="dialogHeader" mat-dialog-title>{{ data.category }}</h2>
 <mat-dialog-content>
   <br>
-  <p class="title">{{ data.header }}</p>
+  <p class="title">{{ data.title }}</p>
   <br>
   <p class="content"> {{ data.description }}</p>
   <br>
@@ -11,7 +11,7 @@
   <div class="priority">
     <p><strong>Priority:</strong></p>
     <div *ngIf="data.priority === 'urgent'" class="urgent">Urgent <mat-icon>keyboard_double_arrow_up</mat-icon></div>
-    <div *ngIf="data.priority === 'middle'" class="middle">Middle<mat-icon>keyboard_double_arrow_left</mat-icon></div>
+    <div *ngIf="data.priority === 'medium'" class="medium">Medium<mat-icon>keyboard_double_arrow_left</mat-icon></div>
     <div *ngIf="data.priority === 'low'" class="low">Low <mat-icon>keyboard_double_arrow_down</mat-icon></div>
     </div>
   <p><strong>Assign To:</strong> </p>
