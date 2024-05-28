@@ -4,9 +4,9 @@
   <br>
   <p class="title">{{ data.header }}</p>
   <br>
-  <p class="content"> {{ data.content }}</p>
+  <p class="content"> {{ data.description }}</p>
   <br>
-  <p><strong>Date:</strong> {{ data.data }}</p>
+  <p><strong>Date:</strong> {{ data.due_date }}</p>
   <br>
   <div class="priority">
     <p><strong>Priority:</strong></p>
@@ -16,7 +16,7 @@
     </div>
   <p><strong>Assign To:</strong> </p>
   <br>
-  <div class="presonBox">{{ data.person }}</div>
+  <div class="presonBox">{{ data.assigned_to }}</div>
 
 </mat-dialog-content>
 <mat-dialog-actions>

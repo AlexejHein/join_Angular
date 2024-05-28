@@ -7,8 +7,8 @@ interface Task {
   title: string;
   description: string;
   category: string;
-  assignedTo: number; // should be a number (Contact ID)
-  dueDate: string; // should be a string in YYYY-MM-DD format
+  assignedTo: number;
+  dueDate: string;
   priority: string;
   subtasks: Subtask[];
 }
@@ -29,7 +29,7 @@ export class AddTaskComponent implements OnInit {
   title = '';
   description = '';
   category = '';
-  assignedTo: number | null = null; // should be a number (Contact ID)
+  assignedTo: number | null = null;
   dueDate: Date | null = null;
 
   defaultButtonStyle = {background: '#f0f0f0', color: '#000', iconColor: '#000'};
@@ -91,7 +91,7 @@ export class AddTaskComponent implements OnInit {
     this.title = '';
     this.description = '';
     this.category = '';
-    this.assignedTo = null; // should be a number (Contact ID)
+    this.assignedTo = null;
     this.dueDate = null;
     this.newSubtaskName = '';
     this.selectedPriority = '';
@@ -160,9 +160,7 @@ export class AddTaskComponent implements OnInit {
           completed: subtask.completed
         }))
       };
-
       console.log('Task data to be sent:', task);
-
       this.taskService.addTask(task).subscribe(() => {
         console.log('Task created successfully');
         this.clearFields();

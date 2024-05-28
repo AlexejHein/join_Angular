@@ -3,7 +3,7 @@ export interface Task {
   category: string;
   title: string;
   description: string;
-  date: string;
+  due_date: string;
   assigned_to: string;
   priority: string;
   status: string;
