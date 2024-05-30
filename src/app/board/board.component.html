@@ -8,7 +8,7 @@
         <input matInput placeholder="Search">
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
-      <button mat-button >Add Task
+      <button mat-button>Add Task
         <mat-icon>add</mat-icon>
       </button>
     </div>
@@ -16,7 +16,7 @@
 
   <div cdkDropListGroup class="boardContent">
     <!-- Todo Section -->
-    <div class="todos" cdkDropList [cdkDropListData]="tasks.todo" (cdkDropListDropped)="drop($event)">
+    <div class="todos" cdkDropList [cdkDropListData]="tasks.todo" (cdkDropListDropped)="drop($event)" data-status="todo">
       <div class="todosContentHeader">
         <h3>Todo</h3>
         <mat-icon>add_box</mat-icon>
@@ -30,7 +30,6 @@
             <div class="done">
               <div class="process"></div>
             </div>
-            <!--<div class="date">{{ task.due_date }}</div> -->
           </div>
           <div class="taskFooter">
             <div class="persons">{{ getInitials(task.assigned_to) }}</div>
@@ -47,7 +46,7 @@
     </div>
 
     <!-- In Progress Section -->
-    <div class="todos" cdkDropList [cdkDropListData]="tasks.inProgress" (cdkDropListDropped)="drop($event)">
+    <div class="todos" cdkDropList [cdkDropListData]="tasks.inProgress" (cdkDropListDropped)="drop($event)" data-status="inProgress">
       <div class="todosContentHeader">
         <h3>In Progress</h3>
         <mat-icon>add_box</mat-icon>
@@ -61,7 +60,6 @@
             <div class="done">
               <div class="process"></div>
             </div>
-            <!--<div class="date">{{ task.due_date }}</div> -->
           </div>
           <div class="taskFooter">
             <div class="persons">{{ getInitials(task.assigned_to) }}</div>
@@ -78,7 +76,7 @@
     </div>
 
     <!-- Awaiting Feedback Section -->
-    <div class="todos" cdkDropList [cdkDropListData]="tasks.awaitingFeedback" (cdkDropListDropped)="drop($event)">
+    <div class="todos" cdkDropList [cdkDropListData]="tasks.awaitingFeedback" (cdkDropListDropped)="drop($event)" data-status="awaitingFeedback">
       <div class="todosContentHeader">
         <h3>Awaiting Feedback</h3>
         <mat-icon>add_box</mat-icon>
@@ -92,7 +90,6 @@
             <div class="done">
               <div class="process"></div>
             </div>
-            <!--<div class="date">{{ task.due_date }}</div> -->
           </div>
           <div class="taskFooter">
             <div class="persons">{{ getInitials(task.assigned_to) }}</div>
@@ -109,7 +106,7 @@
     </div>
 
     <!-- Done Section -->
-    <div class="todos" cdkDropList [cdkDropListData]="tasks.done" (cdkDropListDropped)="drop($event)">
+    <div class="todos" cdkDropList [cdkDropListData]="tasks.done" (cdkDropListDropped)="drop($event)" data-status="done">
       <div class="todosContentHeader">
         <h3>Done</h3>
         <mat-icon>add_box</mat-icon>
@@ -123,7 +120,6 @@
             <div class="done">
               <div class="process"></div>
             </div>
-            <!--<div class="date">{{ task.due_date }}</div> -->
           </div>
           <div class="taskFooter">
             <div class="persons">{{ getInitials(task.assigned_to) }}</div>

@@ -33,7 +33,6 @@ export class BoardComponent implements OnInit {
   loadTasks(): void {
     this.taskService.getTasks().subscribe((data: Task[]) => {
       console.log('Tasks received from backend:', data);
-      console.log('Tasks before categorizing:', this.tasks)
       this.tasks.todo = data.filter(task => task.status === 'todo');
       this.tasks.inProgress = data.filter(task => task.status === 'inProgress');
       this.tasks.awaitingFeedback = data.filter(task => task.status === 'awaitingFeedback');
@@ -69,16 +68,22 @@ export class BoardComponent implements OnInit {
   drop(event: CdkDragDrop<Task[]>): void {
     if (event.previousContainer !== event.container) {
       const task = event.previousContainer.data[event.previousIndex];
-      task.status = event.container.id; // Assuming container id matches the task status
-      this.taskService.updateTaskStatus(task).subscribe(updatedTask => {
-        console.log('Task updated:', updatedTask);
-        transferArrayItem(event.previousContainer.data,
-          event.container.data,
-          event.previousIndex,
-          event.currentIndex);
-      }, error => {
-        console.error('Error updating task:', error);
-      });
+      const newStatus = event.container.element.nativeElement.getAttribute('data-status'); // Retrieve the custom attribute value
+
+      if (newStatus) {
+        task.status = newStatus;
+        this.taskService.updateTaskStatus(task).subscribe(updatedTask => {
+          console.log('Task updated:', updatedTask);
+          transferArrayItem(event.previousContainer.data,
+            event.container.data,
+            event.previousIndex,
+            event.currentIndex);
+        }, error => {
+          console.error('Error updating task:', error);
+        });
+      } else {
+        console.error('Error: Container does not have a valid status attribute');
+      }
     }
   }
 

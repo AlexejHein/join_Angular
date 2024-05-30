@@ -24,7 +24,7 @@ export class TaskService {
   }
 
   updateTaskStatus(task: Task): Observable<Task> {
-    return this.http.put<Task>(`${this.apiUrl}updateStatus/`, task);
+    return this.http.put<Task>(`${this.apiUrl}updatestatus/`, task);
   }
 
   deleteTask(id: number): Observable<any> {
