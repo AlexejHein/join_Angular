@@ -71,8 +71,7 @@ export class BoardComponent implements OnInit {
       const newStatus = event.container.element.nativeElement.getAttribute('data-status'); // Retrieve the custom attribute value
 
       if (newStatus) {
-        task.status = newStatus;
-        this.taskService.updateTaskStatus(task).subscribe(updatedTask => {
+        this.taskService.updateTaskStatus(task.id, newStatus).subscribe(updatedTask => {
           console.log('Task updated:', updatedTask);
           transferArrayItem(event.previousContainer.data,
             event.container.data,

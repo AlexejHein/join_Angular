@@ -4,6 +4,7 @@ import { ContactsService } from '../contacts.service';
 import { Router} from "@angular/router";
 
 interface Task {
+  id: number;
   title: string;
   description: string;
   category: string;
@@ -145,6 +146,8 @@ export class AddTaskComponent implements OnInit {
     return `${year}-${month}-${day}`;
   }
 
+
+
   createTask() {
     if (this.validateInputs()) {
       const task: any = {
@@ -163,6 +166,7 @@ export class AddTaskComponent implements OnInit {
       console.log('Task data to be sent:', task);
       this.taskService.addTask(task).subscribe(() => {
         console.log('Task created successfully');
+        console.log('Task data:', task);
         this.clearFields();
         this.router.navigate(['/board']).then(r => {});
       }, (error: any) => {
