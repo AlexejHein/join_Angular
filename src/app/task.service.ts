@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Task } from './models/Task';
@@ -8,6 +8,8 @@ import { Task } from './models/Task';
 })
 export class TaskService {
   private apiUrl = 'http://localhost:8000/api/tasks/';
+
+  taskDeleted = new EventEmitter<void>();
 
   constructor(private http: HttpClient) { }
 

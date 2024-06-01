@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskService } from '../task.service';
 import { Task } from '../models/Task';
+import {Subscription} from "rxjs";
 
 
 @Component({
@@ -11,7 +12,9 @@ import { Task } from '../models/Task';
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css']
 })
-export class BoardComponent implements OnInit {
+export class BoardComponent implements OnInit, OnDestroy {
+  private taskDeletedSubscription: Subscription | undefined;
+
   tasks: {
     todo: Task[];
     inProgress: Task[];
@@ -28,6 +31,15 @@ export class BoardComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadTasks();
+    this.taskService.taskDeleted.subscribe(() => {
+      this.loadTasks();
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.taskDeletedSubscription) {
+      this.taskDeletedSubscription.unsubscribe();
+    }
   }
 
   loadTasks(): void {

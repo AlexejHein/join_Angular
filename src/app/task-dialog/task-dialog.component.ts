@@ -1,6 +1,5 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Task } from '../models/Task';
 import { TaskService } from '../task.service';
 
 @Component({
@@ -19,10 +18,10 @@ export class TaskDialogComponent {
     this.dialogRef.close();
   }
 
-  // In Ihrer TaskDialogComponent Datei
   deleteTask(taskId: number) {
     this.taskService.deleteTask(taskId).subscribe(() => {
       this.dialogRef.close();
+      this.taskService.taskDeleted.emit();
     });
   }
 
