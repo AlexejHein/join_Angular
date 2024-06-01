@@ -58,7 +58,9 @@ export class AddTaskComponent implements OnInit {
     priority: ''
   };
 
-  constructor(private taskService: TaskService, private contactsService: ContactsService, private router: Router) {}
+  constructor(private taskService: TaskService,
+              private contactsService: ContactsService,
+              private router: Router) {}
 
   ngOnInit() {
     this.resetButtonColors();

@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TaskService } from '../task.service';
+import { ContactsService } from '../contacts.service';
 import { Task } from '../models/Task';
 
 @Component({
@@ -9,14 +10,26 @@ import { Task } from '../models/Task';
   styleUrls: ['./edit-task-dialog.component.css']
 })
 export class EditTaskDialogComponent {
+  contacts: any[] = [];
   constructor(
     public dialogRef: MatDialogRef<EditTaskDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Task,
-    private taskService: TaskService
-  ) {}
+    private taskService: TaskService,
+    private contactsService: ContactsService
+  ) {
+    this.loadContacts();
+  }
 
   onClose(): void {
     this.dialogRef.close();
+  }
+
+  loadContacts() {
+    this.contactsService.getContacts().subscribe((data: any[]) => {
+      this.contacts = data;
+    }, (error: any) => {
+      console.error('Error fetching contacts:', error);
+    });
   }
 
   onSave(): void {

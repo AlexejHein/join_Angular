@@ -2,19 +2,21 @@
   <h2 class="dialogHeader" mat-dialog-title>Edit Task</h2>
   <form #taskForm="ngForm">
     <mat-dialog-content>
-      <mat-form-field>
+      <mat-form-field appearance="outline">
         <mat-label>Title</mat-label>
         <input matInput [(ngModel)]="data.title" name="title">
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>
         <textarea matInput [(ngModel)]="data.description" name="description"></textarea>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field appearance="outline">
         <mat-label>Date</mat-label>
-        <input matInput [(ngModel)]="data.due_date" name="due_date" type="date">
+        <input matInput [matDatepicker]="picker" [(ngModel)]="data.due_date" name="due_date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field appearance="outline">
         <mat-label>Priority</mat-label>
         <mat-select [(ngModel)]="data.priority" name="priority">
           <mat-option value="urgent">Urgent</mat-option>
@@ -22,9 +24,13 @@
           <mat-option value="low">Low</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field appearance="outline">
         <mat-label>Assign To</mat-label>
-        <input matInput [(ngModel)]="data.assigned_to" name="assigned_to">
+        <mat-select [(value)]="data.assigned_to">
+          <mat-option *ngFor="let contact of contacts" [value]="contact.name">
+            {{contact.name}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
     </mat-dialog-content>
     <mat-dialog-actions>

@@ -24,6 +24,7 @@ export class TaskDialogComponent {
   onEdit(): void {
     const dialogRef = this.dialog.open(EditTaskDialogComponent, {
       width: '600px',
+      height: '800px',
       data: { ...this.data }
     });
 
