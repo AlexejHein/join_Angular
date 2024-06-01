@@ -29,6 +29,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
 import {AuthService} from "./auth.service";
+import { EditTaskDialogComponent } from './edit-task-dialog/edit-task-dialog.component';
 
 
 
@@ -48,6 +49,7 @@ import {AuthService} from "./auth.service";
     DialogEditContactComponent,
     DialogAddContactComponent,
     TaskDialogComponent,
+    EditTaskDialogComponent,
   ],
   imports: [
     BrowserModule,
