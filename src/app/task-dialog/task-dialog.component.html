@@ -24,7 +24,7 @@
   <mat-icon (click)="onClose()">close</mat-icon>
 </mat-dialog-actions>
   <div class="actionButtons">
-    <mat-icon>delete</mat-icon>
+    <mat-icon (click)=deleteTask(data.id)>delete</mat-icon>
     <mat-icon class="edit">edit</mat-icon>
   </div>
 </div>
