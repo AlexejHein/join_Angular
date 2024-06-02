@@ -15,10 +15,8 @@
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Category</mat-label>
-        <mat-select [(ngModel)]="category">
-          <mat-option value="Sales">Sales</mat-option>
-          <mat-option value="Backoffice">Backoffice</mat-option>
-          <mat-option value="New Category">New Category</mat-option>
+        <mat-select [(ngModel)]="category" (ngModelChange)="addNewCategory()">
+          <mat-option *ngFor="let category of categories" [value]="category">{{ category }}</mat-option>
         </mat-select>
         <mat-error *ngIf="errorMessages.category">{{ errorMessages.category }}</mat-error>
       </mat-form-field>

@@ -30,6 +30,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
 import {AuthService} from "./auth.service";
 import { EditTaskDialogComponent } from './edit-task-dialog/edit-task-dialog.component';
+import { NewCategoryComponent } from './add-task/new-category/new-category.component';
 
 
 
@@ -50,6 +51,7 @@ import { EditTaskDialogComponent } from './edit-task-dialog/edit-task-dialog.com
     DialogAddContactComponent,
     TaskDialogComponent,
     EditTaskDialogComponent,
+    NewCategoryComponent,
   ],
   imports: [
     BrowserModule,

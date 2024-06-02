@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Neue Kategorie</h2>
+<mat-dialog-content>
+  <p>Bitte geben Sie den Namen der neuen Kategorie ein:</p>
+  <mat-form-field appearance="outline">
+    <input matInput [(ngModel)]="newCategoryName">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Abbrechen</button>
+  <button mat-button [mat-dialog-close]="newCategoryName" cdkFocusInitial>OK</button>
+</mat-dialog-actions>

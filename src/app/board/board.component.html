@@ -23,7 +23,7 @@
       </div>
       <ng-container *ngFor="let task of tasks.todo">
         <mat-card class="task" cdkDrag (click)="openTaskDialog(task)">
-          <div class="taskHeader">{{ task.category }}</div>
+          <div class="taskHeader" [style.background-color]="getBackgroundColor(task.category)" >{{ task.category }}</div>
           <div class="taskTitle">{{ task.title }}</div>
           <div class="taskContent">{{ task.description }}</div>
           <div class="taskDone">

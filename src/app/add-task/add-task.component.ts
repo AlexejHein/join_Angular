@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../task.service';
 import { ContactsService } from '../contacts.service';
 import { Router} from "@angular/router";
+import { MatDialog } from '@angular/material/dialog';
+import {NewCategoryComponent} from "./new-category/new-category.component";
 
 interface Task {
   id: number;
@@ -25,6 +27,10 @@ interface Subtask {
   styleUrls: ['./add-task.component.css']
 })
 export class AddTaskComponent implements OnInit {
+
+  categories: string[] = ['Sales', 'Backoffice', 'New Category'];
+
+
   newSubtaskName = '';
   contacts: any[] = [];
   title = '';
@@ -60,12 +66,32 @@ export class AddTaskComponent implements OnInit {
 
   constructor(private taskService: TaskService,
               private contactsService: ContactsService,
-              private router: Router) {}
+              private router: Router,
+              private dialog: MatDialog) {}
 
   ngOnInit() {
     this.resetButtonColors();
     this.loadContacts();
   }
+
+
+  addNewCategory(): void {
+    if (this.category === 'New Category') {
+      const dialogRef = this.dialog.open(NewCategoryComponent, {
+        width: '350px',
+        data: {}
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) { // Check if result is not null or undefined
+          console.log('The dialog was closed');
+          this.category = result; // result is the new category name entered by the user
+          this.categories.push(this.category); // add the new category to the categories list
+        }
+      });
+    }
+  }
+
 
   loadContacts() {
     this.contactsService.getContacts().subscribe(data => {

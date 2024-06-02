@@ -78,6 +78,17 @@ export class BoardComponent implements OnInit, OnDestroy {
     });
   }
 
+  getBackgroundColor(category: string): string {
+    if (category === 'Sales') {
+      return 'lightblue';
+    } else if (category === 'Backoffice') {
+      return 'darkblue';
+    } else {
+      // Generieren Sie eine zufällige Farbe, wenn die Kategorie weder 'Sales' noch 'Backoffice' ist
+      return '#' + Math.floor(Math.random()*16777215).toString(16);
+    }
+  }
+
   openTaskDialog(task: Task): void {
     this.dialog.open(TaskDialogComponent, {
       width: '600px',
