@@ -3,6 +3,7 @@ import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskService } from '../task.service';
+import { ContactsService } from '../contacts.service';
 import { Task } from '../models/Task';
 import {Subscription} from "rxjs";
 
@@ -12,8 +13,11 @@ import {Subscription} from "rxjs";
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css']
 })
+
 export class BoardComponent implements OnInit, OnDestroy {
   private taskDeletedSubscription: Subscription | undefined;
+  contacts: Contact[] = [];
+
 
   tasks: {
     todo: Task[];
@@ -27,10 +31,15 @@ export class BoardComponent implements OnInit, OnDestroy {
     done: []
   };
 
-  constructor(private dialog: MatDialog, private taskService: TaskService) {}
+  constructor(private dialog: MatDialog,
+              private taskService: TaskService,
+              private contactService: ContactsService,
+              ) {}
 
   ngOnInit(): void {
     this.loadTasks();
+    this.getContacts();
+    console.log('Contacts:', this.contacts);
     this.taskService.taskDeleted.subscribe(() => {
       this.loadTasks();
     });
@@ -52,6 +61,20 @@ export class BoardComponent implements OnInit, OnDestroy {
       console.log('Tasks after categorizing:', this.tasks);
     }, error => {
       console.error('Error loading tasks:', error);
+    });
+  }
+
+  getColor(name: string): string {
+    const contact = this.contacts.find(contact => contact.name === name);
+    return contact ? contact.color : 'defaultColor';
+  }
+
+  getContacts(): void {
+    this.contactService.getContacts().subscribe((data: Contact[]) => {
+      this.contacts = data;
+      console.log('Contacts:', this.contacts);
+    }, (error: any) => {
+      console.error('Error loading contacts:', error);
     });
   }
 
@@ -106,4 +129,9 @@ export class BoardComponent implements OnInit, OnDestroy {
       return words.map(word => word.charAt(0).toUpperCase()).join('');
     }
   }
+}
+
+interface Contact {
+  name: string;
+  color: string;
 }
