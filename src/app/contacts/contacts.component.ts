@@ -36,6 +36,7 @@ export class ContactsComponent implements OnInit {
   getContacts() {
     this.contactsService.getContacts().subscribe(data => {
       this.contacts = data;
+      console.log('Contacts:', this.contacts);
     }, error => {
       console.error('Error fetching contacts:', error);
     });
