@@ -4,6 +4,7 @@ import { ContactsService } from '../contacts.service';
 import { Router} from "@angular/router";
 import { MatDialog } from '@angular/material/dialog';
 import {NewCategoryComponent} from "./new-category/new-category.component";
+import { CategoryResetService} from "../category-reset.service";
 
 interface Task {
   id: number;
@@ -67,13 +68,21 @@ export class AddTaskComponent implements OnInit {
   constructor(private taskService: TaskService,
               private contactsService: ContactsService,
               private router: Router,
-              private dialog: MatDialog) {}
+              private dialog: MatDialog,
+              private categoryResetService: CategoryResetService
+              ) {}
 
   ngOnInit() {
     this.resetButtonColors();
     this.loadContacts();
+    this.categoryResetService.resetCategory$.subscribe(() => {
+      this.resetCategorySelection();
+    });
   }
 
+  resetCategorySelection(): void {
+    this.category = ''; // Setzen Sie dies auf Ihren Standardwert
+  }
 
   addNewCategory(): void {
     if (this.category === 'New Category') {
