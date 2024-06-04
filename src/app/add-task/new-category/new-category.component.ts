@@ -1,8 +1,6 @@
-import {Component, Inject, ViewChild} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {AddTaskComponent} from "../add-task.component";
-import {CategoryResetService} from "../../services/category-reset.service";
-
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { CategoryResetService } from "../../services/category-reset.service";
 
 @Component({
   selector: 'app-new-category',
@@ -11,12 +9,13 @@ import {CategoryResetService} from "../../services/category-reset.service";
 })
 export class NewCategoryComponent {
   newCategoryName = '';
+  newCategoryColor = '#ffffff'; // Default color
 
   constructor(
     public dialogRef: MatDialogRef<NewCategoryComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private categoryResetService: CategoryResetService
-    ) {}
+  ) {}
 
   onNoClick(): void {
     this.newCategoryName = '';
@@ -24,4 +23,8 @@ export class NewCategoryComponent {
     this.categoryResetService.resetCategory();
   }
 
+  onSaveClick(): void {
+    this.dialogRef.close({ name: this.newCategoryName, color: this.newCategoryColor });
+    this.categoryResetService.resetCategory();
+  }
 }

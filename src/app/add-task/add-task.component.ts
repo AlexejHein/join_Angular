@@ -12,6 +12,11 @@ interface Subtask {
   completed: boolean;
 }
 
+interface Category {
+  name: string;
+  color: string;
+}
+
 @Component({
   selector: 'app-add-task',
   templateUrl: './add-task.component.html',
@@ -19,7 +24,7 @@ interface Subtask {
 })
 export class AddTaskComponent implements OnInit {
 
-  categories: string[] = ['Sales', 'Backoffice', 'New Category'];
+  categories: Category[] = [{ name: 'Sales', color: '#FF0000' }, { name: 'Backoffice', color: '#00FF00' }, { name: 'New Category', color: '' }];
 
 
   newSubtaskName = '';
@@ -28,6 +33,7 @@ export class AddTaskComponent implements OnInit {
   description = '';
   category = '';
   assignedTo: number | null = null;
+  categoryColor = '';
   dueDate: Date | null = null;
 
   defaultButtonStyle = {background: '#f0f0f0', color: '#000', iconColor: '#000'};
@@ -82,15 +88,16 @@ export class AddTaskComponent implements OnInit {
       });
 
       dialogRef.afterClosed().subscribe(result => {
-        if (result) { // Check if result is not null or undefined
+        if (result) {
           console.log('The dialog was closed');
-          this.category = result; // result is the new category name entered by the user
-          this.categories.push(this.category); // add the new category to the categories list
+          const newCategory: Category = {name: result.name, color: result.color};
+          this.categories.push(newCategory);
+          this.category = newCategory.name;
+          this.categoryColor = newCategory.color;
         }
       });
     }
   }
-
 
   loadContacts() {
     this.contactsService.getContacts().subscribe(data => {
@@ -181,6 +188,7 @@ export class AddTaskComponent implements OnInit {
         title: this.title,
         description: this.description,
         category: this.category,
+        categoryColor: this.categoryColor,
         assigned_to: this.assignedTo!,
         due_date: this.dueDate instanceof Date ? this.formatDate(this.dueDate) : '',
         priority: this.selectedPriority,
