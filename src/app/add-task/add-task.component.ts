@@ -1,21 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskService } from '../task.service';
-import { ContactsService } from '../contacts.service';
+import { TaskService } from '../services/task.service';
+import { ContactsService } from '../services/contacts.service';
 import { Router} from "@angular/router";
 import { MatDialog } from '@angular/material/dialog';
 import {NewCategoryComponent} from "./new-category/new-category.component";
-import { CategoryResetService} from "../category-reset.service";
+import { CategoryResetService} from "../services/category-reset.service";
 
-interface Task {
-  id: number;
-  title: string;
-  description: string;
-  category: string;
-  assignedTo: number;
-  dueDate: string;
-  priority: string;
-  subtasks: Subtask[];
-}
 
 interface Subtask {
   name: string;

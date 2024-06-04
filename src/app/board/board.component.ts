@@ -2,8 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { TaskService } from '../task.service';
-import { ContactsService } from '../contacts.service';
+import { TaskService } from '../services/task.service';
+import { ContactsService } from '../services/contacts.service';
 import { Task } from '../models/Task';
 import {Subscription} from "rxjs";
 

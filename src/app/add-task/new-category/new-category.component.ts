@@ -1,7 +1,7 @@
 import {Component, Inject, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {AddTaskComponent} from "../add-task.component";
-import {CategoryResetService} from "../../category-reset.service";
+import {CategoryResetService} from "../../services/category-reset.service";
 
 
 @Component({

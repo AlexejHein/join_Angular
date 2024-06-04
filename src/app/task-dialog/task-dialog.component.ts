@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
-import { TaskService } from '../task.service';
+import { TaskService } from '../services/task.service';
 import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
 
 

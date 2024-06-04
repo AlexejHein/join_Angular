@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { TaskService } from '../task.service';
-import { ContactsService } from '../contacts.service';
+import { TaskService } from '../services/task.service';
+import { ContactsService } from '../services/contacts.service';
 import { Task } from '../models/Task';
 
 @Component({

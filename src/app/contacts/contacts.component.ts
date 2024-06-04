@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import { MatDialog } from '@angular/material/dialog';
-import { ContactsService } from '../contacts.service';
+import { ContactsService } from '../services/contacts.service';
 import { DialogEditContactComponent } from "./dialog-edit-contact/dialog-edit-contact.component";
 import { DialogAddContactComponent } from "./dialog-add-contact/dialog-add-contact.component";
 
