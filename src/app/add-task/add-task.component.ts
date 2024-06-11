@@ -24,7 +24,7 @@ interface Category {
 })
 export class AddTaskComponent implements OnInit {
 
-  categories: Category[] = [{ name: 'Sales', color: '#FF0000' }, { name: 'Backoffice', color: '#00FF00' }, { name: 'New Category', color: '' }];
+  categories: Category[] = [{ name: 'Sales', color: '#b0b4e0' }, { name: 'Backoffice', color: '#0077d9' }, { name: 'New Category', color: '' }];
 
 
   newSubtaskName = '';
