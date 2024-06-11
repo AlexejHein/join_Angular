@@ -184,11 +184,14 @@ export class AddTaskComponent implements OnInit {
 
   createTask() {
     if (this.validateInputs()) {
+      // Find the selected category object
+      const selectedCategory = this.categories.find(category => category.name === this.category);
+
       const task: any = {
         title: this.title,
         description: this.description,
         category: this.category,
-        categoryColor: this.categoryColor,
+        categoryColor: selectedCategory, // Use the selected category object
         assigned_to: this.assignedTo!,
         due_date: this.dueDate instanceof Date ? this.formatDate(this.dueDate) : '',
         priority: this.selectedPriority,
