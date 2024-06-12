@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { TaskService } from '../services/task.service';
 import { ContactsService } from '../services/contacts.service';
 import { Task } from '../models/Task';
-import {Subscription} from "rxjs";
+import { Subscription } from "rxjs";
 
 
 @Component({
@@ -76,17 +76,6 @@ export class BoardComponent implements OnInit, OnDestroy {
     }, (error: any) => {
       console.error('Error loading contacts:', error);
     });
-  }
-
-  getBackgroundColor(category: string): string {
-    if (category === 'Sales') {
-      return 'lightblue';
-    } else if (category === 'Backoffice') {
-      return 'darkblue';
-    } else {
-      // Generieren Sie eine zufällige Farbe, wenn die Kategorie weder 'Sales' noch 'Backoffice' ist
-      return '#' + Math.floor(Math.random()*16777215).toString(16);
-    }
   }
 
   openTaskDialog(task: Task): void {

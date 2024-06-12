@@ -7,24 +7,26 @@
 <div class="summaryContent">
   <div class="summaryTasks" [routerLink]="['/board']">
     <mat-card>
-      <p class="taskIn">4</p>
+      <p class="taskIn">{{ taskCounts.total }}</p>
       <p class="taskDes">Tasks in Board</p>
     </mat-card>
     <mat-card>
-      <p class="taskIn">1</p>
+      <p class="taskIn">{{ taskCounts.inProgress }}</p>
       <p class="taskDes">Tasks in Progress</p>
     </mat-card>
     <mat-card>
-      <p class="taskIn">1</p>
+      <p class="taskIn">{{ taskCounts.awaitingFeedback }}</p>
       <p class="taskDes">Awaiting Feedback</p>
     </mat-card>
   </div>
   <div class="summaryTasks" [routerLink]="['/board']">
     <mat-card class="taskunger">
+      <div class="urgentIcon">
       <mat-icon>keyboard_double_arrow_up</mat-icon>
-      <p class="taskIn">1</p>
+      </div>
+      <p class="taskIn">{{ urgentTask?.status === 'urgent' ? 'Urgent' : urgentTask?.due_date | date }}</p>
       <hr>
-      <p class="taskDes"><b>May 05,2024</b>
+      <p class="taskDes"><b>{{ urgentTask?.due_date | date }}</b>
         <br>
         Task Overdue
       </p>
@@ -33,11 +35,11 @@
   <div class="summaryTasks" [routerLink]="['/board']">
     <mat-card class="todos">
       <p class="taskDes bg-r-dark"><mat-icon>edit</mat-icon></p>
-      <p class="taskIn">1 <br> Todos</p>
+      <p class="taskIn">{{ taskCounts.todo }} <br> Todos</p>
     </mat-card>
     <mat-card class="todos">
       <p class="taskDes bg-r-dark"><mat-icon>check</mat-icon></p>
-      <p class="taskIn">2 <br> Done</p>
+      <p class="taskIn">{{ taskCounts.done }} <br> Done</p>
     </mat-card>
   </div>
 </div>

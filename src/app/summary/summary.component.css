@@ -90,4 +90,13 @@ mat-card:hover{
   background-color: #2A3647;
   color: #ffffff;
 }
-
+.urgentIcon{
+  background-color: #ef0a22;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
