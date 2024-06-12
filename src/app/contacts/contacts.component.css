@@ -54,8 +54,8 @@
   cursor: pointer;
 }
 .contactName hr{
-  width: 100%;
-  margin: 0;
+  width: 95%;
+  margin: 10px;
 }
 .contactEmail{
   color: #29ABE2;
@@ -66,6 +66,18 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+.contactInitial{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  text-align: left;
+  color: #b7b7b7;
+  align-items: baseline;
+}
+.contactInitial hr{
+  color: #b7b7b7;
 }
 .contactNameIn{
   padding: 15px;

@@ -2,15 +2,19 @@
 <div class="content">
   <div class="contacts">
     <div *ngFor="let contact of contacts; let i = index" class="contactName">
+      <div class="contactInitial">{{ contact.initial }}
+        <hr>
+      </div>
+
       <div class="contactItem" (click)="clickContact(i)">
         <div class="contactNameHead">
-          <div class="contactNameIn" [style.background-color]="contact.color">{{ getInitials(contact.name) }}</div>        </div>
+          <div class="contactNameIn" [style.background-color]="contact.color">{{ getInitials(contact.name) }}</div>
+           </div>
         <div class="contentNameContent">
           <p>{{ contact.name }}</p>
           <p class="contactEmail">{{ contact.email }}</p>
         </div>
       </div>
-      <hr>
     </div>
   </div>
 

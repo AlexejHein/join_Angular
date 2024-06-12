@@ -35,7 +35,19 @@ export class ContactsComponent implements OnInit {
 
   getContacts() {
     this.contactsService.getContacts().subscribe(data => {
-      this.contacts = data;
+      let lastInitial = '';
+      this.contacts = data.sort((a, b) => a.name.localeCompare(b.name)); // Sort contacts alphabetically
+      this.contacts.forEach(contact => {
+        const currentInitial = contact.name[0].toUpperCase(); // Get current initial
+        if (currentInitial === lastInitial) {
+          // If current initial is the same as the last one, set it to an empty string
+          contact.initial = '';
+        } else {
+          // Otherwise, set it to the current initial and update lastInitial
+          contact.initial = currentInitial;
+          lastInitial = currentInitial;
+        }
+      });
       console.log('Contacts:', this.contacts);
     }, error => {
       console.error('Error fetching contacts:', error);
