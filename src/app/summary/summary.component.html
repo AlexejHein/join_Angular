@@ -22,9 +22,9 @@
   <div class="summaryTasks" [routerLink]="['/board']">
     <mat-card class="taskunger">
       <div class="urgentIcon">
-      <mat-icon>keyboard_double_arrow_up</mat-icon>
+        <mat-icon>keyboard_double_arrow_up</mat-icon>
       </div>
-      <p class="taskIn">{{ urgentTask?.status === 'urgent' ? 'Urgent' : urgentTask?.due_date | date }}</p>
+      <p class="taskIn">{{ taskCounts.urgent > 0 ? taskCounts.urgent + ' Urgent' : '0' }}</p>
       <hr>
       <p class="taskDes"><b>{{ urgentTask?.due_date | date }}</b>
         <br>
