@@ -1,4 +1,5 @@
 export interface Task {
+  subtasks: any;
   id: number;
   category: string;
   categoryColor: string;

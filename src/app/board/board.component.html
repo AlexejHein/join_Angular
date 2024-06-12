@@ -26,9 +26,9 @@
           <div class="taskHeader" [style.background-color]="task.categoryColor">{{ task.category }}</div>
           <div class="taskTitle">{{ task.title }}</div>
           <div class="taskContent">{{ task.description }}</div>
-          <div class="taskDone">
+          <div class="taskDone" *ngIf="task.subtasks && task.subtasks.length > 0">
             <div class="done">
-              <div class="process"></div>
+              <mat-progress-bar mode="determinate" [value]="getSubtaskProgress(task)"></mat-progress-bar>
             </div>
           </div>
           <div class="taskFooter">
@@ -56,9 +56,9 @@
           <div class="taskHeader" [style.background-color]="task.categoryColor">{{ task.category }}</div>
           <div class="taskTitle">{{ task.title }}</div>
           <div class="taskContent">{{ task.description }}</div>
-          <div class="taskDone">
+          <div class="taskDone" *ngIf="task.subtasks && task.subtasks.length > 0">
             <div class="done">
-              <div class="process"></div>
+              <mat-progress-bar mode="determinate" [value]="getSubtaskProgress(task)"></mat-progress-bar>
             </div>
           </div>
           <div class="taskFooter">
@@ -86,9 +86,9 @@
           <div class="taskHeader" [style.background-color]="task.categoryColor">{{ task.category }}</div>
           <div class="taskTitle">{{ task.title }}</div>
           <div class="taskContent">{{ task.description }}</div>
-          <div class="taskDone">
+          <div class="taskDone" *ngIf="task.subtasks && task.subtasks.length > 0">
             <div class="done">
-              <div class="process"></div>
+              <mat-progress-bar mode="determinate" [value]="getSubtaskProgress(task)"></mat-progress-bar>
             </div>
           </div>
           <div class="taskFooter">
@@ -116,9 +116,9 @@
           <div class="taskHeader" [style.background-color]="task.categoryColor">{{ task.category }}</div>
           <div class="taskTitle">{{ task.title }}</div>
           <div class="taskContent">{{ task.description }}</div>
-          <div class="taskDone">
+          <div class="taskDone" *ngIf="task.subtasks && task.subtasks.length > 0">
             <div class="done">
-              <div class="process"></div>
+              <mat-progress-bar mode="determinate" [value]="getSubtaskProgress(task)"></mat-progress-bar>
             </div>
           </div>
           <div class="taskFooter">

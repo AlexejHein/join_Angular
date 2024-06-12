@@ -31,6 +31,7 @@ import { AuthInterceptor } from './auth.interceptor';
 import {AuthService} from "./services/auth.service";
 import { EditTaskDialogComponent } from './edit-task-dialog/edit-task-dialog.component';
 import { NewCategoryComponent } from './add-task/new-category/new-category.component';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 
 
@@ -53,26 +54,27 @@ import { NewCategoryComponent } from './add-task/new-category/new-category.compo
     EditTaskDialogComponent,
     NewCategoryComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatCardModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    FormsModule,
-    MatMenuModule,
-    MatDialogModule,
-    DragDropModule,
-    MatCheckboxModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatCardModule,
+        MatInputModule,
+        MatIconModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        FormsModule,
+        MatMenuModule,
+        MatDialogModule,
+        DragDropModule,
+        MatCheckboxModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MatProgressBarModule,
+    ],
   providers: [
     AuthService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

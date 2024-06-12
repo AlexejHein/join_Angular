@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { TaskService } from '../services/task.service';
 import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
+import { Task } from '../models/Task';
 
 
 @Component({
@@ -58,5 +59,29 @@ export class TaskDialogComponent {
 
     return `${initials}`;
   }
+
+  toggleSubtask(subtask: Subtask) {
+    subtask.completed = !subtask.completed;
+    this.updateProgressBar();
+  }
+
+  updateProgressBar() {
+    const totalSubtasks = this.data.subtasks.length;
+    const completedSubtasks = this.data.subtasks.filter((subtask: { completed: any; }) => subtask.completed).length;
+    this.data.progress = (completedSubtasks / totalSubtasks) * 100;
+    this.taskService.updateTask(this.data).subscribe(
+      (updatedTask) => {
+        console.log('Task updated:', updatedTask);
+      },
+      (error) => {
+        console.error('Error updating task:', error);
+      }
+    );
+  }
+}
+
+interface Subtask {
+  title: string;
+  completed: boolean;
 }
 

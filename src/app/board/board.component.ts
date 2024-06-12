@@ -17,6 +17,7 @@ import { Subscription } from "rxjs";
 export class BoardComponent implements OnInit, OnDestroy {
   private taskDeletedSubscription: Subscription | undefined;
   contacts: Contact[] = [];
+  subtasks: Subtask[] = [];
 
 
   tasks: {
@@ -129,6 +130,18 @@ export class BoardComponent implements OnInit, OnDestroy {
       return words.map(word => word.charAt(0).toUpperCase()).join('');
     }
   }
+
+  getSubtaskProgress(task: Task): number {
+    const totalSubtasks = task.subtasks.length;
+    const completedSubtasks = task.subtasks.filter((subtask: { completed: any; }) => subtask.completed).length;
+    return (completedSubtasks / totalSubtasks) * 100;
+  }
+}
+
+
+interface Subtask {
+  title: string;
+  completed: boolean;
 }
 
 interface Contact {
