@@ -29,6 +29,7 @@
           <div class="taskDone" *ngIf="task.subtasks && task.subtasks.length > 0">
             <div class="done">
               <mat-progress-bar mode="determinate" [value]="getSubtaskProgress(task)"></mat-progress-bar>
+              <p>{{getCompletedSubtasks(task)}}/{{getTotalSubtasks(task)}} ToDos</p>
             </div>
           </div>
           <div class="taskFooter">
@@ -59,6 +60,7 @@
           <div class="taskDone" *ngIf="task.subtasks && task.subtasks.length > 0">
             <div class="done">
               <mat-progress-bar mode="determinate" [value]="getSubtaskProgress(task)"></mat-progress-bar>
+              <p>{{getCompletedSubtasks(task)}}/{{getTotalSubtasks(task)}} ToDos</p>
             </div>
           </div>
           <div class="taskFooter">
@@ -89,6 +91,7 @@
           <div class="taskDone" *ngIf="task.subtasks && task.subtasks.length > 0">
             <div class="done">
               <mat-progress-bar mode="determinate" [value]="getSubtaskProgress(task)"></mat-progress-bar>
+              <p>{{getCompletedSubtasks(task)}}/{{getTotalSubtasks(task)}} ToDos</p>
             </div>
           </div>
           <div class="taskFooter">
@@ -119,6 +122,7 @@
           <div class="taskDone" *ngIf="task.subtasks && task.subtasks.length > 0">
             <div class="done">
               <mat-progress-bar mode="determinate" [value]="getSubtaskProgress(task)"></mat-progress-bar>
+              <p>{{getCompletedSubtasks(task)}}/{{getTotalSubtasks(task)}} ToDos</p>
             </div>
           </div>
           <div class="taskFooter">

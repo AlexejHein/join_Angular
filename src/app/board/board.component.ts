@@ -136,6 +136,14 @@ export class BoardComponent implements OnInit, OnDestroy {
     const completedSubtasks = task.subtasks.filter((subtask: { completed: any; }) => subtask.completed).length;
     return (completedSubtasks / totalSubtasks) * 100;
   }
+
+  getTotalSubtasks(task: Task): number {
+    return task.subtasks ? task.subtasks.length : 0;
+  }
+
+  getCompletedSubtasks(task: Task): number {
+    return task.subtasks ? task.subtasks.filter((subtask: { completed: any; }) => subtask.completed).length : 0;
+  }
 }
 
 
