@@ -27,4 +27,6 @@ export class NewCategoryComponent {
     this.dialogRef.close({ name: this.newCategoryName, color: this.newCategoryColor });
     this.categoryResetService.resetCategory();
   }
+
+
 }

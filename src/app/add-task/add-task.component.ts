@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { TaskService } from '../services/task.service';
 import { ContactsService } from '../services/contacts.service';
 import { Router} from "@angular/router";
@@ -23,6 +23,9 @@ interface Category {
   styleUrls: ['./add-task.component.css']
 })
 export class AddTaskComponent implements OnInit {
+
+  @Input() showMenu: boolean = true;
+  @Output() taskCreated = new EventEmitter<void>();
 
   categories: Category[] = [{ name: 'Sales', color: '#b0b4e0' }, { name: 'Backoffice', color: '#0077d9' }, { name: 'New Category', color: '' }];
 
@@ -210,5 +213,6 @@ export class AddTaskComponent implements OnInit {
         console.error('Error creating task:', error);
       });
     }
+    this.taskCreated.emit();
   }
 }

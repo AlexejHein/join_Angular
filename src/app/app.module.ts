@@ -32,6 +32,7 @@ import {AuthService} from "./services/auth.service";
 import { EditTaskDialogComponent } from './edit-task-dialog/edit-task-dialog.component';
 import { NewCategoryComponent } from './add-task/new-category/new-category.component';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import { NewTaskDialogComponent } from './board/new-task-dialog/new-task-dialog.component';
 
 
 
@@ -53,6 +54,7 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
     TaskDialogComponent,
     EditTaskDialogComponent,
     NewCategoryComponent,
+    NewTaskDialogComponent,
   ],
     imports: [
         BrowserModule,

@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
+import { NewTaskDialogComponent} from "./new-task-dialog/new-task-dialog.component";
 import { MatDialog } from '@angular/material/dialog';
 import { TaskService } from '../services/task.service';
 import { ContactsService } from '../services/contacts.service';
@@ -84,6 +85,14 @@ export class BoardComponent implements OnInit, OnDestroy {
       width: '600px',
       height: '850px',
       data: task
+    });
+  }
+
+  openNewTaskDialog(): void {
+    this.dialog.open(NewTaskDialogComponent, {
+      width: '1000px',
+      height: '850px',
+      data: {}
     });
   }
 

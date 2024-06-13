@@ -1,4 +1,6 @@
-<app-menu></app-menu>
+<ng-container *ngIf="showMenu">
+  <app-menu></app-menu>
+</ng-container>
 <div class="content">
   <h2>Add Task</h2>
   <div class="addTaskContent">
