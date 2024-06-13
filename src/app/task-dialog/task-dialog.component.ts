@@ -1,9 +1,8 @@
 import { Component, Inject } from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { TaskService } from '../services/task.service';
 import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
 import { Task } from '../models/Task';
-
 
 @Component({
   selector: 'app-task-dialog',
@@ -14,7 +13,7 @@ export class TaskDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<TaskDialogComponent>,
     public taskService: TaskService,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: Task,
     private dialog: MatDialog
   ) {}
 
@@ -62,26 +61,26 @@ export class TaskDialogComponent {
 
   toggleSubtask(subtask: Subtask) {
     subtask.completed = !subtask.completed;
-    this.updateProgressBar();
-  }
-
-  updateProgressBar() {
-    const totalSubtasks = this.data.subtasks.length;
-    const completedSubtasks = this.data.subtasks.filter((subtask: { completed: any; }) => subtask.completed).length;
-    this.data.progress = (completedSubtasks / totalSubtasks) * 100;
     this.taskService.updateTask(this.data).subscribe(
       (updatedTask) => {
         console.log('Task updated:', updatedTask);
+        this.data = updatedTask; // Aktualisieren Sie den lokalen Zustand nach der erfolgreichen Aktualisierung
+        this.updateProgressBar();
       },
       (error) => {
         console.error('Error updating task:', error);
       }
     );
   }
+
+  updateProgressBar() {
+    const totalSubtasks = this.data.subtasks.length;
+    const completedSubtasks = this.data.subtasks.filter((subtask: { completed: any; }) => subtask.completed).length;
+    this.data.subtasks = (completedSubtasks / totalSubtasks) * 100;
+  }
 }
 
-interface Subtask {
-  title: string;
+export interface Subtask {
+  name: string;
   completed: boolean;
 }
-
