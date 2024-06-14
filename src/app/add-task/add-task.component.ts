@@ -1,11 +1,11 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { TaskService } from '../services/task.service';
 import { ContactsService } from '../services/contacts.service';
-import { Router} from "@angular/router";
+import {NavigationExtras, Router} from "@angular/router";
 import { MatDialog } from '@angular/material/dialog';
 import {NewCategoryComponent} from "./new-category/new-category.component";
 import { CategoryResetService} from "../services/category-reset.service";
-
+import { TaskUpdateService} from "../services/task-update.service";
 
 interface Subtask {
   name: string;
@@ -63,12 +63,14 @@ export class AddTaskComponent implements OnInit {
     dueDate: '',
     priority: ''
   };
+  private dialogRef: any;
 
   constructor(private taskService: TaskService,
               private contactsService: ContactsService,
               private router: Router,
               private dialog: MatDialog,
-              private categoryResetService: CategoryResetService
+              private categoryResetService: CategoryResetService,
+              private taskUpdateService: TaskUpdateService
               ) {}
 
   ngOnInit() {
@@ -209,10 +211,17 @@ export class AddTaskComponent implements OnInit {
         console.log('Task data:', task);
         this.clearFields();
         this.router.navigate(['/board']).then(r => {});
+        this.taskUpdateService.taskUpdated();
       }, (error: any) => {
         console.error('Error creating task:', error);
       });
     }
     this.taskCreated.emit();
+    this.dialogRef.close();
+    const navigationExtras: NavigationExtras = {
+      queryParams: { 'refresh': new Date().getTime() }
+    };
+    this.router.navigate(['/board'], navigationExtras).then(r => {});
   }
+
 }

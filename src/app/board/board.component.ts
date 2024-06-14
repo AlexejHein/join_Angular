@@ -7,6 +7,7 @@ import { TaskService } from '../services/task.service';
 import { ContactsService } from '../services/contacts.service';
 import { Task } from '../models/Task';
 import { Subscription } from "rxjs";
+import { TaskUpdateService} from "../services/task-update.service";
 
 
 @Component({
@@ -36,6 +37,7 @@ export class BoardComponent implements OnInit, OnDestroy {
   constructor(private dialog: MatDialog,
               private taskService: TaskService,
               private contactService: ContactsService,
+              private taskUpdateService: TaskUpdateService
               ) {}
 
   ngOnInit(): void {
@@ -45,6 +47,10 @@ export class BoardComponent implements OnInit, OnDestroy {
     this.taskService.taskDeleted.subscribe(() => {
       this.loadTasks();
     });
+    this.taskUpdateService.taskUpdated$.subscribe(() => {
+      this.loadTasks();
+    }
+    );
   }
 
   ngOnDestroy(): void {
@@ -91,24 +97,10 @@ export class BoardComponent implements OnInit, OnDestroy {
   openNewTaskDialog(): void {
     this.dialog.open(NewTaskDialogComponent, {
       width: '1000px',
-      height: '850px',
+      height: '1000px',
       data: {}
     });
   }
-
-  /**
-  createNewTask(): Task {
-    return {
-      header: '',
-      title: '',
-      content: '',
-      date: '',
-      person: '',
-      priority: 'low',
-      status: 'todo'
-    };
-  }
-    **/
 
   drop(event: CdkDragDrop<Task[]>): void {
     if (event.previousContainer !== event.container) {
