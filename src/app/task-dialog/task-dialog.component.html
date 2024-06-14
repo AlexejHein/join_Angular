@@ -13,14 +13,16 @@
     <div *ngIf="data.priority === 'medium'" class="medium">Medium<mat-icon>keyboard_double_arrow_left</mat-icon></div>
     <div *ngIf="data.priority === 'low'" class="low">Low <mat-icon>keyboard_double_arrow_down</mat-icon></div>
     </div>
-  <div *ngFor="let subtask of data.subtasks">
+  <div class="subtasks" *ngFor="let subtask of data.subtasks">
     <p>{{ subtask.name }}</p>
     <mat-checkbox [checked]="subtask.completed" (change)="toggleSubtask(subtask)">{{ subtask.title }}</mat-checkbox>
   </div>
   <p><strong>Assign To:</strong> </p>
   <br>
-  <div class="presonBox">{{ getInitialsAndName(data.assigned_to) }}</div>
-  <div>{{ data.assigned_to }}</div>
+  <div class="assignTo">
+    <div class="presonBox">{{ getInitialsAndName(data.assigned_to) }}</div>
+    <div>{{ data.assigned_to }}</div>
+  </div>
 
 </mat-dialog-content>
 <mat-dialog-actions>
