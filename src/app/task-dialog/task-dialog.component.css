@@ -110,18 +110,33 @@ mat-dialog-actions{
   height: 40px;
   font-size: 20px;
   border-radius: 5px;
-  color: #ffffff;
-  background-color: #2A3647;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
 }
+.delete{
+  margin: 0;
+  padding: 3px;
+  border-radius: 5px 0 0 5px;
+  border: solid 1px #2A3647;
+  cursor: pointer;
+}
+.delete:hover{
+  background-color: #2A3647;
+  color: #ffffff;
+}
 .edit{
-  background-color: #ffffff;
-  color: #2A3647;
+  background-color: #2A3647;
+  color: #ffffff;
   margin: 0;
   padding: 3px;
   border-radius: 0 5px 5px 0;
+  border: solid 1px #2A3647;
+  cursor: pointer;
+}
+.edit:hover{
+  background-color: #ffffff;
+  color: #2A3647;
 }
 .addTaskContent {
   display: flex;
