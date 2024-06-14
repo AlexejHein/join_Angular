@@ -66,22 +66,18 @@ export class BoardComponent implements OnInit, OnDestroy {
   }
 
   loadTasks(): void {
-    const storedTasks = localStorage.getItem('tasks');
-    if (storedTasks) {
-      this.tasks = JSON.parse(storedTasks);
-    } else {
-      this.taskService.getTasks().subscribe((data: Task[]) => {
-        console.log('Tasks received from backend:', data);
-        this.tasks.todo = data.filter(task => task.status === 'todo');
-        this.tasks.inProgress = data.filter(task => task.status === 'inProgress');
-        this.tasks.awaitingFeedback = data.filter(task => task.status === 'awaitingFeedback');
-        this.tasks.done = data.filter(task => task.status === 'done');
-        console.log('Tasks after categorizing:', this.tasks);
-        localStorage.setItem('tasks', JSON.stringify(this.tasks));
-      }, error => {
-        console.error('Error loading tasks:', error);
-      });
-    }
+    this.taskService.getTasks().subscribe((data: Task[]) => {
+      console.log('Tasks received from backend:', data);
+      this.tasks.todo = data.filter(task => task.status === 'todo');
+      this.tasks.inProgress = data.filter(task => task.status === 'inProgress');
+      this.tasks.awaitingFeedback = data.filter(task => task.status === 'awaitingFeedback');
+      this.tasks.done = data.filter(task => task.status === 'done');
+      console.log('Tasks after categorizing:', this.tasks);
+      localStorage.setItem('tasks', JSON.stringify(this.tasks));
+      this.filteredTasks = this.tasks; // Set filteredTasks to tasks after loading tasks from backend
+    }, error => {
+      console.error('Error loading tasks:', error);
+    });
   }
 
   getColor(name: string): string {
@@ -125,6 +121,11 @@ export class BoardComponent implements OnInit, OnDestroy {
         this.taskService.addTask(newTask).subscribe(() => {
           console.log('Task created successfully');
           this.loadTasks(); // Refresh the tasks after a new task is created
+          // Add the new task to the filteredTasks list
+          if (!this.filteredTasks[status]) {
+            this.filteredTasks[status] = [];
+          }
+          this.filteredTasks[status].push(newTask);
         }, (error: any) => {
           console.error('Error creating task:', error);
         });
