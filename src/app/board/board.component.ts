@@ -8,6 +8,7 @@ import { ContactsService } from '../services/contacts.service';
 import { Task } from '../models/Task';
 import { Subscription } from "rxjs";
 import { TaskUpdateService} from "../services/task-update.service";
+import {  StatusService} from "../services/status.service";
 
 
 @Component({
@@ -37,7 +38,8 @@ export class BoardComponent implements OnInit, OnDestroy {
   constructor(private dialog: MatDialog,
               private taskService: TaskService,
               private contactService: ContactsService,
-              private taskUpdateService: TaskUpdateService
+              private taskUpdateService: TaskUpdateService,
+              private statusService: StatusService,
               ) {}
 
   ngOnInit(): void {
@@ -94,11 +96,29 @@ export class BoardComponent implements OnInit, OnDestroy {
     });
   }
 
-  openNewTaskDialog(): void {
-    this.dialog.open(NewTaskDialogComponent, {
+  openNewTaskDialog(status: 'todo' | 'done' | 'inProgress' | 'awaitingFeedback'): void {
+    this.statusService.changeStatus(status);
+    console.log('Status:', status); // Log the status
+    const dialogRef = this.dialog.open(NewTaskDialogComponent, {
       width: '1000px',
       height: '1000px',
       data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        const newTask = {
+          ...result,
+          status: status
+        };
+        console.log('New task:', newTask); // Log the new task object
+        this.taskService.addTask(newTask).subscribe(() => {
+          console.log('Task created successfully');
+          this.loadTasks(); // Refresh the tasks after a new task is created
+        }, (error: any) => {
+          console.error('Error creating task:', error);
+        });
+      }
     });
   }
 

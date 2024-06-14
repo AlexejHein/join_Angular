@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import {NewCategoryComponent} from "./new-category/new-category.component";
 import { CategoryResetService} from "../services/category-reset.service";
 import { TaskUpdateService} from "../services/task-update.service";
+import { StatusService} from "../services/status.service";
 
 interface Subtask {
   name: string;
@@ -28,6 +29,7 @@ export class AddTaskComponent implements OnInit {
   @Output() taskCreated = new EventEmitter<void>();
 
   categories: Category[] = [{ name: 'Sales', color: '#b0b4e0' }, { name: 'Backoffice', color: '#0077d9' }, { name: 'New Category', color: '' }];
+  status: 'todo' | 'done' | 'inProgress' | 'awaitingFeedback' = 'todo';
 
 
   newSubtaskName = '';
@@ -70,10 +72,12 @@ export class AddTaskComponent implements OnInit {
               private router: Router,
               private dialog: MatDialog,
               private categoryResetService: CategoryResetService,
-              private taskUpdateService: TaskUpdateService
+              private taskUpdateService: TaskUpdateService,
+              private statusService: StatusService
               ) {}
 
   ngOnInit() {
+    this.statusService.currentStatus.subscribe(status => this.status = status);
     this.resetButtonColors();
     this.loadContacts();
     this.categoryResetService.resetCategory$.subscribe(() => {
@@ -199,7 +203,7 @@ export class AddTaskComponent implements OnInit {
         assigned_to: this.assignedTo!,
         due_date: this.dueDate instanceof Date ? this.formatDate(this.dueDate) : '',
         priority: this.selectedPriority,
-        status: 'todo',
+        status: this.status,
         subtasks: this.subtasks.map(subtask => ({
           name: subtask.name,
           completed: subtask.completed

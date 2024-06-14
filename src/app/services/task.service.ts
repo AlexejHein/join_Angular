@@ -18,6 +18,7 @@ export class TaskService {
   }
 
   addTask(task: Task): Observable<Task> {
+    console.log('Adding task:', task); // Log the task object
     return this.http.post<Task>(this.apiUrl, task);
   }
 

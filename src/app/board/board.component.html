@@ -8,7 +8,7 @@
         <input matInput placeholder="Search">
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
-      <button mat-button (click)="openNewTaskDialog()">Add Task
+      <button mat-button (click)="openNewTaskDialog('todo')">Add Task
         <mat-icon>add</mat-icon>
       </button>
     </div>
@@ -19,7 +19,7 @@
     <div class="todos" cdkDropList [cdkDropListData]="tasks.todo" (cdkDropListDropped)="drop($event)" data-status="todo">
       <div class="todosContentHeader">
         <h3>Todo</h3>
-        <mat-icon>add_box</mat-icon>
+        <mat-icon (click)="openNewTaskDialog('todo')">add_box</mat-icon>
       </div>
       <ng-container *ngFor="let task of tasks.todo">
         <mat-card class="task" cdkDrag (click)="openTaskDialog(task)">
@@ -50,7 +50,7 @@
     <div class="todos" cdkDropList [cdkDropListData]="tasks.inProgress" (cdkDropListDropped)="drop($event)" data-status="inProgress">
       <div class="todosContentHeader">
         <h3>In Progress</h3>
-        <mat-icon>add_box</mat-icon>
+        <mat-icon (click)="openNewTaskDialog('inProgress')">add_box</mat-icon>
       </div>
       <ng-container *ngFor="let task of tasks.inProgress">
         <mat-card class="task" cdkDrag (click)="openTaskDialog(task)">
@@ -81,7 +81,7 @@
     <div class="todos" cdkDropList [cdkDropListData]="tasks.awaitingFeedback" (cdkDropListDropped)="drop($event)" data-status="awaitingFeedback">
       <div class="todosContentHeader">
         <h3>Awaiting Feedback</h3>
-        <mat-icon>add_box</mat-icon>
+        <mat-icon (click)="openNewTaskDialog('awaitingFeedback')">add_box</mat-icon>
       </div>
       <ng-container *ngFor="let task of tasks.awaitingFeedback">
         <mat-card class="task" cdkDrag (click)="openTaskDialog(task)">
@@ -112,7 +112,7 @@
     <div class="todos" cdkDropList [cdkDropListData]="tasks.done" (cdkDropListDropped)="drop($event)" data-status="done">
       <div class="todosContentHeader">
         <h3>Done</h3>
-        <mat-icon>add_box</mat-icon>
+        <mat-icon (click)="openNewTaskDialog('done')">add_box</mat-icon>
       </div>
       <ng-container *ngFor="let task of tasks.done">
         <mat-card class="task" cdkDrag (click)="openTaskDialog(task)">
