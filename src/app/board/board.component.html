@@ -5,7 +5,7 @@
     <div class="boardHeaderSearch">
       <mat-form-field appearance="outline">
         <mat-label>Search</mat-label>
-        <input matInput placeholder="Search">
+        <input matInput placeholder="Search" [(ngModel)]="searchTerm" (input)="searchTasks()">
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
       <button mat-button (click)="openNewTaskDialog('todo')">Add Task
@@ -21,8 +21,8 @@
         <h3>Todo</h3>
         <mat-icon (click)="openNewTaskDialog('todo')">add_box</mat-icon>
       </div>
-      <ng-container *ngFor="let task of tasks.todo">
-        <mat-card class="task" cdkDrag (click)="openTaskDialog(task)">
+      <ng-container *ngFor="let task of filteredTasks.todo">
+      <mat-card class="task" cdkDrag (click)="openTaskDialog(task)">
           <div class="taskHeader" [style.background-color]="task.categoryColor">{{ task.category }}</div>
           <div class="taskTitle">{{ task.title }}</div>
           <div class="taskContent">{{ task.description }}</div>
@@ -52,7 +52,7 @@
         <h3>In Progress</h3>
         <mat-icon (click)="openNewTaskDialog('inProgress')">add_box</mat-icon>
       </div>
-      <ng-container *ngFor="let task of tasks.inProgress">
+      <ng-container *ngFor="let task of filteredTasks.inProgress">
         <mat-card class="task" cdkDrag (click)="openTaskDialog(task)">
           <div class="taskHeader" [style.background-color]="task.categoryColor">{{ task.category }}</div>
           <div class="taskTitle">{{ task.title }}</div>
@@ -83,7 +83,7 @@
         <h3>Awaiting Feedback</h3>
         <mat-icon (click)="openNewTaskDialog('awaitingFeedback')">add_box</mat-icon>
       </div>
-      <ng-container *ngFor="let task of tasks.awaitingFeedback">
+      <ng-container *ngFor="let task of filteredTasks.awaitingFeedback">
         <mat-card class="task" cdkDrag (click)="openTaskDialog(task)">
           <div class="taskHeader" [style.background-color]="task.categoryColor">{{ task.category }}</div>
           <div class="taskTitle">{{ task.title }}</div>
@@ -114,7 +114,7 @@
         <h3>Done</h3>
         <mat-icon (click)="openNewTaskDialog('done')">add_box</mat-icon>
       </div>
-      <ng-container *ngFor="let task of tasks.done">
+      <ng-container *ngFor="let task of filteredTasks.done">
         <mat-card class="task" cdkDrag (click)="openTaskDialog(task)">
           <div class="taskHeader" [style.background-color]="task.categoryColor">{{ task.category }}</div>
           <div class="taskTitle">{{ task.title }}</div>

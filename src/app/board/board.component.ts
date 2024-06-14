@@ -35,6 +35,9 @@ export class BoardComponent implements OnInit, OnDestroy {
     done: []
   };
 
+  searchTerm: string = '';
+  filteredTasks: any = {};
+
   constructor(private dialog: MatDialog,
               private taskService: TaskService,
               private contactService: ContactsService,
@@ -50,9 +53,10 @@ export class BoardComponent implements OnInit, OnDestroy {
       this.loadTasks();
     });
     this.taskUpdateService.taskUpdated$.subscribe(() => {
-      this.loadTasks();
-    }
+        this.loadTasks();
+      }
     );
+    this.filteredTasks = this.tasks; // Initialisieren Sie filteredTasks beim Laden der Seite
   }
 
   ngOnDestroy(): void {
@@ -62,16 +66,22 @@ export class BoardComponent implements OnInit, OnDestroy {
   }
 
   loadTasks(): void {
-    this.taskService.getTasks().subscribe((data: Task[]) => {
-      console.log('Tasks received from backend:', data);
-      this.tasks.todo = data.filter(task => task.status === 'todo');
-      this.tasks.inProgress = data.filter(task => task.status === 'inProgress');
-      this.tasks.awaitingFeedback = data.filter(task => task.status === 'awaitingFeedback');
-      this.tasks.done = data.filter(task => task.status === 'done');
-      console.log('Tasks after categorizing:', this.tasks);
-    }, error => {
-      console.error('Error loading tasks:', error);
-    });
+    const storedTasks = localStorage.getItem('tasks');
+    if (storedTasks) {
+      this.tasks = JSON.parse(storedTasks);
+    } else {
+      this.taskService.getTasks().subscribe((data: Task[]) => {
+        console.log('Tasks received from backend:', data);
+        this.tasks.todo = data.filter(task => task.status === 'todo');
+        this.tasks.inProgress = data.filter(task => task.status === 'inProgress');
+        this.tasks.awaitingFeedback = data.filter(task => task.status === 'awaitingFeedback');
+        this.tasks.done = data.filter(task => task.status === 'done');
+        console.log('Tasks after categorizing:', this.tasks);
+        localStorage.setItem('tasks', JSON.stringify(this.tasks));
+      }, error => {
+        console.error('Error loading tasks:', error);
+      });
+    }
   }
 
   getColor(name: string): string {
@@ -134,6 +144,7 @@ export class BoardComponent implements OnInit, OnDestroy {
             event.container.data,
             event.previousIndex,
             event.currentIndex);
+          localStorage.setItem('tasks', JSON.stringify(this.tasks));
         }, error => {
           console.error('Error updating task:', error);
         });
@@ -164,6 +175,26 @@ export class BoardComponent implements OnInit, OnDestroy {
 
   getCompletedSubtasks(task: Task): number {
     return task.subtasks ? task.subtasks.filter((subtask: { completed: any; }) => subtask.completed).length : 0;
+  }
+
+  searchTasks() {
+    if (this.searchTerm.trim() === '') {
+      this.filteredTasks = this.tasks;
+    } else {
+      this.filteredTasks = {
+        todo: [],
+        inProgress: [],
+        awaitingFeedback: [],
+        done: []
+      };
+
+      for (const status in this.tasks) {
+        this.filteredTasks[status] = this.tasks[status as 'todo' | 'done' | 'inProgress' | 'awaitingFeedback'].filter((task: { title: string; description: string; }) =>
+          task.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          task.description.toLowerCase().includes(this.searchTerm.toLowerCase())
+        );
+      }
+    }
   }
 }
 
