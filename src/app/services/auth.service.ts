@@ -12,6 +12,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   register(user: any): Observable<any> {
+    console.log('Sending registration request:', user); // Debugging-Ausgabe
     return this.http.post(`${this.baseUrl}/signup/`, user);
   }
 

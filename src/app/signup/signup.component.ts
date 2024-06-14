@@ -21,6 +21,8 @@ export class SignupComponent {
       email: this.email
     };
 
+    console.log('Registering user:', user); // Debugging-Ausgabe
+
     this.authService.register(user).subscribe(
       response => {
         console.log('User registered successfully!', response);
@@ -28,7 +30,11 @@ export class SignupComponent {
       },
       error => {
         console.error('There was an error during the registration process!', error);
+        if (error.status === 400) {
+          console.error('Validation errors:', error.error); // Detaillierte Fehlermeldung ausgeben
+        }
       }
     );
   }
+
 }
