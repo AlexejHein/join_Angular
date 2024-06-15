@@ -37,3 +37,36 @@
     </div>
   </div>
 </mat-drawer-container>
+
+<div class="menuMobile">
+  <div class="header">
+    <div class="example-sidenav-content">
+      <div class="menuLeft">
+        Kanban Project Management Tool
+      </div>
+      <img class="logo" src="assets/img/join-logo-dunkel-klein.png" alt="">
+      <div class="menuRight">
+        <mat-icon>info</mat-icon>
+        <div class="loginName" [matMenuTriggerFor]="menu">{{ getInitials(name) }}</div>
+        <mat-menu #menu="matMenu">
+          <button class="logout" mat-menu-item (click)="logout()">Logout</button>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div [routerLink]="['/summary']" class="menu-item">
+      <mat-icon>space_dashboard</mat-icon>
+    </div>
+    <div [routerLink]="['/board']" class="menu-item">
+      <mat-icon>dashboard</mat-icon>
+    </div>
+    <div [routerLink]="['/add-task']" class="menu-item">
+      <mat-icon>add_task</mat-icon>
+    </div>
+    <div [routerLink]="['/contacts']" class="menu-item">
+      <mat-icon>person_add</mat-icon>
+    </div>
+  </div>
+</div>
