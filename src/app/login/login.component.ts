@@ -22,12 +22,11 @@ export class LoginComponent {
       password: this.password
     };
 
-    console.log(credentials);
-
     this.authService.login(credentials).subscribe(
       response => {
         console.log('User logged in successfully!', response);
         localStorage.setItem('token', response.access);
+        localStorage.setItem('username', this.username);
         this.router.navigate(['/summary']).then(r => {});
       },
       error => {
