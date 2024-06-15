@@ -30,7 +30,7 @@
     </div>
     <div class="menuRight">
       <mat-icon>info</mat-icon>
-      <div class="loginName" [matMenuTriggerFor]="menu">AH</div>
+      <div class="loginName" [matMenuTriggerFor]="menu">{{ getInitials(name) }}</div>
       <mat-menu #menu="matMenu">
         <button class="logout" mat-menu-item (click)="logout()">Logout</button>
       </mat-menu>
