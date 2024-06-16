@@ -101,3 +101,29 @@ mat-card:hover{
   justify-content: center;
   align-items: center;
 }
+@media screen and (max-width: 768px){
+  .summaryHeader{
+    font-size: 20px;
+  }
+  .h2Haeder{
+    font-size: 40px;
+  }
+  .summaryHeader hr{
+    height: 50px;
+  }
+  .content{
+    padding: 50px;
+    width: 90%;
+  }
+  mat-card{
+    width: 150px;
+    height: 150px;
+    font-size: 20px;
+  }
+  .taskunger{
+    width: 490px;
+  }
+  .todos{
+    width: 235px;
+  }
+}
