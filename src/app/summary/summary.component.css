@@ -163,10 +163,10 @@ mat-card:hover{
     gap: 0;
   }
   .taskunger{
-    width: 350px;
+    width: 340px;
   }
   .todos{
-    width: 175px;
+    width: 160px;
   }
   mat-card p{
     font-size: 15px;
