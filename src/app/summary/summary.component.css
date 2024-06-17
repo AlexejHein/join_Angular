@@ -112,8 +112,9 @@ mat-card:hover{
     height: 50px;
   }
   .content{
-    padding: 50px;
+    padding: 0;
     width: 90%;
+    margin: 0 auto;
   }
   mat-card{
     width: 150px;
@@ -125,5 +126,38 @@ mat-card:hover{
   }
   .todos{
     width: 235px;
+  }
+}
+@media screen and (max-width: 600px){
+  .summaryHeader{
+    font-size: 15px;
+  }
+  .h2Haeder{
+    font-size: 30px;
+  }
+  .summaryHeader hr{
+    height: 40px;
+  }
+  .content{
+    padding: 30px;
+    width: 90%;
+  }
+  mat-card{
+    width: 100px;
+    height: 100px;
+    font-size: 15px;
+    gap: 0;
+  }
+  .taskunger{
+    width: 350px;
+  }
+  .todos{
+    width: 175px;
+  }
+  mat-card p{
+    font-size: 15px;
+  }
+  hr{
+    height: 50px;
   }
 }
