@@ -129,6 +129,9 @@ mat-card:hover{
   }
 }
 @media screen and (max-width: 600px){
+  p{
+    margin: 0;
+  }
   .summaryHeader{
     font-size: 15px;
   }
