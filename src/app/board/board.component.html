@@ -40,6 +40,8 @@
               <mat-icon *ngIf="task.priority === 'urgent'">keyboard_double_arrow_up</mat-icon>
             </div>
           </div>
+        <mat-icon class="navigate" (click)="moveTask(task, 'backward', $event)">keyboard_arrow_up</mat-icon>
+        <mat-icon class="navigate" (click)="moveTask(task, 'forward', $event)">keyboard_arrow_down</mat-icon>
         </mat-card>
         <!-- Placeholder für Todo Section -->
         <mat-card class="taskPlaceholder" *cdkDragPlaceholder></mat-card>
@@ -71,6 +73,8 @@
               <mat-icon *ngIf="task.priority === 'urgent'">keyboard_double_arrow_up</mat-icon>
             </div>
           </div>
+          <mat-icon class="navigate" (click)="moveTask(task, 'backward', $event)">keyboard_arrow_up</mat-icon>
+          <mat-icon class="navigate" (click)="moveTask(task, 'forward', $event)">keyboard_arrow_down</mat-icon>
         </mat-card>
         <!-- Placeholder für In Progress Section -->
         <mat-card class="taskPlaceholder" *cdkDragPlaceholder></mat-card>
@@ -102,6 +106,8 @@
               <mat-icon *ngIf="task.priority === 'urgent'">keyboard_double_arrow_up</mat-icon>
             </div>
           </div>
+          <mat-icon class="navigate" (click)="moveTask(task, 'backward', $event)">keyboard_arrow_up</mat-icon>
+          <mat-icon class="navigate" (click)="moveTask(task, 'forward', $event)">keyboard_arrow_down</mat-icon>
         </mat-card>
         <!-- Placeholder für Awaiting Feedback Section -->
         <mat-card class="taskPlaceholder" *cdkDragPlaceholder></mat-card>
@@ -133,6 +139,8 @@
               <mat-icon *ngIf="task.priority === 'urgent'">keyboard_double_arrow_up</mat-icon>
             </div>
           </div>
+          <mat-icon class="navigate" (click)="moveTask(task, 'backward', $event)">keyboard_arrow_up</mat-icon>
+          <mat-icon class="navigate" (click)="moveTask(task, 'forward', $event)">keyboard_arrow_down</mat-icon>
         </mat-card>
         <!-- Placeholder für Done Section -->
         <mat-card class="taskPlaceholder" *cdkDragPlaceholder></mat-card>

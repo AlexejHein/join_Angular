@@ -191,3 +191,12 @@ button{
 .task.cdk-drag-placeholder {
   opacity: 0.4;
 }
+.navigate{
+  color: #2A3647!important;
+  font-size: 24px;
+}
+@media (min-width: 748px) {
+  .navigate{
+    display: none;
+  }
+}

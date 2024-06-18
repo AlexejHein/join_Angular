@@ -155,6 +155,26 @@ export class BoardComponent implements OnInit, OnDestroy {
     }
   }
 
+  moveTask(task: Task, direction: 'forward' | 'backward', event: Event): void {
+    event.stopPropagation(); // Verhindert das Auslösen des Klick-Events auf die übergeordneten Elemente
+
+    const statuses = ['todo', 'inProgress', 'awaitingFeedback', 'done'];
+    const currentIndex = statuses.indexOf(task.status);
+    let newIndex = direction === 'forward' ? currentIndex + 1 : currentIndex - 1;
+
+    // Ensure the new index is within the array bounds
+    newIndex = Math.max(0, Math.min(newIndex, statuses.length - 1));
+
+    const newStatus = statuses[newIndex];
+    this.taskService.updateTaskStatus(task.id, newStatus).subscribe(updatedTask => {
+      console.log('Task updated:', updatedTask);
+      this.loadTasks(); // Refresh the tasks after a task is moved
+      // Code to visually move the task to the new section using Angular animations
+    }, error => {
+      console.error('Error updating task:', error);
+    });
+  }
+
   getInitials(name: string): string {
     const words = name.split(' ');
     if (words.length === 1) {
