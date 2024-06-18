@@ -16,6 +16,12 @@
     align-items: center;
   }
 }
+@media screen and (max-width: 748px){
+  .mat-dialog-container {
+    max-width: 400px !important;
+    height: 850px !important;
+  }
+}
 .contacts{
   background-color: #ffffff;
   width: 30%;

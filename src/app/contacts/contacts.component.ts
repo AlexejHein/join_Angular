@@ -69,9 +69,12 @@ export class ContactsComponent implements OnInit {
   }
 
   openDialog(contact: any): void {
+    const width = window.innerWidth < 748 ? '400px' : '850px';
+    const height = window.innerWidth < 748 ? '850px' : '400px';
+
     const dialogRef = this.dialog.open(DialogEditContactComponent, {
-      width: '850px',
-      height: '400px',
+      width: width,
+      height: height,
       data: contact
     });
 
@@ -85,9 +88,12 @@ export class ContactsComponent implements OnInit {
   }
 
   openAddDialog(): void {
+    const width = window.innerWidth < 748 ? '400px' : '850px';
+    const height = window.innerWidth < 748 ? '850px' : '400px';
+
     const dialogRef = this.dialog.open(DialogAddContactComponent, {
-      width: '850px',
-      height: '400px',
+      width: width,
+      height: height,
       data: { name: '', email: '', phone: '' }
     });
 

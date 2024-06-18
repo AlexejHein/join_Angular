@@ -6,6 +6,11 @@
   justify-content: space-between;
   align-items: center;
 }
+@media screen and (max-width: 768px){
+  .content{
+    flex-direction: column;
+  }
+}
 .left{
   width: 50%;
   height: 100%;
@@ -17,8 +22,13 @@
   align-items: center;
   gap: 20px;
 }
+@media screen and (max-width: 768px){
+  .left{
+    width: 100%;
+  }
+}
 .left p{
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bolder;
 }
 .buttons{
