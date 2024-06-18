@@ -55,7 +55,7 @@ button{
     gap: 16px !important;
   }
   .boardHeader{
-    align-items: flex-start;
+    align-items: flex-start!important;
     margin-bottom: 8px;
     flex-direction: column;
   }

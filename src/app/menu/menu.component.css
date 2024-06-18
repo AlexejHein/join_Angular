@@ -125,6 +125,7 @@ img{
   .example-sidenav-content{
     width: 100%;
     position: fixed;
+    z-index: 30;
   }
   .menuLeft{
     display: none;
@@ -132,6 +133,8 @@ img{
   .logo{
     display: block;
     width: 30px;
-
+  }
+  .footer{
+    z-index: 30;
   }
 }
