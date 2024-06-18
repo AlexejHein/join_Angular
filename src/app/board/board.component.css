@@ -192,8 +192,13 @@ button{
   opacity: 0.4;
 }
 .navigate{
+  position: absolute;
+  right: 15px;
   color: #2A3647!important;
   font-size: 24px;
+}
+.down{
+  top: 50px;
 }
 @media (min-width: 748px) {
   .navigate{
