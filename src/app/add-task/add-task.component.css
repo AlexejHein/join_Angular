@@ -47,6 +47,22 @@ hr{
   height: 100%;
   background-color: #2A3647;
 }
+@media (max-width: 1200px) {
+  .content {
+    margin: 0;
+  }
+  h2{
+    font-size: 36px;
+    margin-bottom: 50px;
+  }
+  hr {
+    display: none;
+  }
+  .addTaskContent{
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+}
 ul{
   margin: -20px;
   overflow: scroll;
