@@ -41,6 +41,25 @@ button{
   align-items: flex-start;
   z-index: 20;
 }
+@media (max-width: 1200px) {
+  .boardContent {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+}
+@media (max-width: 748px) {
+  .boardContent {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .boardHeader{
+    align-items: flex-start;
+    margin-bottom: 8px;
+    flex-direction: column;
+  }
+}
 .todos{
   margin: 10px;
   width: 80%;
