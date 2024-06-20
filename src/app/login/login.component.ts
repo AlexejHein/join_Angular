@@ -11,6 +11,7 @@ import { FormControl } from '@angular/forms';
 export class LoginComponent {
   username: string = '';
   password: string = '';
+  errorMessage: string | null = null;
   hideRequiredControl = new FormControl(false);
   hide: boolean = true;
 
@@ -30,6 +31,7 @@ export class LoginComponent {
         this.router.navigate(['/summary']).then(r => {});
       },
       error => {
+        this.errorMessage = 'There was an error during the login process!';
         console.error('There was an error during the login process!', error);
       }
     );
