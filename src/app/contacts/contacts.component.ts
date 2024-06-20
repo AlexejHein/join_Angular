@@ -72,6 +72,10 @@ export class ContactsComponent implements OnInit {
       height: '600px',
       data: contact
     });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.getContacts();
+    });
   }
 
   removeContact(index: number) {

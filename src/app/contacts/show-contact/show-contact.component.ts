@@ -1,6 +1,7 @@
 import {Component, Inject} from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { ContactsService } from '../../services/contacts.service';
+import { DialogEditContactComponent} from "../dialog-edit-contact/dialog-edit-contact.component";
 
 @Component({
   selector: 'app-show-contact',
@@ -17,6 +18,7 @@ export class ShowContactComponent {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<ShowContactComponent>,
     private contactsService: ContactsService,
+    public dialog: MatDialog
   ) {}
 
   closeDialog(): void {
@@ -24,15 +26,23 @@ export class ShowContactComponent {
   }
 
   openDialog(data: any) {
-    this.data = data;
-
+    const dialogRef = this.dialog.open(DialogEditContactComponent, {
+      width: '400px',
+      height: '600px',
+      data: this.data
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.dialogRef.close();
+    });
   }
 
-  removeContact(i: any) {
-    const contact = this.contacts[i];
-    this.contactsService.deleteContact(contact.id).subscribe(() => {
-      this.contacts.splice(i, 1);
-    });
-
+  removeContact() {
+    if (this.data && this.data.id) {
+      this.contactsService.deleteContact(this.data.id).subscribe(() => {
+        this.dialogRef.close();
+      });
+    } else {
+      console.error('No contact data available');
+    }
   }
 }
