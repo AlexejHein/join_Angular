@@ -13,17 +13,28 @@
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
-        <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
+        <input matInput placeholder="Email" [(ngModel)]="email" name="email" required email>
         <mat-icon matSuffix>mail</mat-icon>
+        <mat-error *ngIf="registerForm.controls['email']?.invalid && registerForm.controls['email']?.touched">
+          Please enter a valid email address
+        </mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
-        <input matInput placeholder="Password" [(ngModel)]="password" name="password" type="password" required>
-        <mat-icon matSuffix>key</mat-icon>
+        <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password" name="password" required>
+        <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
       </mat-form-field>
-      <div class="buttonsBlog">
-        <button class="vButton" mat-button type="submit" [disabled]="!registerForm.form.valid">Sign Up</button>
-      </div>
+      <mat-form-field appearance="outline">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+        <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <div *ngIf="!passwordsMatch()" class="error">Passwords do not match!</div>
+      <button class="vButton" mat-button type="submit" [disabled]="!registerForm.form.valid || !passwordsMatch()">Sign Up</button>
     </form>
   </mat-card>
 </div>

@@ -11,10 +11,21 @@ export class SignupComponent {
   username: string = '';
   password: string = '';
   email: string = '';
+  hide: boolean = true;  // Default auf true setzen
+  confirmPassword: string = '';
 
   constructor(private authService: AuthService, private router: Router) { }
 
+  passwordsMatch(): boolean {
+    return this.password === this.confirmPassword;
+  }
+
   register() {
+    if (!this.passwordsMatch()) {
+      console.error('Passwords do not match!');
+      return;
+    }
+
     const user = {
       username: this.username,
       password: this.password,
@@ -36,5 +47,4 @@ export class SignupComponent {
       }
     );
   }
-
 }
