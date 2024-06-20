@@ -1,18 +1,18 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TaskService } from '../services/task.service';
 import { ContactsService } from '../services/contacts.service';
-import {NavigationExtras, Router} from "@angular/router";
+import { Router } from "@angular/router";
 import { MatDialog } from '@angular/material/dialog';
-import {NewCategoryComponent} from "./new-category/new-category.component";
-import { CategoryResetService} from "../services/category-reset.service";
-import { TaskUpdateService} from "../services/task-update.service";
-import { StatusService} from "../services/status.service";
+import { NewCategoryComponent } from "./new-category/new-category.component";
+import { CategoryResetService } from "../services/category-reset.service";
+import { TaskUpdateService } from "../services/task-update.service";
+import { StatusService } from '../services/status.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 interface Subtask {
   name: string;
   completed: boolean;
 }
-
 interface Category {
   name: string;
   color: string;
@@ -31,7 +31,6 @@ export class AddTaskComponent implements OnInit {
   categories: Category[] = [{ name: 'Sales', color: '#b0b4e0' }, { name: 'Backoffice', color: '#0077d9' }, { name: 'New Category', color: '' }];
   status: 'todo' | 'done' | 'inProgress' | 'awaitingFeedback' = 'todo';
 
-
   newSubtaskName = '';
   contacts: any[] = [];
   title = '';
@@ -41,17 +40,17 @@ export class AddTaskComponent implements OnInit {
   categoryColor = '';
   dueDate: Date | null = null;
 
-  defaultButtonStyle = {background: '#f0f0f0', color: '#000', iconColor: '#000'};
+  defaultButtonStyle = { background: '#f0f0f0', color: '#000', iconColor: '#000' };
   priorityStyles = {
-    urgent: {background: 'red', color: '#ffffff', iconColor: '#ffffff'},
-    medium: {background: 'yellow', color: '#000000', iconColor: '#000000'},
-    low: {background: 'green', color: '#ffffff', iconColor: '#ffffff'}
+    urgent: { background: 'red', color: '#ffffff', iconColor: '#ffffff' },
+    medium: { background: 'yellow', color: '#000000', iconColor: '#000000' },
+    low: { background: 'green', color: '#ffffff', iconColor: '#ffffff' }
   };
 
   buttonStyles = {
-    urgent: {...this.defaultButtonStyle},
-    medium: {...this.defaultButtonStyle},
-    low: {...this.defaultButtonStyle}
+    urgent: { ...this.defaultButtonStyle },
+    medium: { ...this.defaultButtonStyle },
+    low: { ...this.defaultButtonStyle }
   };
 
   selectedPriority = '';
@@ -65,7 +64,6 @@ export class AddTaskComponent implements OnInit {
     dueDate: '',
     priority: ''
   };
-  private dialogRef: any;
 
   constructor(private taskService: TaskService,
               private contactsService: ContactsService,
@@ -73,8 +71,9 @@ export class AddTaskComponent implements OnInit {
               private dialog: MatDialog,
               private categoryResetService: CategoryResetService,
               private taskUpdateService: TaskUpdateService,
-              private statusService: StatusService
-              ) {}
+              private statusService: StatusService,
+              private changeDetector: ChangeDetectorRef
+  ) { }
 
   ngOnInit() {
     this.statusService.currentStatus.subscribe(status => this.status = status);
@@ -86,7 +85,7 @@ export class AddTaskComponent implements OnInit {
   }
 
   resetCategorySelection(): void {
-    this.category = ''; // Setzen Sie dies auf Ihren Standardwert
+    this.category = '';
   }
 
   addNewCategory(): void {
@@ -99,7 +98,7 @@ export class AddTaskComponent implements OnInit {
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
           console.log('The dialog was closed');
-          const newCategory: Category = {name: result.name, color: result.color};
+          const newCategory: Category = { name: result.name, color: result.color };
           this.categories.push(newCategory);
           this.category = newCategory.name;
           this.categoryColor = newCategory.color;
@@ -118,16 +117,16 @@ export class AddTaskComponent implements OnInit {
 
   changeButtonColor(priority: 'urgent' | 'medium' | 'low') {
     this.resetButtonColors();
-    this.buttonStyles[priority] = {...this.priorityStyles[priority]};
+    this.buttonStyles[priority] = { ...this.priorityStyles[priority] };
     this.selectedPriority = priority;
     this.errorMessages.priority = '';
   }
 
   resetButtonColors() {
     this.buttonStyles = {
-      urgent: {...this.defaultButtonStyle},
-      medium: {...this.defaultButtonStyle},
-      low: {...this.defaultButtonStyle}
+      urgent: { ...this.defaultButtonStyle },
+      medium: { ...this.defaultButtonStyle },
+      low: { ...this.defaultButtonStyle }
     };
   }
 
@@ -153,7 +152,7 @@ export class AddTaskComponent implements OnInit {
 
   addSubtask() {
     if (this.newSubtaskName.trim()) {
-      this.subtasks.push({name: this.newSubtaskName, completed: false});
+      this.subtasks.push({ name: this.newSubtaskName, completed: false });
       this.newSubtaskName = '';
     }
   }
@@ -164,42 +163,67 @@ export class AddTaskComponent implements OnInit {
 
   validateInputs(): boolean {
     let isValid = true;
-    const dueDateString = this.dueDate ? String(this.dueDate).trim() : '';
 
-    this.errorMessages.title = this.title.trim() ? '' : 'Title is required';
-    this.errorMessages.description = this.description.trim() ? '' : 'Description is required';
-    this.errorMessages.category = this.category.trim() ? '' : 'Category is required';
-    this.errorMessages.assignedTo = this.assignedTo !== null ? '' : 'Assigned to is required';
-    this.errorMessages.dueDate = dueDateString ? '' : 'Due date is required';
-    this.errorMessages.priority = this.selectedPriority ? '' : 'Priority is required';
+    this.errorMessages = {
+      title: '',
+      description: '',
+      category: '',
+      assignedTo: '',
+      dueDate: '',
+      priority: ''
+    };
 
-    for (const key in this.errorMessages) {
-      if (this.errorMessages[key]) {
-        isValid = false;
-      }
+    if (!this.title.trim()) {
+      this.errorMessages.title = 'Title is required';
+      isValid = false;
     }
+
+    if (!this.description.trim()) {
+      this.errorMessages.description = 'Description is required';
+      isValid = false;
+    }
+
+    if (!this.category.trim()) {
+      this.errorMessages.category = 'Category is required';
+      isValid = false;
+    }
+
+    if (this.assignedTo === null) {
+      this.errorMessages.assignedTo = 'Assigned to is required';
+      isValid = false;
+    }
+
+    if (!this.dueDate) {
+      this.errorMessages.dueDate = 'Due date is required';
+      isValid = false;
+    }
+
+    if (!this.selectedPriority) {
+      this.errorMessages.priority = 'Priority is required';
+      isValid = false;
+    }
+    console.log('Validation result:', isValid);
+    console.log('Error messages:', this.errorMessages);
+    this.changeDetector.detectChanges();
 
     return isValid;
   }
 
   formatDate(date: Date): string {
     const year = date.getFullYear();
-    const month = ('0' + (date.getMonth() + 1)).slice(-2); // add leading zero
-    const day = ('0' + date.getDate()).slice(-2); // add leading zero
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const day = ('0' + date.getDate()).slice(-2);
     return `${year}-${month}-${day}`;
   }
 
-
-
   createTask() {
     if (this.validateInputs()) {
-      // Find the selected category object
       const selectedCategoryColor = this.categories.find(category => category.name === this.category)?.color;
       const task: any = {
         title: this.title,
         description: this.description,
         category: this.category,
-        categoryColor: selectedCategoryColor, // Use the selected category object
+        categoryColor: selectedCategoryColor,
         assigned_to: this.assignedTo!,
         due_date: this.dueDate instanceof Date ? this.formatDate(this.dueDate) : '',
         priority: this.selectedPriority,
@@ -214,18 +238,12 @@ export class AddTaskComponent implements OnInit {
         console.log('Task created successfully');
         console.log('Task data:', task);
         this.clearFields();
-        this.router.navigate(['/board']).then(r => {});
+        this.router.navigate(['/board']).then(r => { });
         this.taskUpdateService.taskUpdated();
       }, (error: any) => {
         console.error('Error creating task:', error);
       });
+      this.taskCreated.emit();
     }
-    this.taskCreated.emit();
-    this.dialogRef.close();
-    const navigationExtras: NavigationExtras = {
-      queryParams: { 'refresh': new Date().getTime() }
-    };
-    this.router.navigate(['/board'], navigationExtras).then(r => {});
   }
-
 }

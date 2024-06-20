@@ -8,13 +8,13 @@
       <mat-form-field appearance="outline">
         <mat-label>Title</mat-label>
         <input matInput [(ngModel)]="title">
-        <mat-error *ngIf="errorMessages.title">{{ errorMessages.title }}</mat-error>
       </mat-form-field>
+      <mat-error *ngIf="errorMessages.title">{{ errorMessages.title }}</mat-error>
       <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>
         <textarea matInput [(ngModel)]="description"></textarea>
-        <mat-error *ngIf="errorMessages.description">{{ errorMessages.description }}</mat-error>
       </mat-form-field>
+      <mat-error *ngIf="errorMessages.description">{{ errorMessages.description }}</mat-error>
       <mat-form-field appearance="outline">
         <mat-label>Category</mat-label>
         <mat-select [(ngModel)]="category" (ngModelChange)="addNewCategory()">
@@ -22,15 +22,15 @@
             {{ category.name }}
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="errorMessages.category">{{ errorMessages.category }}</mat-error>
       </mat-form-field>
+      <mat-error *ngIf="errorMessages.category">{{ errorMessages.category }}</mat-error>
       <mat-form-field appearance="outline">
         <mat-label>Assigned to</mat-label>
         <mat-select [(ngModel)]="assignedTo">
           <mat-option *ngFor="let contact of contacts" [value]="contact.name">{{ contact.name }}</mat-option>
         </mat-select>
-        <mat-error *ngIf="errorMessages.assignedTo">{{ errorMessages.assignedTo }}</mat-error>
       </mat-form-field>
+      <mat-error *ngIf="errorMessages.assignedTo">{{ errorMessages.assignedTo }}</mat-error>
     </div>
     <hr>
     <div class="addTaskContentRight">
@@ -40,8 +40,8 @@
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-        <mat-error *ngIf="errorMessages.dueDate">{{ errorMessages.dueDate }}</mat-error>
       </mat-form-field>
+      <mat-error *ngIf="errorMessages.dueDate">{{ errorMessages.dueDate }}</mat-error>
       <p>Priority</p>
       <div class="buttonsAdd">
         <button mat-button
@@ -69,7 +69,7 @@
             class="yellow">keyboard_double_arrow_down</mat-icon>
         </button>
       </div>
-      <mat-error *ngIf="errorMessages.priority">{{ errorMessages.priority }}</mat-error>
+      <mat-error class="errorPriority" *ngIf="errorMessages.priority">{{ errorMessages.priority }}</mat-error>
 
       <mat-form-field appearance="outline" class="example-form-field">
         <mat-label>Subtasks</mat-label>

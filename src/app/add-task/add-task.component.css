@@ -113,4 +113,10 @@ li{
   border: rgb(41, 171, 226) 1px solid;
   color: rgb(41, 171, 226)!important;
 }
+mat-error{
+  margin-top: -50px;
+}
+.errorPriority {
+  margin-top: -10px;
+}
 
