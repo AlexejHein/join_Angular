@@ -33,6 +33,7 @@ import { EditTaskDialogComponent } from './edit-task-dialog/edit-task-dialog.com
 import { NewCategoryComponent } from './add-task/new-category/new-category.component';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { NewTaskDialogComponent } from './board/new-task-dialog/new-task-dialog.component';
+import { ShowContactComponent } from './contacts/show-contact/show-contact.component';
 
 
 
@@ -55,6 +56,7 @@ import { NewTaskDialogComponent } from './board/new-task-dialog/new-task-dialog.
     EditTaskDialogComponent,
     NewCategoryComponent,
     NewTaskDialogComponent,
+    ShowContactComponent,
   ],
     imports: [
         BrowserModule,

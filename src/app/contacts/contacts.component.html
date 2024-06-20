@@ -28,7 +28,8 @@
       </div>
       <div class="slideItem">
       <div class="contactNameHead">
-        <div class="contactNameIn" [style.background-color]="contact.color">{{ getInitials(contact.name) }}</div>        <h2 class="contentHeader">{{ contact.name }} <br>
+        <div class="contactNameIn" [style.background-color]="contact.color">{{ getInitials(contact.name) }}</div>
+        <h2 class="contentHeader">{{ contact.name }} <br>
           <div class="editContent">
              <div class="edit" (click)="$event.stopPropagation(); openDialog(contact)"> <mat-icon >edit</mat-icon> Edit </div>
              <div class="edit" (click)="removeContact(i)"> <mat-icon>delete</mat-icon> Delete  </div>

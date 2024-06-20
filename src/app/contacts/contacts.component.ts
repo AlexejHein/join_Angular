@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ContactsService } from '../services/contacts.service';
 import { DialogEditContactComponent } from "./dialog-edit-contact/dialog-edit-contact.component";
 import { DialogAddContactComponent } from "./dialog-add-contact/dialog-add-contact.component";
+import { ShowContactComponent} from "./show-contact/show-contact.component";
 
 @Component({
   selector: 'app-contacts',
@@ -55,10 +56,22 @@ export class ContactsComponent implements OnInit {
   }
 
   clickContact(index: number) {
-    this.contacts.forEach((c, i) => {
-      if (i !== index) c.isClicked = false;
+    if (window.innerWidth <= 1200) {
+      this.showContact(this.contacts[index]);
+    } else {
+      this.contacts.forEach((c, i) => {
+        if (i !== index) c.isClicked = false;
+      });
+      this.contacts[index].isClicked = !this.contacts[index].isClicked;
+    }
+  }
+
+  showContact(contact: any) {
+    const dialogRef = this.dialog.open(ShowContactComponent, {
+      width: '400px',
+      height: '600px',
+      data: contact
     });
-    this.contacts[index].isClicked = !this.contacts[index].isClicked;
   }
 
   removeContact(index: number) {

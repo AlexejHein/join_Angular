@@ -1,0 +1,21 @@
+<div class="contactItemSlider">
+
+  <div class="slideHeader">
+    <h2>Contacts</h2>
+    <hr>
+    <p>Better with a team</p>
+  </div>
+  <div class="slideItem">
+    <div class="contactNameHead">
+      <h2 class="contentHeader">{{ data.name }} <br>
+        <div class="editContent">
+          <div class="edit" (click)="$event.stopPropagation(); openDialog(data)"> <mat-icon >edit</mat-icon> Edit </div>
+          <div class="edit" (click)="removeContact(i)"> <mat-icon>delete</mat-icon> Delete  </div>
+        </div>
+      </h2>
+    </div>
+    <h3>Contact Information</h3>
+    <p class="contactEmail"> <span class="bBlack">Email</span> <br>{{ data.email }}</p>
+    <p> <span class="bBlack">Phone</span> <br> {{ data.phone }}</p>
+  </div>
+</div>
