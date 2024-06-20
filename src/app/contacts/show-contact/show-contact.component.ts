@@ -31,8 +31,12 @@ export class ShowContactComponent {
       height: '600px',
       data: this.data
     });
-    dialogRef.afterClosed().subscribe(() => {
-      this.dialogRef.close();
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.contactsService.updateContact(result).subscribe(() => {
+          this.dialogRef.close();
+        });
+      }
     });
   }
 
