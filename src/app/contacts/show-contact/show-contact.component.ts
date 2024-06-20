@@ -26,10 +26,13 @@ export class ShowContactComponent {
   }
 
   openDialog(data: any) {
+    const width = window.innerWidth < 748 ? '400px' : '850px';
+    const height = window.innerWidth < 748 ? '850px' : '400px';
+
     const dialogRef = this.dialog.open(DialogEditContactComponent, {
-      width: '400px',
-      height: '600px',
-      data: this.data
+      width: width,
+      height: height,
+      data: data
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
